@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>global.canclick = true
 global.clicked = false
+scr_updateobtains()
 won = false
 for (var yy = 0;yy&lt;global.tileheight;yy++)
 {
@@ -54,7 +55,21 @@ while (bombcount &lt; global.bombcount &amp;&amp; bombcount &lt; (global.tilewid
 }
 checkcount = 0
 var amt = 20-5+10-5+10-5
-while (checkcount &lt; 3 &amp;&amp; checkcount+global.checksgotten &lt; amt)
+var checksavail = undefined
+var iie = 0
+for (var i = 0; i &lt; array_length_1d(global.spotlist);i++)
+{
+    if (global.spotlist[i] == 0 &amp;&amp; !file_exists("send"+string(i+81000)))
+    {
+        checksavail[iie] = i
+        iie++
+    }
+    else
+    {
+        global.spotlist[i] = 1
+    }
+}
+while (checkcount &lt; 3 &amp;&amp; checkcount &lt; array_length_1d(checksavail))
 {
     var xx = irandom_range(0,global.tilewidth-1)
     var yy = irandom_range(0,global.tileheight-1)
@@ -66,82 +81,27 @@ while (checkcount &lt; 3 &amp;&amp; checkcount+global.checksgotten &lt; amt)
     global.tiletype[xx,yy] = "check"
     checkcount++
 }
-var bombcheckcount = 20-global.bombcount
-var widthcheckcount = 10-global.tilewidth
-var heightcheckcount = 10-global.tileheight
 for (var yy = 0;yy&lt;global.tileheight;yy++)
 {
     for (var xx = 0;xx&lt;global.tilewidth;xx++)
     {
-        if (global.tiletype[xx,yy] != "check" || bombcheckcount &gt; 0 || widthcheckcount &gt; 0 || heightcheckcount &gt; 0)
+        with instance_create(xx*16,yy*16,obj_tile)
         {
-            with instance_create(xx*16,yy*16,obj_tile)
+            type = global.tiletype[xx,yy]
+            if (global.tiletype[xx,yy] == "check")
             {
-                type = global.tiletype[xx,yy]
-                if (global.tiletype[xx,yy] == "check")
+                var chose = irandom_range(0,array_length_1d(checksavail)-1)
+                typeplus = checksavail[chose]
+                var templst = undefined
+                for (var ea = 0; ea &lt; chose;ea++)
                 {
-                    if (bombcheckcount &gt; 0)
-                    {
-                        if (widthcheckcount &gt; 0)
-                        {
-                            if (heightcheckcount &gt; 0)
-                            {
-                                typeplus = choose("width","height","bomb")
-                            }
-                            else
-                            {
-                                typeplus = choose("width","bomb")
-                            }
-                        }
-                        else
-                        {
-                            if (heightcheckcount &gt; 0)
-                            {
-                                typeplus = choose("height","bomb")
-                            }
-                            else
-                            {
-                                typeplus = choose("bomb")
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (widthcheckcount &gt; 0)
-                        {
-                            if (heightcheckcount &gt; 0)
-                            {
-                                typeplus = choose("width","height")
-                            }
-                            else
-                            {
-                                typeplus = choose("width")
-                            }
-                        }
-                        else
-                        {
-                            if (heightcheckcount &gt; 0)
-                            {
-                                typeplus = choose("height")
-                            }
-                            else
-                            {
-                            }
-                        }
-                    }
-                    if (typeplus == "width")
-                    {
-                        widthcheckcount--
-                    }
-                    if (typeplus == "height")
-                    {
-                        heightcheckcount--
-                    }
-                    if (typeplus == "bomb")
-                    {
-                        bombcheckcount--
-                    }
+                    templst[ea] = checksavail[ea]
                 }
+                for (var ea = chose; ea &lt; array_length_1d(checksavail)-1;ea++)
+                {
+                    templst[ea] = checksavail[ea+1]
+                }
+                checksavail = templst
             }
         }
     }
@@ -285,6 +245,7 @@ if (global.canclick == true &amp;&amp; ended == true &amp;&amp; alarm[0] &lt;= 0
         revealed = true
     }
 }
+scr_updateobtains()
 </string>
           </argument>
         </arguments>
@@ -312,7 +273,8 @@ if (global.canclick == true &amp;&amp; ended == true &amp;&amp; alarm[0] &lt;= 0
     revealed = true
     if (type == "check")
     {
-        scr_getitem(typeplus)
+        global.spotlist[typeplus] = 1
+        scr_senditem(typeplus+81000)
         global.checksgotten++
     }
 }

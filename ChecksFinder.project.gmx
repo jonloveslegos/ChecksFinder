@@ -23,6 +23,8 @@
     <script>scripts\scr_setup.gml</script>
     <script>scripts\scr_uncoversurrounding.gml</script>
     <script>scripts\scr_getitem.gml</script>
+    <script>scripts\scr_senditem.gml</script>
+    <script>scripts\scr_updateobtains.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_main</font>
