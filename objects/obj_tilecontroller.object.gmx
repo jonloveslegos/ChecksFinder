@@ -59,14 +59,17 @@ var checksavail = undefined
 var iie = 0
 for (var i = 0; i &lt; array_length_1d(global.spotlist);i++)
 {
-    if (global.spotlist[i] == 0 &amp;&amp; !file_exists("send"+string(i+81000)))
+    if (i &lt; global.tilewidth+global.tileheight+global.bombcount-5-5)
     {
-        checksavail[iie] = i
-        iie++
-    }
-    else
-    {
-        global.spotlist[i] = 1
+        if (global.spotlist[i] == 0 &amp;&amp; !file_exists("send"+string(i+81000)))
+        {
+            checksavail[iie] = i
+            iie++
+        }
+        else
+        {
+            global.spotlist[i] = 1
+        }
     }
 }
 while (checkcount &lt; 3 &amp;&amp; checkcount &lt; array_length_1d(checksavail))
@@ -199,6 +202,7 @@ if (won == true || ((room_width/16) &gt;= 10 &amp;&amp; (room_height/16) &gt;= 1
     }
     else
     {
+        file_text_close(file_text_open_write("victory"))
         room_goto(rm_win)
     }
 }
