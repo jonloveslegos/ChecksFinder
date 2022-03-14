@@ -38,6 +38,8 @@ for (var yy = 0;yy&lt;global.tileheight;yy++)
 }
 room_width = global.tilewidth*16
 room_height = global.tileheight*16
+global.roomthisheight = global.tileheight
+global.roomthiswidth = global.tilewidth
 view_wview[0] = room_width
 view_hview[0] = room_height*1.25
 bombcount = 0
@@ -139,7 +141,7 @@ with (obj_tile)
         bombcount++
     }
 }
-if (won == true || ((room_width/16) &gt;= 10 &amp;&amp; (room_height/16) &gt;= 10 &amp;&amp; bombcount &gt;= ((room_width/16)*(room_height/16))/5))
+if (won == true || ((global.roomthiswidth) &gt;= 10 &amp;&amp; (global.roomthisheight) &gt;= 10 &amp;&amp; bombcount &gt;= ((global.roomthiswidth)*(global.roomthisheight))/5))
 {
     won = true
     audio_play_sound(snd_digright,0,false)
