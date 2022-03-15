@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>global.canclick = true
 global.clicked = false
-scr_updateobtains()
 won = false
 for (var yy = 0;yy&lt;global.tileheight;yy++)
 {
@@ -210,6 +209,7 @@ if (won == true || ((global.roomthiswidth) &gt;= 10 &amp;&amp; (global.roomthish
 }
 else
 {
+    scr_updateobtains()
     room_restart()
 }
 </string>
@@ -251,7 +251,6 @@ if (global.canclick == true &amp;&amp; ended == true &amp;&amp; alarm[0] &lt;= 0
         revealed = true
     }
 }
-scr_updateobtains()
 </string>
           </argument>
         </arguments>
