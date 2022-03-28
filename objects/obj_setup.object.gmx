@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>scr_setup()
-scr_updateobtains()
 randomize()
 room_goto_next()
 </string>
