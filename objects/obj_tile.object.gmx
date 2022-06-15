@@ -74,7 +74,7 @@ typeplus = ""
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (revealed == false)
+            <string>if (global.canclick == true &amp;&amp; global.clicked == true &amp;&amp; revealed == false)
 {
     marked = !marked
     audio_play_sound(snd_digright,0,false)
