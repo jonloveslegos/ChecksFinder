@@ -135,6 +135,10 @@ typeplus = ""
                 yy = irandom_range(0,global.tileheight-1)
             }
             global.tiletype[xx,yy] = "bomb"
+            with(instance_position(xx,yy,obj_tile))
+            {
+                type = "bomb"
+            }
         }
     }
     if (type == "check")
