@@ -135,7 +135,7 @@ typeplus = ""
                 yy = irandom_range(0,global.tileheight-1)
             }
             global.tiletype[xx,yy] = "bomb"
-            with(instance_position(xx,yy,obj_tile))
+            with(instance_position(xx*16,yy*16,obj_tile))
             {
                 type = "bomb"
             }
