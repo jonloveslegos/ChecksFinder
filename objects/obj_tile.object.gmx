@@ -127,12 +127,12 @@ typeplus = ""
         if (type == "bomb")
         {
             type = "none"
-            var xx = irandom_range(0,global.tilewidth-1)
-            var yy = irandom_range(0,global.tileheight-1)
+            var xx = irandom_range(0,global.roomthiswidth-1)
+            var yy = irandom_range(0,global.roomthisheight-1)
             while (global.tiletype[xx,yy] != "none")
             {
-                xx = irandom_range(0,global.tilewidth-1)
-                yy = irandom_range(0,global.tileheight-1)
+                xx = irandom_range(0,global.roomthiswidth-1)
+                yy = irandom_range(0,global.roomthisheight-1)
             }
             global.tiletype[xx,yy] = "bomb"
             with(instance_position(xx*16,yy*16,obj_tile))
