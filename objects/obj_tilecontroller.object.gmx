@@ -286,6 +286,23 @@ for (var i = 0; i &lt; array_length_1d(global.spotlist);i++)
         }
     }
 }
+var bombs = 0
+var flags = 0
+with(obj_tile)
+{
+    if (type == "bomb")
+    {
+        bombs++
+    }
+    if (marked == true)
+    {
+        flags++
+    }
+}
+if (bombs == 0)
+{
+    bombs = min(global.roomthisbomb,((global.roomthiswidth*global.roomthisheight) div 5))
+}
 draw_set_halign(fa_left)
 draw_sprite_ext(spr_tiles,3,8,view_hport[0]-150,3,3,0,c_white,1)
 draw_set_font(fnt_main)
@@ -299,6 +316,9 @@ draw_text(60+240,view_hport[0]-120,string(global.tileheight)+"/10")
 draw_sprite_ext(spr_tiles,6,8+240,view_hport[0]-150,3,3,0,c_white,1)
 draw_set_font(fnt_main)
 draw_text(60+240,view_hport[0]-170,string(global.bombcount)+"/20")
+draw_sprite_ext(spr_tiles,2,8,view_hport[0]-50,3,3,0,c_white,1)
+draw_set_font(fnt_main)
+draw_text(60,view_hport[0]-70,string(flags)+"/"+string(bombs))
 </string>
           </argument>
         </arguments>
