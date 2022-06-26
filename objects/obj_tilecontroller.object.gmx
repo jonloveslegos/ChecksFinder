@@ -40,75 +40,18 @@ room_width = global.tilewidth*16
 room_height = global.tileheight*16
 global.roomthisheight = global.tileheight
 global.roomthiswidth = global.tilewidth
+global.roomthisbomb = global.bombcount
 view_wview[0] = room_width
 view_hview[0] = room_height*1.25
-bombcount = 0
-while (bombcount &lt; global.bombcount &amp;&amp; bombcount &lt; (global.tilewidth*global.tileheight)/5)
-{
-    var xx = irandom_range(0,global.tilewidth-1)
-    var yy = irandom_range(0,global.tileheight-1)
-    while (global.tiletype[xx,yy] != "none")
-    {
-        xx = irandom_range(0,global.tilewidth-1)
-        yy = irandom_range(0,global.tileheight-1)
-    }
-    global.tiletype[xx,yy] = "bomb"
-    bombcount++
-}
-checkcount = 0
-var amt = 20-5+10-5+10-5
-var checksavail = undefined
-var iie = 0
-for (var i = 0; i &lt; array_length_1d(global.spotlist);i++)
-{
-    if (i &lt; global.tilewidth+global.tileheight+global.bombcount-5-5)
-    {
-        if (!file_exists("send"+string(i+81000)))
-        {
-            checksavail[iie] = i
-            global.spotlist[i] = 0
-            iie++
-        }
-        else
-        {
-            global.spotlist[i] = 1
-        }
-    }
-}
-while (checkcount &lt; 1 &amp;&amp; checkcount &lt; array_length_1d(checksavail))
-{
-    var xx = irandom_range(0,global.tilewidth-1)
-    var yy = irandom_range(0,global.tileheight-1)
-    while (global.tiletype[xx,yy] != "none")
-    {
-        xx = irandom_range(0,global.tilewidth-1)
-        yy = irandom_range(0,global.tileheight-1)
-    }
-    global.tiletype[xx,yy] = "check"
-    checkcount++
-}
+
+
 for (var yy = 0;yy&lt;global.tileheight;yy++)
 {
     for (var xx = 0;xx&lt;global.tilewidth;xx++)
     {
         with instance_create(xx*16,yy*16,obj_tile)
         {
-            type = global.tiletype[xx,yy]
-            if (global.tiletype[xx,yy] == "check")
-            {
-                var chose = irandom_range(0,array_length_1d(checksavail)-1)
-                typeplus = checksavail[chose]
-                var templst = undefined
-                for (var ea = 0; ea &lt; chose;ea++)
-                {
-                    templst[ea] = checksavail[ea]
-                }
-                for (var ea = chose; ea &lt; array_length_1d(checksavail)-1;ea++)
-                {
-                    templst[ea] = checksavail[ea+1]
-                }
-                checksavail = templst
-            }
+            type = "none"
         }
     }
 }
