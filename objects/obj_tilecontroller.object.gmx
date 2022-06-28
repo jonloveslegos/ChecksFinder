@@ -42,8 +42,8 @@ global.roomthisheight = global.tileheight
 global.roomthiswidth = global.tilewidth
 view_wview[0] = room_width
 view_hview[0] = room_height*1.25
-bombcount = 0
-while (bombcount &lt; global.bombcount &amp;&amp; bombcount &lt; (global.tilewidth*global.tileheight)/5)
+global.curbombcount = 0
+while (global.curbombcount &lt; global.bombcount &amp;&amp; global.curbombcount &lt; (global.tilewidth*global.tileheight)/5)
 {
     var xx = irandom_range(0,global.tilewidth-1)
     var yy = irandom_range(0,global.tileheight-1)
@@ -53,7 +53,7 @@ while (bombcount &lt; global.bombcount &amp;&amp; bombcount &lt; (global.tilewid
         yy = irandom_range(0,global.tileheight-1)
     }
     global.tiletype[xx,yy] = "bomb"
-    bombcount++
+    global.curbombcount++
 }
 checkcount = 0
 var amt = 20-5+10-5+10-5
@@ -134,15 +134,7 @@ for (var yy = 0;yy&lt;global.tileheight;yy++)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var bombcount = 0
-with (obj_tile)
-{
-    if (type == "bomb")
-    {
-        bombcount++
-    }
-}
-if (won == true || ((global.roomthiswidth) &gt;= 10 &amp;&amp; (global.roomthisheight) &gt;= 10 &amp;&amp; bombcount &gt;= ((global.roomthiswidth)*(global.roomthisheight))/5))
+            <string>if (won == true || (global.roomthiswidth &gt;= 10 &amp;&amp; global.roomthisheight &gt;= 10 &amp;&amp; global.curbombcount &gt;= 20))
 {
     won = true
     audio_play_sound(snd_digright,0,false)
@@ -321,16 +313,19 @@ draw_text(60+240,view_hport[0]-170,string(global.bombcount)+"/20")
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//with (obj_tile)
-//{
-//    revealed = true
-//    if (type == "check")
-//    {
-//        global.spotlist[typeplus] = 1
-//        scr_senditem(typeplus+81000)
-//        global.checksgotten++
-//    }
-//}
+            <string>with (obj_tile)
+{
+    if (type != "bomb")
+    {
+        revealed = true
+        if (type == "check")
+        {
+            global.spotlist[typeplus] = 1
+            scr_senditem(typeplus+81000)
+            global.checksgotten++
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
