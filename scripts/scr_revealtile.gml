@@ -22,7 +22,6 @@ if (global.canclick == true && revealed == false)
         global.clicked = true
         if (type == "bomb")
         {
-            type = "none"
             var xx = irandom_range(0,global.roomthiswidth-1)
             var yy = irandom_range(0,global.roomthisheight-1)
             while (global.tiletype[xx,yy] != "none")
@@ -30,17 +29,15 @@ if (global.canclick == true && revealed == false)
                 xx = irandom_range(0,global.roomthiswidth-1)
                 yy = irandom_range(0,global.roomthisheight-1)
             }
+            type = "none"
             global.tiletype[xx,yy] = "bomb"
+            with(instance_position(xx,yy,obj_tile))
+            {
+                type = "bomb"
+            }
         }
     }
-    if (type == "check")
-    {
-        global.spotlist[typeplus] = 1
-        scr_senditem(typeplus+81000)
-        global.checksgotten++
-        audio_play_sound(snd_digright,0,false)
-    }
-    else if (type == "bomb")
+    if (type == "bomb")
     {
         with(obj_tile)
         {

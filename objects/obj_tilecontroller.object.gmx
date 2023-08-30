@@ -55,10 +55,10 @@ while (global.curbombcount &lt; global.bombcount &amp;&amp; global.curbombcount 
     global.tiletype[xx,yy] = "bomb"
     global.curbombcount++
 }
-checkcount = 0
 var amt = 20-5+10-5+10-5
 var checksavail = undefined
 var iie = 0
+global.checksgotten = 0
 for (var i = 0; i &lt; array_length_1d(global.spotlist);i++)
 {
     if (i &lt; global.tilewidth+global.tileheight+global.bombcount-5-5)
@@ -72,20 +72,9 @@ for (var i = 0; i &lt; array_length_1d(global.spotlist);i++)
         else
         {
             global.spotlist[i] = 1
+            global.checksgotten++
         }
     }
-}
-while (checkcount &lt; 1 &amp;&amp; checkcount &lt; array_length_1d(checksavail))
-{
-    var xx = irandom_range(0,global.tilewidth-1)
-    var yy = irandom_range(0,global.tileheight-1)
-    while (global.tiletype[xx,yy] != "none")
-    {
-        xx = irandom_range(0,global.tilewidth-1)
-        yy = irandom_range(0,global.tileheight-1)
-    }
-    global.tiletype[xx,yy] = "check"
-    checkcount++
 }
 for (var yy = 0;yy&lt;global.tileheight;yy++)
 {
@@ -94,21 +83,6 @@ for (var yy = 0;yy&lt;global.tileheight;yy++)
         with instance_create(xx*16,yy*16,obj_tile)
         {
             type = global.tiletype[xx,yy]
-            if (global.tiletype[xx,yy] == "check")
-            {
-                var chose = irandom_range(0,array_length_1d(checksavail)-1)
-                typeplus = checksavail[chose]
-                var templst = undefined
-                for (var ea = 0; ea &lt; chose;ea++)
-                {
-                    templst[ea] = checksavail[ea]
-                }
-                for (var ea = chose; ea &lt; array_length_1d(checksavail)-1;ea++)
-                {
-                    templst[ea] = checksavail[ea+1]
-                }
-                checksavail = templst
-            }
         }
     }
 }
@@ -243,6 +217,32 @@ if (global.canclick == true &amp;&amp; ended == true &amp;&amp; alarm[0] &lt;= 0
     {
         revealed = true
     }
+    var amt = 20-5+10-5+10-5
+    var checksavail = -1
+    global.checksgotten = 0
+    for (var i = 0; i &lt; array_length_1d(global.spotlist);i++)
+    {
+        if (i &lt; global.tilewidth+global.tileheight+global.bombcount-5-5)
+        {
+            if (!file_exists("send"+string(i+81000)))
+            {
+                checksavail = i
+                global.spotlist[i] = 0
+                break
+            }
+            else
+            {
+                global.spotlist[i] = 1
+                global.checksgotten++
+            }
+        }
+    }
+    if (checksavail &gt; -1)
+    {
+        global.spotlist[checksavail] = 1
+        scr_senditem(checksavail+81000)
+        global.checksgotten++
+    }
 }
 scr_updateobtains()
 </string>
@@ -291,41 +291,6 @@ draw_text(60+240,view_hport[0]-120,string(global.tileheight)+"/10")
 draw_sprite_ext(spr_tiles,6,8+240,view_hport[0]-150,3,3,0,c_white,1)
 draw_set_font(fnt_main)
 draw_text(60+240,view_hport[0]-170,string(global.bombcount)+"/20")
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="48">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>with (obj_tile)
-{
-    if (type != "bomb")
-    {
-        revealed = true
-        if (type == "check")
-        {
-            global.spotlist[typeplus] = 1
-            scr_senditem(typeplus+81000)
-            global.checksgotten++
-        }
-    }
-}
 </string>
           </argument>
         </arguments>
