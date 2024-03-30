@@ -1,0 +1,33 @@
+Converting GML script: C:\Users\suncat\Documents\git\ChecksFinder\mvc\scripts\scr_returnamtneartype\scr_returnamtneartype.gml
+Converted description /// @description scr_returnamtneartype(type)/// @param type
+
+Converting GML script: C:\Users\suncat\Documents\git\ChecksFinder\mvc\scripts\scr_senditem\scr_senditem.gml
+Converted description /// @description scr_senditem(spotid)/// @param spotid
+
+GameMaker Studio 1 font texture has been backed up at C:\Users\suncat\Documents\git\ChecksFinder\mvc\fonts\fnt_main\fnt_main.gms1.png
+Converting GML script: C:\Users\suncat\Documents\git\ChecksFinder\mvc\objects\obj_tilecontroller\Create_0.gml
+Converted builtin - line 16: view_wview[0] = room_width -> __view_set( e__VW.WView, 0, room_width )
+Converted builtin - line 17: view_hview[0] = room_height*1.25 -> __view_set( e__VW.HView, 0, room_height*1.25 )
+
+Converting GML script: C:\Users\suncat\Documents\git\ChecksFinder\mvc\objects\obj_tilecontroller\Draw_64.gml
+Converted builtin - line 13: view_hport[0] -> __view_get( e__VW.HPort, 0 )
+Converted builtin - line 15: view_hport[0] -> __view_get( e__VW.HPort, 0 )
+Converted builtin - line 16: view_hport[0] -> __view_get( e__VW.HPort, 0 )
+Converted builtin - line 18: view_hport[0] -> __view_get( e__VW.HPort, 0 )
+Converted builtin - line 19: view_hport[0] -> __view_get( e__VW.HPort, 0 )
+Converted builtin - line 21: view_hport[0] -> __view_get( e__VW.HPort, 0 )
+Converted builtin - line 22: view_hport[0] -> __view_get( e__VW.HPort, 0 )
+Converted builtin - line 24: view_hport[0] -> __view_get( e__VW.HPort, 0 )
+
+Missing audiogroup for sound: 'snd_explosion' - setting to default audio group
+Missing audiogroup for sound: 'snd_digright' - setting to default audio group
+Missing audiogroup for sound: 'snd_win' - setting to default audio group
+Game speed set to 30
+Added compatibility script 'instance\instance_create.gml'
+Added compatibility script 'object\object_get_depth.gml'
+Added compatibility script 'view\__view_get.gml'
+Added compatibility script 'view\__view_set.gml'
+Added compatibility script 'view\__view_set_internal.gml'
+Added compatibility script 'view\__init_view.gml'
+Added compatibility script '__init_global.gml'
+Added compatibility script '__global_object_depths.gml'
