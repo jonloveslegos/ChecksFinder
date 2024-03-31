@@ -77,15 +77,7 @@ for (var yy = 0;yy&lt;global.tileheight;yy++)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var bombcount = 0
-with (obj_tile)
-{
-    if (type == "bomb")
-    {
-        bombcount++
-    }
-}
-if (won == true || ((global.roomthiswidth) &gt;= 10 &amp;&amp; (global.roomthisheight) &gt;= 10 &amp;&amp; bombcount &gt;= ((global.roomthiswidth)*(global.roomthisheight))/5))
+            <string>if (won == true || (global.roomthiswidth &gt;= 10 &amp;&amp; global.roomthisheight &gt;= 10 &amp;&amp; global.curbombcount &gt;= 20))
 {
     won = true
     audio_play_sound(snd_digright,0,false)
@@ -284,16 +276,19 @@ draw_text(60,view_hport[0]-70,string(flags)+"/"+string(bombs))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//with (obj_tile)
-//{
-//    revealed = true
-//    if (type == "check")
-//    {
-//        global.spotlist[typeplus] = 1
-//        scr_senditem(typeplus+81000)
-//        global.checksgotten++
-//    }
-//}
+            <string>with (obj_tile)
+{
+    if (type != "bomb")
+    {
+        revealed = true
+        if (type == "check")
+        {
+            global.spotlist[typeplus] = 1
+            scr_senditem(typeplus+81000)
+            global.checksgotten++
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
