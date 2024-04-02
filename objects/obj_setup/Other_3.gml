@@ -3,7 +3,7 @@ while (_filename != "")
 {
     if (string_count("obtain",_filename) > 0)
     {
-        file_delete(filename)
+        file_delete(_filename)
     }
     _filename = file_find_next()
 }

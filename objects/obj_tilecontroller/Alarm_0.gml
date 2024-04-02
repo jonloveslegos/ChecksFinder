@@ -1,3 +1,4 @@
+///@description: Victory
 if (won == true || (global.roomthiswidth >= 10 && global.roomthisheight >= 10 && global.curbombcount >= 20))
 {
     won = true
