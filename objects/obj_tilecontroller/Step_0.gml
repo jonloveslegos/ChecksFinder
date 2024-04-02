@@ -41,4 +41,3 @@ if (global.canclick == true && ended == true && alarm[0] <= 0)
         global.checksgotten++
     }
 }
-scr_updateobtains()

@@ -5,7 +5,7 @@ function scr_setup() {
 	global.checksgotten = 0
 	global.spotlist = undefined
 	draw_set_colour(c_white);
-	for (var i = 0; i < 25; i++)
+	for (var i = 0; i < global.tilewidth*global.tileheight; i++)
 	{
 	    global.spotlist[i] = 0
 	}

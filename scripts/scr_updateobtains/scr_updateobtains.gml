@@ -1,10 +1,12 @@
 function scr_updateobtains() {
-	var filename = file_find_first("*.item",0)
-	while (filename != "")
+	var _filename = file_find_first("*.item",0)
+	var _data_update = false
+	while (_filename != "")
 	{
-	    if (!file_exists(filename+"obtain"))
+	    if (!file_exists(_filename+"obtain"))
 	    {
-	        var file = file_text_open_read(filename)
+			_data_update = true
+	        var file = file_text_open_read(_filename)
 	        var read = file_text_read_string(file)
 	        if (real(string_digits(read)) == 80000)
 	            scr_getitem("width")
@@ -13,8 +15,9 @@ function scr_updateobtains() {
 	        if (real(string_digits(read)) == 80002)
 	            scr_getitem("bomb")
 	        file_text_close(file)
-	        file_text_close(file_text_open_write(filename+"obtain"))
+	        file_text_close(file_text_open_write(_filename+"obtain"))
 	    }
-	    filename = file_find_next()
+	    _filename = file_find_next()
 	}
+	return _data_update
 }

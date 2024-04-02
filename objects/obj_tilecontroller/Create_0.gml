@@ -1,12 +1,12 @@
 global.canclick = true
 global.clicked = false
-scr_updateobtains()
 won = false
-for (var yy = 0;yy<global.tileheight;yy++)
+scr_updateobtains()
+for (var _yy = 0;_yy<global.tileheight;_yy++)
 {
-    for (var xx = 0;xx<global.tilewidth;xx++)
+    for (var _xx = 0;_xx<global.tilewidth;_xx++)
     {
-        global.tiletype[xx,yy] = "none"
+        global.tiletype[_xx,_yy] = "none"
     }
 }
 room_width = global.tilewidth*16
@@ -16,11 +16,11 @@ global.roomthiswidth = global.tilewidth
 global.roomthisbomb = global.bombcount
 camera_set_view_size(view_get_camera(0), room_width, room_height*1.25);
 
-for (var yy = 0;yy<global.tileheight;yy++)
+for (var _yy = 0;_yy<global.tileheight;_yy++)
 {
-    for (var xx = 0;xx<global.tilewidth;xx++)
+    for (var _xx = 0;_xx<global.tilewidth;_xx++)
     {
-        with instance_create(xx*16,yy*16,obj_tile)
+        with instance_create(_xx*16,_yy*16,obj_tile)
         {
             type = "none"
         }
