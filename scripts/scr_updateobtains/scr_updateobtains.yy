@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"scr_updateobtains",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_updateobtains",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
