@@ -1,5 +1,5 @@
 function scr_revealtile() {
-	if (global.canclick == true && revealed == false)
+	if (global.canclick == true && revealed == false && marked == false)
 	{
 	    revealed = true
 	    with instance_create(x+8,y+8,obj_piece)
@@ -21,22 +21,7 @@ function scr_revealtile() {
 	    if (global.clicked == false)
 	    {
 	        global.clicked = true
-	        if (type == "bomb")
-	        {
-	            var xx = irandom_range(0,global.roomthiswidth-1)
-	            var yy = irandom_range(0,global.roomthisheight-1)
-	            while (global.tiletype[xx,yy] != "none")
-	            {
-	                xx = irandom_range(0,global.roomthiswidth-1)
-	                yy = irandom_range(0,global.roomthisheight-1)
-	            }
-	            type = "none"
-	            global.tiletype[xx,yy] = "bomb"
-	            with(instance_position(xx,yy,obj_tile))
-	            {
-	                type = "bomb"
-	            }
-	        }
+	        scr_generateroom(x, y)
 	    }
 	    if (type == "bomb")
 	    {
@@ -57,7 +42,117 @@ function scr_revealtile() {
 	        audio_play_sound(snd_digright,0,false)
 	    }
 	}
-
+	else if (global.canclick == true && revealed == true)
+	{
+	    var flags = 0
+	    var bombs = 0
+	    with (instance_position(x,y-16,obj_tile))
+	    {
+	        if (marked == true)
+	        {
+	            flags++
+	        }
+	        else if (type == "bomb")
+	        {
+	            bombs++
+	        }
+	    }
+	    with (instance_position(x,y+16,obj_tile))
+	    {
+	        if (marked == true)
+	        {
+	            flags++
+	        }
+	        else if (type == "bomb")
+	        {
+	            bombs++
+	        }
+	    }
+	    with (instance_position(x-16,y,obj_tile))
+	    {
+	        if (marked == true)
+	        {
+	            flags++
+	        }
+	        else if (type == "bomb")
+	        {
+	            bombs++
+	        }
+	    }
+	    with (instance_position(x+16,y,obj_tile))
+	    {
+	        if (marked == true)
+	        {
+	            flags++
+	        }
+	        else if (type == "bomb")
+	        {
+	            bombs++
+	        }
+	    }
+	    with (instance_position(x-16,y-16,obj_tile))
+	    {
+	        if (marked == true)
+	        {
+	            flags++
+	        }
+	        else if (type == "bomb")
+	        {
+	            bombs++
+	        }
+	    }
+	    with (instance_position(x-16,y+16,obj_tile))
+	    {
+	        if (marked == true)
+	        {
+	            flags++
+	        }
+	        else if (type == "bomb")
+	        {
+	            bombs++
+	        }
+	    }
+	    with (instance_position(x+16,y-16,obj_tile))
+	    {
+	        if (marked == true)
+	        {
+	            flags++
+	        }
+	        else if (type == "bomb")
+	        {
+	            bombs++
+	        }
+	    }
+	    with (instance_position(x+16,y+16,obj_tile))
+	    {
+	        if (marked == true)
+	        {
+	            flags++
+	        }
+	        else if (type == "bomb")
+	        {
+	            bombs++
+	        }
+	    }
+	    if (flags == scr_returnamtneartype("bomb"))
+	    {
+	        if (bombs > 0)
+	        {
+	            with(obj_tile)
+	            {
+	                revealed = true
+	            }
+	            global.canclick = false
+	            alarm[0] = 30
+	            audio_play_sound(snd_explosion,0,false)
+	        }
+	        else
+	        {
+	            scr_uncoversurrounding()
+	            audio_play_sound(snd_digright,0,false)
+	        }
+	    }
+	}
 
 
 }

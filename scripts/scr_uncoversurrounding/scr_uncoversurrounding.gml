@@ -4,6 +4,7 @@ function scr_uncoversurrounding() {
 	            if (type == "none" && revealed == false)
 	            {
 	                revealed = true
+	                marked = false
 	                if (scr_returnamtneartype("bomb") == 0)
 	                {
 	                    scr_uncoversurrounding()
@@ -15,6 +16,7 @@ function scr_uncoversurrounding() {
 	            if (type == "none" && revealed == false)
 	            {
 	                revealed = true
+	                marked = false
 	                if (scr_returnamtneartype("bomb") == 0)
 	                {
 	                    scr_uncoversurrounding()
@@ -26,6 +28,7 @@ function scr_uncoversurrounding() {
 	            if (type == "none" && revealed == false)
 	            {
 	                revealed = true
+	                marked = false
 	                if (scr_returnamtneartype("bomb") == 0)
 	                {
 	                    scr_uncoversurrounding()
@@ -37,6 +40,7 @@ function scr_uncoversurrounding() {
 	            if (type == "none" && revealed == false)
 	            {
 	                revealed = true
+	                marked = false
 	                if (scr_returnamtneartype("bomb") == 0)
 	                {
 	                    scr_uncoversurrounding()
@@ -48,6 +52,7 @@ function scr_uncoversurrounding() {
 	            if (type == "none" && revealed == false)
 	            {
 	                revealed = true
+	                marked = false
 	                if (scr_returnamtneartype("bomb") == 0)
 	                {
 	                    scr_uncoversurrounding()
@@ -59,6 +64,7 @@ function scr_uncoversurrounding() {
 	            if (type == "none" && revealed == false)
 	            {
 	                revealed = true
+	                marked = false
 	                if (scr_returnamtneartype("bomb") == 0)
 	                {
 	                    scr_uncoversurrounding()
@@ -70,6 +76,7 @@ function scr_uncoversurrounding() {
 	            if (type == "none" && revealed == false)
 	            {
 	                revealed = true
+	                marked = false
 	                if (scr_returnamtneartype("bomb") == 0)
 	                {
 	                    scr_uncoversurrounding()
@@ -81,6 +88,7 @@ function scr_uncoversurrounding() {
 	            if (type == "none" && revealed == false)
 	            {
 	                revealed = true
+	                marked = false
 	                if (scr_returnamtneartype("bomb") == 0)
 	                {
 	                    scr_uncoversurrounding()
