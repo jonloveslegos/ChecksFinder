@@ -17,7 +17,4 @@ function scr_updateobtains() {
 	    }
 	    filename = file_find_next()
 	}
-
-
-
 }

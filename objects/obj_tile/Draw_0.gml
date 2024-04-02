@@ -21,4 +21,3 @@ else
         draw_sprite(spr_xmark,0,x,y)
     }
 }
-

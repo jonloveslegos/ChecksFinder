@@ -69,4 +69,3 @@ else
 {
     room_restart()
 }
-

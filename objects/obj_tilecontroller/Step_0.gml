@@ -17,7 +17,7 @@ if (global.canclick == true && ended == true && alarm[0] <= 0)
     var amt = 20-5+10-5+10-5
     var checksavail = -1
     global.checksgotten = 0
-    for (var i = 0; i < array_length_1d(global.spotlist);i++)
+    for (var i = 0; i < array_length(global.spotlist);i++)
     {
         if (i < global.tilewidth+global.tileheight+global.bombcount-5-5)
         {
@@ -42,4 +42,3 @@ if (global.canclick == true && ended == true && alarm[0] <= 0)
     }
 }
 scr_updateobtains()
-

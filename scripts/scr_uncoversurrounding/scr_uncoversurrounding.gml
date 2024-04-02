@@ -1,101 +1,98 @@
 function scr_uncoversurrounding() {
-	        with (instance_position(x,y-16,obj_tile))
+	with (instance_position(x,y-16,obj_tile))
+	{
+	    if (type == "none" && revealed == false)
+	    {
+	        revealed = true
+	        marked = false
+	        if (scr_returnamtneartype("bomb") == 0)
 	        {
-	            if (type == "none" && revealed == false)
-	            {
-	                revealed = true
-	                marked = false
-	                if (scr_returnamtneartype("bomb") == 0)
-	                {
-	                    scr_uncoversurrounding()
-	                }
-	            }
+	            scr_uncoversurrounding()
 	        }
-	        with (instance_position(x,y+16,obj_tile))
+	    }
+	}
+	with (instance_position(x,y+16,obj_tile))
+	{
+	    if (type == "none" && revealed == false)
+	    {
+	        revealed = true
+	        marked = false
+	        if (scr_returnamtneartype("bomb") == 0)
 	        {
-	            if (type == "none" && revealed == false)
-	            {
-	                revealed = true
-	                marked = false
-	                if (scr_returnamtneartype("bomb") == 0)
-	                {
-	                    scr_uncoversurrounding()
-	                }
-	            }
+	            scr_uncoversurrounding()
 	        }
-	        with (instance_position(x-16,y,obj_tile))
+	    }
+	}
+	with (instance_position(x-16,y,obj_tile))
+	{
+	    if (type == "none" && revealed == false)
+	    {
+	        revealed = true
+	        marked = false
+	        if (scr_returnamtneartype("bomb") == 0)
 	        {
-	            if (type == "none" && revealed == false)
-	            {
-	                revealed = true
-	                marked = false
-	                if (scr_returnamtneartype("bomb") == 0)
-	                {
-	                    scr_uncoversurrounding()
-	                }
-	            }
+	            scr_uncoversurrounding()
 	        }
-	        with (instance_position(x+16,y,obj_tile))
+	    }
+	}
+	with (instance_position(x+16,y,obj_tile))
+	{
+	    if (type == "none" && revealed == false)
+	    {
+	        revealed = true
+	        marked = false
+	        if (scr_returnamtneartype("bomb") == 0)
 	        {
-	            if (type == "none" && revealed == false)
-	            {
-	                revealed = true
-	                marked = false
-	                if (scr_returnamtneartype("bomb") == 0)
-	                {
-	                    scr_uncoversurrounding()
-	                }
-	            }
+	            scr_uncoversurrounding()
 	        }
-	        with (instance_position(x-16,y-16,obj_tile))
+	    }
+	}
+	with (instance_position(x-16,y-16,obj_tile))
+	{
+	    if (type == "none" && revealed == false)
+	    {
+	        revealed = true
+	        marked = false
+	        if (scr_returnamtneartype("bomb") == 0)
 	        {
-	            if (type == "none" && revealed == false)
-	            {
-	                revealed = true
-	                marked = false
-	                if (scr_returnamtneartype("bomb") == 0)
-	                {
-	                    scr_uncoversurrounding()
-	                }
-	            }
+	            scr_uncoversurrounding()
 	        }
-	        with (instance_position(x-16,y+16,obj_tile))
+	    }
+	}
+	with (instance_position(x-16,y+16,obj_tile))
+	{
+	    if (type == "none" && revealed == false)
+	    {
+	        revealed = true
+	        marked = false
+	        if (scr_returnamtneartype("bomb") == 0)
 	        {
-	            if (type == "none" && revealed == false)
-	            {
-	                revealed = true
-	                marked = false
-	                if (scr_returnamtneartype("bomb") == 0)
-	                {
-	                    scr_uncoversurrounding()
-	                }
-	            }
+	            scr_uncoversurrounding()
 	        }
-	        with (instance_position(x+16,y-16,obj_tile))
+	    }
+	}
+	with (instance_position(x+16,y-16,obj_tile))
+	{
+	    if (type == "none" && revealed == false)
+	    {
+	        revealed = true
+	        marked = false
+	        if (scr_returnamtneartype("bomb") == 0)
 	        {
-	            if (type == "none" && revealed == false)
-	            {
-	                revealed = true
-	                marked = false
-	                if (scr_returnamtneartype("bomb") == 0)
-	                {
-	                    scr_uncoversurrounding()
-	                }
-	            }
+	            scr_uncoversurrounding()
 	        }
-	        with (instance_position(x+16,y+16,obj_tile))
+	    }
+	}
+	with (instance_position(x+16,y+16,obj_tile))
+	{
+	    if (type == "none" && revealed == false)
+	    {
+	        revealed = true
+	        marked = false
+	        if (scr_returnamtneartype("bomb") == 0)
 	        {
-	            if (type == "none" && revealed == false)
-	            {
-	                revealed = true
-	                marked = false
-	                if (scr_returnamtneartype("bomb") == 0)
-	                {
-	                    scr_uncoversurrounding()
-	                }
-	            }
+	            scr_uncoversurrounding()
 	        }
-
-
-
+	    }
+	}
 }

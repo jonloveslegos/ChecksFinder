@@ -16,4 +16,3 @@ while (file != "")
     file = file_find_next();
 }
 file_find_close();
-

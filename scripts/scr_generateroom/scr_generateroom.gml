@@ -26,7 +26,7 @@ function scr_generateroom(argument0, argument1) {
 	var checksavail = undefined
 	var iie = 0
 	global.checksgotten = 0
-	for (var i = 0; i < array_length_1d(global.spotlist);i++)
+	for (var i = 0; i < array_length(global.spotlist);i++)
 	{
 		if (i < global.tilewidth+global.tileheight+global.bombcount-5-5)
 		{

@@ -1,5 +1,5 @@
 var cnt = 0
-for (var i = 0; i < array_length_1d(global.spotlist);i++)
+for (var i = 0; i < array_length(global.spotlist);i++)
 {
     if (i < global.tilewidth+global.tileheight+global.bombcount-5-5)
     {
@@ -42,4 +42,3 @@ draw_text(60+240,__view_get( e__VW.HPort, 0 )-170,string_hash_to_newline(string(
 draw_sprite_ext(spr_tiles,2,8,__view_get( e__VW.HPort, 0 )-50,3,3,0,c_white,1)
 draw_set_font(fnt_main)
 draw_text(60,__view_get( e__VW.HPort, 0 )-70,string_hash_to_newline(string(flags)+"/"+string(bombs)))
-

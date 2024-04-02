@@ -20,7 +20,7 @@ function __global_object_depths() {
 
 
 	// create another array that has the correct entries
-	var len = array_length_1d(global.__objectDepths);
+	var len = array_length(global.__objectDepths);
 	global.__objectID2Depth = [];
 	for( var i=0; i<len; ++i ) {
 		var objID = asset_get_index( global.__objectNames[i] );
@@ -28,6 +28,4 @@ function __global_object_depths() {
 			global.__objectID2Depth[ objID ] = global.__objectDepths[i];
 		} // end if
 	} // end for
-
-
 }

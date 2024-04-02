@@ -11,7 +11,4 @@ function scr_getitem(argument0) {
 	{
 	    global.bombcount = min(global.bombcount+1,20)
 	}
-
-
-
 }

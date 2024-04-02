@@ -29,8 +29,6 @@
     {"name":"scr_updateobtains","order":5,"path":"scripts/scr_updateobtains/scr_updateobtains.yy",},
     {"name":"scr_generateroom","order":6,"path":"scripts/scr_generateroom/scr_generateroom.yy",},
     {"name":"scr_revealtile","order":7,"path":"scripts/scr_revealtile/scr_revealtile.yy",},
-    {"name":"__view_set","order":1,"path":"scripts/__view_set/__view_set.yy",},
-    {"name":"__view_set_internal","order":2,"path":"scripts/__view_set_internal/__view_set_internal.yy",},
     {"name":"__init_view","order":3,"path":"scripts/__init_view/__init_view.yy",},
     {"name":"__init_global","order":3,"path":"scripts/__init_global/__init_global.yy",},
     {"name":"__global_object_depths","order":4,"path":"scripts/__global_object_depths/__global_object_depths.yy",},
@@ -40,6 +38,5 @@
     {"name":"obj_piece","order":4,"path":"objects/obj_piece/obj_piece.yy",},
     {"name":"rm_main","order":1,"path":"rooms/rm_main/rm_main.yy",},
     {"name":"rm_win","order":2,"path":"rooms/rm_win/rm_win.yy",},
-    {"name":"compatibility_report_020424_140430430","order":1,"path":"notes/compatibility_report_020424_140430430/compatibility_report_020424_140430430.yy",},
   ],
 }

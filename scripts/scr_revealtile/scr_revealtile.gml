@@ -153,6 +153,4 @@ function scr_revealtile() {
 	        }
 	    }
 	}
-
-
 }

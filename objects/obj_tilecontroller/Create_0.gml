@@ -26,4 +26,3 @@ for (var yy = 0;yy<global.tileheight;yy++)
         }
     }
 }
-
