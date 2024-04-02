@@ -1,12 +1,12 @@
-var ended = true
+var _ended = true
 with (obj_tile)
 {
     if (type != "bomb" && revealed == false)
     {
-        ended = false
+        _ended = false
     }
 }
-if (global.canclick == true && ended == true && alarm[0] <= 0)
+if (global.canclick == true && _ended == true && alarm[0] <= 0)
 {
     alarm[0] = 30
     audio_play_sound(snd_win,0,false)
@@ -14,30 +14,29 @@ if (global.canclick == true && ended == true && alarm[0] <= 0)
     {
         revealed = true
     }
-    var amt = 20-5+10-5+10-5
-    var checksavail = -1
+    var _checksavail = -1
     global.checksgotten = 0
-    for (var i = 0; i < array_length(global.spotlist);i++)
+    for (var _i = 0; _i < array_length(global.spotlist);_i++)
     {
-        if (i < global.tilewidth+global.tileheight+global.bombcount-5-5)
+        if (_i < global.tilewidth+global.tileheight+global.bombcount-5-5)
         {
-            if (!file_exists("send"+string(i+81000)))
+            if (!file_exists("send"+string(_i+81000)))
             {
-                checksavail = i
-                global.spotlist[i] = 0
+                _checksavail = _i
+                global.spotlist[_i] = 0
                 break
             }
             else
             {
-                global.spotlist[i] = 1
+                global.spotlist[_i] = 1
                 global.checksgotten++
             }
         }
     }
-    if (checksavail > -1)
+    if (_checksavail > -1)
     {
-        global.spotlist[checksavail] = 1
-        scr_senditem(checksavail+81000)
+        global.spotlist[_checksavail] = 1
+        scr_senditem(_checksavail+81000)
         global.checksgotten++
     }
 }

@@ -5,16 +5,16 @@ function scr_setup() {
 	global.checksgotten = 0
 	global.spotlist = undefined
 	draw_set_colour(c_white);
-	for (var i = 0; i < global.tilewidth*global.tileheight; i++)
+	for (var _i = 0; _i < global.tilewidth*global.tileheight; _i++)
 	{
-	    global.spotlist[i] = 0
+	    global.spotlist[_i] = 0
 	}
-	var file = file_find_first("*", 0);
-	while (file != "")
+	var _file = file_find_first("*", 0);
+	while (_file != "")
 	{
-	    if (string_count("send",file) > 0)
-	        file_delete(file)
-	    file = file_find_next();
+	    if (string_count("send",_file) > 0)
+	        file_delete(_file)
+	    _file = file_find_next();
 	}
 	file_find_close();
 }

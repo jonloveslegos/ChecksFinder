@@ -1,18 +1,18 @@
-var filename = file_find_first("*",0)
-while (filename != "")
+var _filename = file_find_first("*",0)
+while (_filename != "")
 {
-    if (string_count("obtain",filename) > 0)
+    if (string_count("obtain",_filename) > 0)
     {
         file_delete(filename)
     }
-    filename = file_find_next()
+    _filename = file_find_next()
 }
 file_find_close();
-var file = file_find_first("*", 0);
-while (file != "")
+var _file = file_find_first("*", 0);
+while (_file != "")
 {
-    if (string_count("send",file) > 0)
-        file_delete(file)
-    file = file_find_next();
+    if (string_count("send",_file) > 0)
+        file_delete(_file)
+    _file = file_find_next();
 }
 file_find_close();

@@ -1,8 +1,8 @@
-var flag = false
+var _flag = false
 if (global.canclick == true && global.clicked == false) {
-	flag = scr_updateobtains()
+	_flag = scr_updateobtains()
 }
-if (flag) {
+if (_flag) {
 	room_restart()
 } else {
 	scr_revealtile()

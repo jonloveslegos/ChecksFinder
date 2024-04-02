@@ -1,44 +1,44 @@
-var cnt = 0
-for (var i = 0; i < array_length(global.spotlist);i++)
+var _cnt = 0
+for (var _i = 0; _i < array_length(global.spotlist);_i++)
 {
-    if (i < global.tilewidth+global.tileheight+global.bombcount-5-5)
+    if (_i < global.tilewidth+global.tileheight+global.bombcount-5-5)
     {
-        if (global.spotlist[i] == 0 && !file_exists("send"+string(i+81000)))
+        if (global.spotlist[_i] == 0 && !file_exists("send"+string(_i+81000)))
         {
-            cnt++
+            _cnt++
         }
     }
 }
-var bombs = 0
-var flags = 0
+var _bombs = 0
+var _flags = 0
 with(obj_tile)
 {
     if (type == "bomb")
     {
-        bombs++
+        _bombs++
     }
     if (marked == true)
     {
-        flags++
+        _flags++
     }
 }
-if (bombs == 0)
+if (_bombs == 0)
 {
-    bombs = min(global.roomthisbomb,((global.roomthiswidth*global.roomthisheight) div 5))
+    _bombs = min(global.roomthisbomb,((global.roomthiswidth*global.roomthisheight) div 5))
 }
 draw_set_halign(fa_left)
-draw_sprite_ext(spr_tiles,3,8,__view_get( e__VW.HPort, 0 )-150,3,3,0,c_white,1)
+draw_sprite_ext(spr_tiles,3,8,view_get_hport(0)-150,3,3,0,c_white,1)
 draw_set_font(fnt_main)
-draw_text(60,__view_get( e__VW.HPort, 0 )-170,string_hash_to_newline(string(cnt)))
-draw_sprite_ext(spr_tiles,4,8,__view_get( e__VW.HPort, 0 )-100,3,3,0,c_white,1)
+draw_text(60,view_get_hport(0)-170,string_hash_to_newline(string(_cnt)))
+draw_sprite_ext(spr_tiles,4,8,view_get_hport(0)-100,3,3,0,c_white,1)
 draw_set_font(fnt_main)
-draw_text(60,__view_get( e__VW.HPort, 0 )-120,string_hash_to_newline(string(global.tilewidth)+"/10"))
-draw_sprite_ext(spr_tiles,5,8+240,__view_get( e__VW.HPort, 0 )-100,3,3,0,c_white,1)
+draw_text(60,view_get_hport(0)-120,string_hash_to_newline(string(global.tilewidth)+"/10"))
+draw_sprite_ext(spr_tiles,5,8+240,view_get_hport(0)-100,3,3,0,c_white,1)
 draw_set_font(fnt_main)
-draw_text(60+240,__view_get( e__VW.HPort, 0 )-120,string_hash_to_newline(string(global.tileheight)+"/10"))
-draw_sprite_ext(spr_tiles,6,8+240,__view_get( e__VW.HPort, 0 )-150,3,3,0,c_white,1)
+draw_text(60+240,view_get_hport(0)-120,string_hash_to_newline(string(global.tileheight)+"/10"))
+draw_sprite_ext(spr_tiles,6,8+240,view_get_hport(0)-150,3,3,0,c_white,1)
 draw_set_font(fnt_main)
-draw_text(60+240,__view_get( e__VW.HPort, 0 )-170,string_hash_to_newline(string(global.bombcount)+"/20"))
-draw_sprite_ext(spr_tiles,2,8,__view_get( e__VW.HPort, 0 )-50,3,3,0,c_white,1)
+draw_text(60+240,view_get_hport(0)-170,string_hash_to_newline(string(global.bombcount)+"/20"))
+draw_sprite_ext(spr_tiles,2,8,view_get_hport(0)-50,3,3,0,c_white,1)
 draw_set_font(fnt_main)
-draw_text(60,__view_get( e__VW.HPort, 0 )-70,string_hash_to_newline(string(flags)+"/"+string(bombs)))
+draw_text(60,view_get_hport(0)-70,string_hash_to_newline(string(_flags)+"/"+string(_bombs)))

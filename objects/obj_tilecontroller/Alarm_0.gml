@@ -2,14 +2,14 @@ if (won == true || (global.roomthiswidth >= 10 && global.roomthisheight >= 10 &&
 {
     won = true
     audio_play_sound(snd_digright,0,false)
-    var done = false
-    for (var yy = 0;yy<global.tileheight;yy++)
+    var _done = false
+    for (var _yy = 0;_yy<global.tileheight;yy++)
     {
-        for (var xx = 0;xx<global.tilewidth;xx++)
+        for (var _xx = 0;_xx<global.tilewidth;xx++)
         {
-            if (done == false)
+            if (_done == false)
             {
-                with (instance_position(xx*16,yy*16,obj_tile))
+                with (instance_position(_xx*16,_yy*16,obj_tile))
                 {
                     if (type == "none")
                     {
