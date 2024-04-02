@@ -44,99 +44,99 @@ function scr_revealtile() {
 	}
 	else if (global.canclick == true && revealed == true)
 	{
-	    var flags = 0
-	    var bombs = 0
+	    var _flags = 0
+	    var _bombs = 0
 	    with (instance_position(x,y-16,obj_tile))
 	    {
 	        if (marked == true)
 	        {
-	            flags++
+	            _flags++
 	        }
 	        else if (type == "bomb")
 	        {
-	            bombs++
+	            _bombs++
 	        }
 	    }
 	    with (instance_position(x,y+16,obj_tile))
 	    {
 	        if (marked == true)
 	        {
-	            flags++
+	            _flags++
 	        }
 	        else if (type == "bomb")
 	        {
-	            bombs++
+	            _bombs++
 	        }
 	    }
 	    with (instance_position(x-16,y,obj_tile))
 	    {
 	        if (marked == true)
 	        {
-	            flags++
+	            _flags++
 	        }
 	        else if (type == "bomb")
 	        {
-	            bombs++
+	            _bombs++
 	        }
 	    }
 	    with (instance_position(x+16,y,obj_tile))
 	    {
 	        if (marked == true)
 	        {
-	            flags++
+	            _flags++
 	        }
 	        else if (type == "bomb")
 	        {
-	            bombs++
+	            _bombs++
 	        }
 	    }
 	    with (instance_position(x-16,y-16,obj_tile))
 	    {
 	        if (marked == true)
 	        {
-	            flags++
+	            _flags++
 	        }
 	        else if (type == "bomb")
 	        {
-	            bombs++
+	            _bombs++
 	        }
 	    }
 	    with (instance_position(x-16,y+16,obj_tile))
 	    {
 	        if (marked == true)
 	        {
-	            flags++
+	            _flags++
 	        }
 	        else if (type == "bomb")
 	        {
-	            bombs++
+	            _bombs++
 	        }
 	    }
 	    with (instance_position(x+16,y-16,obj_tile))
 	    {
 	        if (marked == true)
 	        {
-	            flags++
+	            _flags++
 	        }
 	        else if (type == "bomb")
 	        {
-	            bombs++
+	            _bombs++
 	        }
 	    }
 	    with (instance_position(x+16,y+16,obj_tile))
 	    {
 	        if (marked == true)
 	        {
-	            flags++
+	            _flags++
 	        }
 	        else if (type == "bomb")
 	        {
-	            bombs++
+	            _bombs++
 	        }
 	    }
-	    if (flags == scr_returnamtneartype("bomb"))
+	    if (_flags == scr_returnamtneartype("bomb"))
 	    {
-	        if (bombs > 0)
+	        if (_bombs > 0)
 	        {
 	            with(obj_tile)
 	            {

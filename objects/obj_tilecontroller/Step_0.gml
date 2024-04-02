@@ -6,7 +6,7 @@ with (obj_tile)
         _ended = false
     }
 }
-if (global.canclick == true && _ended == true && alarm[0] <= 0)
+if (global.canclick && _ended && alarm[0] <= 0)
 {
     alarm[0] = 30
     audio_play_sound(snd_win,0,false)
