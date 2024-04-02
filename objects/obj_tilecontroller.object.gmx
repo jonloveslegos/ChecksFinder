@@ -186,6 +186,32 @@ if (global.canclick == true &amp;&amp; ended == true &amp;&amp; alarm[0] &lt;= 0
     {
         revealed = true
     }
+    var amt = 20-5+10-5+10-5
+    var checksavail = -1
+    global.checksgotten = 0
+    for (var i = 0; i &lt; array_length_1d(global.spotlist);i++)
+    {
+        if (i &lt; global.tilewidth+global.tileheight+global.bombcount-5-5)
+        {
+            if (!file_exists("send"+string(i+81000)))
+            {
+                checksavail = i
+                global.spotlist[i] = 0
+                break
+            }
+            else
+            {
+                global.spotlist[i] = 1
+                global.checksgotten++
+            }
+        }
+    }
+    if (checksavail &gt; -1)
+    {
+        global.spotlist[checksavail] = 1
+        scr_senditem(checksavail+81000)
+        global.checksgotten++
+    }
 }
 scr_updateobtains()
 </string>
@@ -254,41 +280,6 @@ draw_text(60+240,view_hport[0]-170,string(global.bombcount)+"/20")
 draw_sprite_ext(spr_tiles,2,8,view_hport[0]-50,3,3,0,c_white,1)
 draw_set_font(fnt_main)
 draw_text(60,view_hport[0]-70,string(flags)+"/"+string(bombs))
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="48">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>with (obj_tile)
-{
-    if (type != "bomb")
-    {
-        revealed = true
-        if (type == "check")
-        {
-            global.spotlist[typeplus] = 1
-            scr_senditem(typeplus+81000)
-            global.checksgotten++
-        }
-    }
-}
 </string>
           </argument>
         </arguments>

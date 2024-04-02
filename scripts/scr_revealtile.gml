@@ -22,14 +22,7 @@ if (global.canclick == true && revealed == false && marked == false)
         global.clicked = true
         scr_generateroom(x, y)
     }
-    if (type == "check")
-    {
-        global.spotlist[typeplus] = 1
-        scr_senditem(typeplus+81000)
-        global.checksgotten++
-        audio_play_sound(snd_digright,0,false)
-    }
-    else if (type == "bomb")
+    if (type == "bomb")
     {
         with(obj_tile)
         {

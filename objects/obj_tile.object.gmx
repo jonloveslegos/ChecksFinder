@@ -128,22 +128,14 @@ typeplus = ""
             <string>if (revealed == true)
 {
     draw_sprite(spr_tiles,1,x,y)
-    if (type == "none" || type == "check")
+    if (type == "none")
     {
         if (scr_returnamtneartype("bomb") &gt; 0)
         {
             draw_sprite_ext(spr_tilenumbers,scr_returnamtneartype("bomb"),x,y,0.5,0.5,0,c_red,1)
         }
-        if (scr_returnamtneartype("check") &gt; 0)
-        {
-            draw_sprite_ext(spr_tilenumbers,scr_returnamtneartype("check"),x+8,y,0.5,0.5,0,c_green,1)
-        }
     }
-    if (type == "check")
-    {
-        draw_sprite_ext(spr_tiles,3,x,y+8,0.5,0.5,0,c_white,1)
-    }
-    else if (type == "bomb")
+    if (type == "bomb")
     {
         draw_sprite(spr_tiles,2,x,y)
     }

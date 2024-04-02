@@ -9,52 +9,40 @@
             }
         }
     }
-    bombcount = 0
-    while (bombcount < global.roomthisbomb && bombcount < (global.roomthiswidth*global.roomthisheight) div 5)
-    {
-        var xx = irandom_range(0,global.roomthiswidth-1)
-        var yy = irandom_range(0,global.roomthisheight-1)
-        while (global.tiletype[xx,yy] != "none")
-        {
-            xx = irandom_range(0,global.roomthiswidth-1)
-            yy = irandom_range(0,global.roomthisheight-1)
-        }
-        global.tiletype[xx,yy] = "bomb"
-        bombcount++
-    }
-    
-    checkcount = 0
-    var amt = 20-5+10-5+10-5
-    var checksavail = undefined
-    var iie = 0
-    for (var i = 0; i < array_length_1d(global.spotlist);i++)
-    {
-        if (i < global.tilewidth+global.tileheight+global.bombcount-5-5)
-        {
-            if (!file_exists("send"+string(i+81000)))
-            {
-                checksavail[iie] = i
-                global.spotlist[i] = 0
-                iie++
-            }
-            else
-            {
-                global.spotlist[i] = 1
-            }
-        }
-    }
-    while (checkcount < 1 && checkcount < array_length_1d(checksavail))
-    {
-        var xx = irandom_range(0,global.roomthiswidth-1)
-        var yy = irandom_range(0,global.roomthisheight-1)
-        while (global.tiletype[xx,yy] == "bomb")
-        {
-            xx = irandom_range(0,global.roomthiswidth-1)
-            yy = irandom_range(0,global.roomthisheight-1)
-        }
-        global.tiletype[xx,yy] = "check"
-        checkcount++
-    }
+    global.curbombcount = 0
+	while (global.curbombcount < global.bombcount && global.curbombcount < (global.tilewidth*global.tileheight)/5)
+	{
+		var xx = irandom_range(0,global.tilewidth-1)
+		var yy = irandom_range(0,global.tileheight-1)
+		while (global.tiletype[xx,yy] != "none")
+		{
+			xx = irandom_range(0,global.tilewidth-1)
+			yy = irandom_range(0,global.tileheight-1)
+		}
+		global.tiletype[xx,yy] = "bomb"
+		global.curbombcount++
+	}
+	var amt = 20-5+10-5+10-5
+	var checksavail = undefined
+	var iie = 0
+	global.checksgotten = 0
+	for (var i = 0; i < array_length_1d(global.spotlist);i++)
+	{
+		if (i < global.tilewidth+global.tileheight+global.bombcount-5-5)
+		{
+			if (!file_exists("send"+string(i+81000)))
+			{
+				checksavail[iie] = i
+				global.spotlist[i] = 0
+				iie++
+			}
+			else
+			{
+				global.spotlist[i] = 1
+				global.checksgotten++
+			}
+		}
+	}
     for (var yy = 0;yy<global.roomthisheight;yy++)
     {
         for(var xx = 0;xx<global.roomthiswidth;xx++)
@@ -64,22 +52,6 @@
                 type = global.tiletype[xx,yy]
                 if (type == "not_a_bomb")
                     type = "none"
-                if (type == "check")
-                {
-                    var chose = irandom_range(0,array_length_1d(checksavail)-1)
-                    typeplus = checksavail[chose]
-                    var templst = undefined
-                    for (var ea = 0; ea < chose;ea++)
-                    {
-                        templst[ea] = checksavail[ea]
-                    }
-                    for (var ea = chose; ea < array_length_1d(checksavail)-1;ea++)
-                    {
-                        templst[ea] = checksavail[ea+1]
-                    }
-                    checksavail = templst
-                }
             }
-            
         }
     }
