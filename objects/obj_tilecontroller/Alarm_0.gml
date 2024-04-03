@@ -51,12 +51,12 @@ if (won == true || (global.roomthiswidth >= 10 && global.roomthisheight >= 10 &&
                         }
                     }
                     instance_destroy(self)
-                    done = true
+                    _done = true
                 }
             }
         }
     }
-    if (done == true)
+    if (_done == true)
     {
         alarm[0] = 2
     }
