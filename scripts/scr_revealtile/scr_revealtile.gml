@@ -2,19 +2,19 @@ function scr_revealtile() {
 	if (global.canclick == true && revealed == false && marked == false)
 	{
 	    revealed = true
-	    with instance_create(x+8,y+8,obj_piece)
+	    with instance_create_layer(x+8,y+8,"Particles",obj_piece)
 	    {
 	        image_index = 0
 	    }
-	    with instance_create(x+8,y+8,obj_piece)
+	    with instance_create_layer(x+8,y+8,"Particles",obj_piece)
 	    {
 	        image_index = 0
 	    }
-	    with instance_create(x+8,y+8,obj_piece)
+	    with instance_create_layer(x+8,y+8,"Particles",obj_piece)
 	    {
 	        image_index = 0
 	    }
-	    with instance_create(x+8,y+8,obj_piece)
+	    with instance_create_layer(x+8,y+8,"Particles",obj_piece)
 	    {
 	        image_index = 1
 	    }

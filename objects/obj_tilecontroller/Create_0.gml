@@ -20,7 +20,7 @@ for (var _yy = 0; _yy<global.tileheight; _yy++)
 {
     for (var _xx = 0; _xx<global.tilewidth; _xx++)
     {
-        with instance_create(_xx*16, _yy*16, obj_tile)
+        with instance_create_layer(_xx*16, _yy*16, "Main", obj_tile)
         {
             type = "none"
         }
