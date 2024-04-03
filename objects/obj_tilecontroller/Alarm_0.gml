@@ -4,9 +4,9 @@ if (won == true || (global.roomthiswidth >= 10 && global.roomthisheight >= 10 &&
     won = true
     audio_play_sound(snd_digright,0,false)
     var _done = false
-    for (var _yy = 0;_yy<global.tileheight;yy++)
+    for (var _yy = 0;_yy<global.tileheight;_yy++)
     {
-        for (var _xx = 0;_xx<global.tilewidth;xx++)
+        for (var _xx = 0;_xx<global.tilewidth;_xx++)
         {
             if (_done == false)
             {
