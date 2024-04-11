@@ -1,4 +1,4 @@
-function scr_getitem(argument0) {
+function scr_get_item(argument0) {
 	if (argument0 == "width")
 	{
 	    global.tilewidth = min(global.tilewidth+1,10)

@@ -1,9 +1,9 @@
 {
   "$GMScript":"",
-  "%Name":"scr_senditem",
+  "%Name":"scr_generate_room",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_senditem",
+  "name":"scr_generate_room",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

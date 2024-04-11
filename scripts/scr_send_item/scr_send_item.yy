@@ -1,9 +1,9 @@
 {
   "$GMScript":"",
-  "%Name":"scr_revealtile",
+  "%Name":"scr_send_item",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_revealtile",
+  "name":"scr_send_item",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

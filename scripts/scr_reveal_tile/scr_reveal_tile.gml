@@ -1,4 +1,4 @@
-function scr_revealtile() {
+function scr_reveal_tile() {
 	if (global.canclick == true && revealed == false && marked == false)
 	{
 	    revealed = true
@@ -6,7 +6,7 @@ function scr_revealtile() {
 	    if (global.clicked == false)
 	    {
 	        global.clicked = true
-	        scr_generateroom(x, y)
+	        scr_generate_room(x, y)
 	    }
 	    if (type == "bomb")
 	    {
@@ -23,9 +23,9 @@ function scr_revealtile() {
 	    }
 	    else
 	    {
-	        if (type == "none" && scr_returnamtneartype("bomb") == 0)
+	        if (type == "none" && scr_return_amt_near_type("bomb") == 0)
 	        {
-	            scr_uncoversurrounding()
+	            scr_uncover_surrounding()
 	        }
 	        audio_play_sound(snd_digright,0,false)
 	    }
@@ -122,7 +122,7 @@ function scr_revealtile() {
 	            _bombs++
 	        }
 	    }
-	    if (_flags == scr_returnamtneartype("bomb"))
+	    if (_flags == scr_return_amt_near_type("bomb"))
 	    {
 	        if (_bombs > 0)
 	        {
@@ -139,7 +139,7 @@ function scr_revealtile() {
 	        }
 	        else
 	        {
-	            scr_uncoversurrounding()
+	            scr_uncover_surrounding()
 	            audio_play_sound(snd_digright,0,false)
 	        }
 	    }

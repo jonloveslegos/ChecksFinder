@@ -1,12 +1,12 @@
 var _flag = false
-if (global.canclick == true && global.clicked == false && obj_tilecontroller.alarm[1] == -1) {
+if (global.canclick == true && global.clicked == false && obj_tile_controller.alarm[1] == -1) {
 	_flag = scr_updateobtains()
 	if (_flag) {
-		obj_tilecontroller.alarm[1] = 30*5
+		obj_tile_controller.alarm[1] = 30*5
 	}
 }
 if (_flag) {
 	room_restart()
 } else {
-	scr_revealtile()
+	scr_reveal_tile()
 }

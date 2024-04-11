@@ -1,9 +1,9 @@
 {
   "$GMScript":"",
-  "%Name":"scr_generateroom",
+  "%Name":"scr_reveal_tile",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_generateroom",
+  "name":"scr_reveal_tile",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

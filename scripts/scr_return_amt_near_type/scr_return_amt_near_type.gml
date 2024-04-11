@@ -1,6 +1,6 @@
 /// @description scr_returnamtneartype(type)
 /// @param type
-function scr_returnamtneartype(argument0) {
+function scr_return_amt_near_type(argument0) {
 	var _amtbmb = 0
 	with (instance_position(x,y-16,obj_tile))
 	{

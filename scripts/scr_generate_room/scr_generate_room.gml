@@ -1,4 +1,4 @@
-function scr_generateroom(argument0, argument1) {
+function scr_generate_room(argument0, argument1) {
 	for(var _xx = argument0-16;_xx <= argument0+16; _xx+=16)
 	{
 	    for(var _yy = argument1-16;_yy <= argument1+16; _yy+=16)

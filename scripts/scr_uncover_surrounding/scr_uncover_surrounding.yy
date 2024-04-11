@@ -1,9 +1,9 @@
 {
   "$GMScript":"",
-  "%Name":"scr_uncoversurrounding",
+  "%Name":"scr_uncover_surrounding",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_uncoversurrounding",
+  "name":"scr_uncover_surrounding",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

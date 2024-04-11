@@ -1,9 +1,9 @@
 {
   "$GMScript":"",
-  "%Name":"scr_returnamtneartype",
+  "%Name":"scr_get_item",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_returnamtneartype",
+  "name":"scr_get_item",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

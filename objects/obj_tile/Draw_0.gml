@@ -3,9 +3,9 @@ if (revealed == true)
     draw_sprite(spr_tiles,1,x,y)
     if (type == "none")
     {
-        if (scr_returnamtneartype("bomb") > 0)
+        if (scr_return_amt_near_type("bomb") > 0)
         {
-            draw_sprite_ext(spr_tilenumbers,scr_returnamtneartype("bomb"),x,y,0.5,0.5,0,c_red,1)
+            draw_sprite_ext(spr_tilenumbers,scr_return_amt_near_type("bomb"),x,y,0.5,0.5,0,c_red,1)
         }
     }
     if (type == "bomb")
