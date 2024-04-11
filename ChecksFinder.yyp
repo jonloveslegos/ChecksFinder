@@ -52,6 +52,7 @@
     {"id":{"name":"scr_setup","path":"scripts/scr_setup/scr_setup.yy",},},
     {"id":{"name":"scr_uncoversurrounding","path":"scripts/scr_uncoversurrounding/scr_uncoversurrounding.yy",},},
     {"id":{"name":"scr_updateobtains","path":"scripts/scr_updateobtains/scr_updateobtains.yy",},},
+    {"id":{"name":"scr_gen_particles","path":"scripts/scr_gen_particles/scr_gen_particles.yy",},},
     {"id":{"name":"snd_digright","path":"sounds/snd_digright/snd_digright.yy",},},
     {"id":{"name":"snd_explosion","path":"sounds/snd_explosion/snd_explosion.yy",},},
     {"id":{"name":"snd_win","path":"sounds/snd_win/snd_win.yy",},},

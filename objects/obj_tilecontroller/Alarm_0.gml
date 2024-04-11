@@ -14,41 +14,11 @@ if (won == true || (global.roomthiswidth >= 10 && global.roomthisheight >= 10 &&
                 {
                     if (type == "none")
                     {
-                        with instance_create_layer(x+8,y+8,"Particles",obj_piece)
-                        {
-                            image_index = 2
-                        }
-                        with instance_create_layer(x+8,y+8,"Particles",obj_piece)
-                        {
-                            image_index = 2
-                        }
-                        with instance_create_layer(x+8,y+8,"Particles",obj_piece)
-                        {
-                            image_index = 2
-                        }
-                        with instance_create_layer(x+8,y+8,"Particles",obj_piece)
-                        {
-                            image_index = 3
-                        }
+						scr_gen_particles(x,y,2)
                     }
                     if (type == "bomb")
                     {
-                        with instance_create_layer(x+8,y+8,"Particles",obj_piece)
-                        {
-                            image_index = 4
-                        }
-                        with instance_create_layer(x+8,y+8,"Particles",obj_piece)
-                        {
-                            image_index = 4
-                        }
-                        with instance_create_layer(x+8,y+8,"Particles",obj_piece)
-                        {
-                            image_index = 4
-                        }
-                        with instance_create_layer(x+8,y+8,"Particles",obj_piece)
-                        {
-                            image_index = 5
-                        }
+                        scr_gen_particles(x,y,4)
                     }
                     instance_destroy(self)
                     _done = true

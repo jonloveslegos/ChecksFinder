@@ -1,0 +1,13 @@
+{
+  "$GMScript":"",
+  "%Name":"scr_gen_particles",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_gen_particles",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

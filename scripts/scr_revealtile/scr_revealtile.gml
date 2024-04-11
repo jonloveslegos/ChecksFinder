@@ -2,22 +2,7 @@ function scr_revealtile() {
 	if (global.canclick == true && revealed == false && marked == false)
 	{
 	    revealed = true
-	    with instance_create_layer(x+8,y+8,"Particles",obj_piece)
-	    {
-	        image_index = 0
-	    }
-	    with instance_create_layer(x+8,y+8,"Particles",obj_piece)
-	    {
-	        image_index = 0
-	    }
-	    with instance_create_layer(x+8,y+8,"Particles",obj_piece)
-	    {
-	        image_index = 0
-	    }
-	    with instance_create_layer(x+8,y+8,"Particles",obj_piece)
-	    {
-	        image_index = 1
-	    }
+	    scr_gen_particles(x,y,0)
 	    if (global.clicked == false)
 	    {
 	        global.clicked = true
@@ -27,6 +12,9 @@ function scr_revealtile() {
 	    {
 	        with(obj_tile)
 	        {
+				if (!revealed) {
+					scr_gen_particles(x,y,0)
+				}
 	            revealed = true
 	        }
 	        global.canclick = false
@@ -140,6 +128,9 @@ function scr_revealtile() {
 	        {
 	            with(obj_tile)
 	            {
+					if (!revealed) {
+						scr_gen_particles(x,y,0)
+					}
 	                revealed = true
 	            }
 	            global.canclick = false

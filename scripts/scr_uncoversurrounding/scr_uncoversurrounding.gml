@@ -5,6 +5,7 @@ function scr_uncoversurrounding() {
 	    {
 	        revealed = true
 	        marked = false
+			scr_gen_particles(x,y,0)
 	        if (scr_returnamtneartype("bomb") == 0)
 	        {
 	            scr_uncoversurrounding()
@@ -17,6 +18,7 @@ function scr_uncoversurrounding() {
 	    {
 	        revealed = true
 	        marked = false
+			scr_gen_particles(x,y,0)
 	        if (scr_returnamtneartype("bomb") == 0)
 	        {
 	            scr_uncoversurrounding()
@@ -29,6 +31,7 @@ function scr_uncoversurrounding() {
 	    {
 	        revealed = true
 	        marked = false
+			scr_gen_particles(x,y,0)
 	        if (scr_returnamtneartype("bomb") == 0)
 	        {
 	            scr_uncoversurrounding()
@@ -41,6 +44,7 @@ function scr_uncoversurrounding() {
 	    {
 	        revealed = true
 	        marked = false
+			scr_gen_particles(x,y,0)
 	        if (scr_returnamtneartype("bomb") == 0)
 	        {
 	            scr_uncoversurrounding()
@@ -53,6 +57,7 @@ function scr_uncoversurrounding() {
 	    {
 	        revealed = true
 	        marked = false
+			scr_gen_particles(x,y,0)
 	        if (scr_returnamtneartype("bomb") == 0)
 	        {
 	            scr_uncoversurrounding()
@@ -65,6 +70,7 @@ function scr_uncoversurrounding() {
 	    {
 	        revealed = true
 	        marked = false
+			scr_gen_particles(x,y,0)
 	        if (scr_returnamtneartype("bomb") == 0)
 	        {
 	            scr_uncoversurrounding()
@@ -77,6 +83,7 @@ function scr_uncoversurrounding() {
 	    {
 	        revealed = true
 	        marked = false
+			scr_gen_particles(x,y,0)
 	        if (scr_returnamtneartype("bomb") == 0)
 	        {
 	            scr_uncoversurrounding()
@@ -89,6 +96,7 @@ function scr_uncoversurrounding() {
 	    {
 	        revealed = true
 	        marked = false
+			scr_gen_particles(x,y,0)
 	        if (scr_returnamtneartype("bomb") == 0)
 	        {
 	            scr_uncoversurrounding()
