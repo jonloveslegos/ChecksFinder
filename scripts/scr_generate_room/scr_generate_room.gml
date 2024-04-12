@@ -12,13 +12,13 @@ function scr_generate_room(argument0, argument1) {
 	global.curbombcount = 0
 	while (global.curbombcount < global.bombcount && global.curbombcount < (global.tilewidth*global.tileheight)/5)
 	{
-		var _xx = irandom_range(0,global.tilewidth-1)
-		var _yy = irandom_range(0,global.tileheight-1)
-		while (global.tiletype[_xx,_yy] != "none")
-		{
+		var _xx = 0
+		var _yy = 0
+		do {
 			_xx = irandom_range(0,global.tilewidth-1)
 			_yy = irandom_range(0,global.tileheight-1)
-		}
+		} until (global.tiletype[_xx,_yy] == "none")
+		
 		global.tiletype[_xx,_yy] = "bomb"
 		global.curbombcount++
 	}
