@@ -8,5 +8,5 @@ if (global.canclick == true && global.clicked == false && obj_tile_controller.al
 if (_flag) {
 	room_restart()
 } else {
-	scr_reveal_tile()
+	scr_reveal_tile(self)
 }
