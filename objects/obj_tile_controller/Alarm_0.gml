@@ -14,11 +14,11 @@ if (won == true || (global.roomthiswidth >= 10 && global.roomthisheight >= 10 &&
                 {
                     if (type == "none")
                     {
-						scr_gen_particles(x,y,2)
+						scr_gen_particles(x,y,global.tile_data.background)
                     }
                     if (type == "bomb")
                     {
-                        scr_gen_particles(x,y,4)
+                        scr_gen_particles(x,y,global.tile_data.bomb)
                     }
                     instance_destroy(self)
                     _done = true
