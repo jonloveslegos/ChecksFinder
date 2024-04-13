@@ -5,13 +5,13 @@ function scr_setup() {
 	global.checksgotten = 0
 	global.spotlist = undefined
 	global.tile_data = {
-		background: {
-			color: #aa7a50,
+		foreground: {
+			color: #5ac05a,
 			tile_index: 0,
 			piece_index: 0
 		},
-		foreground: {
-			color: #5ac05a,
+		background: {
+			color: #aa7a50,
 			tile_index: 0,
 			piece_index: 0
 		},
@@ -19,9 +19,14 @@ function scr_setup() {
 			color: c_white,
 			tile_index: 1,
 			piece_index: 2
-		}
+		},
 	}
-	draw_set_colour(c_white);
+	global.game_color = {
+		tile_text: c_red,
+		ui_text: c_white,
+		ui_background: c_green
+	}
+	draw_set_colour(global.game_color.ui_text);
 	for (var _i = 0; _i < global.tilewidth*global.tileheight; _i++)
 	{
 	    global.spotlist[_i] = 0

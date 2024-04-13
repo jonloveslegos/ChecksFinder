@@ -15,7 +15,17 @@ if (revealed == true)
     {
         if (scr_return_amt_near_type("bomb") > 0)
         {
-            draw_sprite_ext(spr_tilenumbers,scr_return_amt_near_type("bomb"),x,y,0.5,0.5,0,c_red,1)
+            draw_sprite_ext(
+				spr_tilenumbers,
+				scr_return_amt_near_type("bomb"),
+				x,
+				y,
+				0.5,
+				0.5,
+				0,
+				global.game_color.tile_text,
+				1
+			)
         }
     }
     if (type == "bomb")

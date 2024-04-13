@@ -1,3 +1,4 @@
+layer_background_blend(layer_background_get_id(layer_get_id("Colour_main")), global.game_color.ui_background)
 global.canclick = true
 global.clicked = false
 won = false
