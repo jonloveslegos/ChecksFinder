@@ -27,6 +27,7 @@ function scr_setup() {
 		ui_background: c_green
 	}
 	draw_set_colour(global.game_color.ui_text);
+	layer_background_blend(layer_background_get_id(layer_get_id("Colour_win")), global.game_color.ui_background)
 	for (var _i = 0; _i < global.tilewidth*global.tileheight; _i++)
 	{
 	    global.spotlist[_i] = 0

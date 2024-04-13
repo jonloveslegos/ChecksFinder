@@ -1,3 +1,14 @@
+global.fn_is_flag = function(_tile) {
+	with(_tile) {
+		return marked
+	}
+}
+global.fn_is_unmarked_bomb = function(_tile) {
+	with(_tile) {
+		return !marked && type == "bomb"
+	}
+}
+
 function scr_reveal_tile(_tile) {
 	with (_tile) {
 		if (global.canclick == true && revealed == false && marked == false)
@@ -33,99 +44,11 @@ function scr_reveal_tile(_tile) {
 		}
 		else if (global.canclick == true && revealed == true)
 		{
-		    var _flags = 0
-		    var _bombs = 0
-		    with (instance_position(x,y-16,obj_tile))
-		    {
-		        if (marked == true)
-		        {
-		            _flags++
-		        }
-		        else if (type == "bomb")
-		        {
-		            _bombs++
-		        }
-		    }
-		    with (instance_position(x,y+16,obj_tile))
-		    {
-		        if (marked == true)
-		        {
-		            _flags++
-		        }
-		        else if (type == "bomb")
-		        {
-		            _bombs++
-		        }
-		    }
-		    with (instance_position(x-16,y,obj_tile))
-		    {
-		        if (marked == true)
-		        {
-		            _flags++
-		        }
-		        else if (type == "bomb")
-		        {
-		            _bombs++
-		        }
-		    }
-		    with (instance_position(x+16,y,obj_tile))
-		    {
-		        if (marked == true)
-		        {
-		            _flags++
-		        }
-		        else if (type == "bomb")
-		        {
-		            _bombs++
-		        }
-		    }
-		    with (instance_position(x-16,y-16,obj_tile))
-		    {
-		        if (marked == true)
-		        {
-		            _flags++
-		        }
-		        else if (type == "bomb")
-		        {
-		            _bombs++
-		        }
-		    }
-		    with (instance_position(x-16,y+16,obj_tile))
-		    {
-		        if (marked == true)
-		        {
-		            _flags++
-		        }
-		        else if (type == "bomb")
-		        {
-		            _bombs++
-		        }
-		    }
-		    with (instance_position(x+16,y-16,obj_tile))
-		    {
-		        if (marked == true)
-		        {
-		            _flags++
-		        }
-		        else if (type == "bomb")
-		        {
-		            _bombs++
-		        }
-		    }
-		    with (instance_position(x+16,y+16,obj_tile))
-		    {
-		        if (marked == true)
-		        {
-		            _flags++
-		        }
-		        else if (type == "bomb")
-		        {
-		            _bombs++
-		        }
-		    }
+		    var _flags = scr_count_surrounding(self,global.fn_is_flag)
+		    var _unmarked_bombs = scr_count_surrounding(self,global.fn_is_unmarked_bomb)
 		    if (_flags == scr_return_amt_near_type("bomb"))
 		    {
-		        if (_bombs > 0)
+		        if (_unmarked_bombs > 0)
 		        {
 		            with(obj_tile)
 		            {
