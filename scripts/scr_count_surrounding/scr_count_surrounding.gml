@@ -1,3 +1,9 @@
+global.fn_is_bomb = function(_tile) {
+	with(_tile) {
+		return type == "bomb"
+	}
+}
+
 function scr_count_surrounding(_tile, _tile_fn) {
 	var _count = 0
 	with(_tile) {

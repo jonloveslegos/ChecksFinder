@@ -1,7 +1,7 @@
 var _cnt = 0
 for (var _i = 0; _i < array_length(global.spotlist);_i++)
 {
-    if (_i < global.tilewidth+global.tileheight+global.bombcount-5-5)
+    if (_i < global.roomthiswidth+global.roomthisheight+global.roomthisbomb-5-5)
     {
         if (global.spotlist[_i] == 0 && !file_exists("send"+string(_i+81000)))
         {

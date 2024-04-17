@@ -2,7 +2,6 @@ function scr_setup() {
 	global.bombcount = 5
 	global.tilewidth = 5
 	global.tileheight = 5
-	global.checksgotten = 0
 	global.spotlist = undefined
 	global.tile_data = {
 		foreground: {

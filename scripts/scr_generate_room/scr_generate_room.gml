@@ -9,14 +9,15 @@ function scr_generate_room(argument0, argument1) {
 	        }
 	    }
 	}
+	global.roomthisbomb = global.bombcount
 	global.curbombcount = 0
-	while (global.curbombcount < global.bombcount && global.curbombcount < (global.tilewidth*global.tileheight)/5)
+	while (global.curbombcount < global.roomthisbomb && global.curbombcount < (global.roomthiswidth*global.roomthisheight)/5)
 	{
 		var _xx = 0
 		var _yy = 0
 		do {
-			_xx = irandom_range(0,global.tilewidth-1)
-			_yy = irandom_range(0,global.tileheight-1)
+			_xx = irandom_range(0,global.roomthiswidth-1)
+			_yy = irandom_range(0,global.roomthisheight-1)
 		} until (global.tiletype[_xx,_yy] == "none")
 		
 		global.tiletype[_xx,_yy] = "bomb"
@@ -24,10 +25,9 @@ function scr_generate_room(argument0, argument1) {
 	}
 	var _checksavail = undefined
 	var _iie = 0
-	global.checksgotten = 0
 	for (var _i = 0; _i < array_length(global.spotlist);_i++)
 	{
-		if (_i < global.tilewidth+global.tileheight+global.bombcount-5-5)
+		if (_i < global.roomthiswidth+global.roomthisheight+global.roomthisbomb-5-5)
 		{
 			if (!file_exists("send"+string(_i+81000)))
 			{
@@ -38,7 +38,6 @@ function scr_generate_room(argument0, argument1) {
 			else
 			{
 				global.spotlist[_i] = 1
-				global.checksgotten++
 			}
 		}
 	}

@@ -13,11 +13,11 @@ if (revealed == true)
 	)
     if (type == "none")
     {
-        if (scr_return_amt_near_type("bomb") > 0)
+        if (scr_count_surrounding(self,global.fn_is_bomb) > 0)
         {
             draw_sprite_ext(
 				spr_tilenumbers,
-				scr_return_amt_near_type("bomb"),
+				scr_count_surrounding(self,global.fn_is_bomb),
 				x,
 				y,
 				0.5,

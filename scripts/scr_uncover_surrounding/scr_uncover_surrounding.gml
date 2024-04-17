@@ -1,9 +1,3 @@
-global.fn_is_bomb = function(_tile) {
-	with(_tile) {
-		return type == "bomb"
-	}
-}
-
 global.fn_uncover = function(_tile) {
 	with (_tile) {
 		if (type == "none" && revealed == false) {

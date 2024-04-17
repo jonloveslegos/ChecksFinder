@@ -1,9 +1,9 @@
 {
   "$GMScript":"",
-  "%Name":"scr_return_amt_near_type",
+  "%Name":"scr_game_end",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_return_amt_near_type",
+  "name":"scr_game_end",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

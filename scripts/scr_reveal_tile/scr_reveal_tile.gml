@@ -35,7 +35,7 @@ function scr_reveal_tile(_tile) {
 		    }
 		    else
 		    {
-		        if (type == "none" && scr_return_amt_near_type("bomb") == 0)
+		        if (type == "none" && scr_count_surrounding(self,global.fn_is_bomb) == 0)
 		        {
 		            scr_uncover_surrounding(self)
 		        }
@@ -46,7 +46,7 @@ function scr_reveal_tile(_tile) {
 		{
 		    var _flags = scr_count_surrounding(self,global.fn_is_flag)
 		    var _unmarked_bombs = scr_count_surrounding(self,global.fn_is_unmarked_bomb)
-		    if (_flags == scr_return_amt_near_type("bomb"))
+		    if (_flags == scr_count_surrounding(self,global.fn_is_bomb))
 		    {
 		        if (_unmarked_bombs > 0)
 		        {
