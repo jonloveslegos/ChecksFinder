@@ -32,7 +32,7 @@ function scr_setup() {
 	{
 	    global.spotlist[_i] = 0
 	}
-	var _file = file_find_first("*", 0);
+	var _file = file_find_first(game_save_id + "*", 0);
 	while (_file != "")
 	{
 	    if (string_count("send",_file) > 0)

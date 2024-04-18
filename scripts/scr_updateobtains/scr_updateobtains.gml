@@ -1,5 +1,5 @@
 function scr_updateobtains() {
-	var _filename = file_find_first("*.item",0)
+	var _filename = file_find_first(game_save_id + "*.item",0)
 	var _data_update = false
 	while (_filename != "")
 	{
