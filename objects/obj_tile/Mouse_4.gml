@@ -5,7 +5,8 @@ if (
 	obj_tile_controller.alarm[1] == -1
 ) {
 	if (!global.other_settings.auto_update) {
-		_flag = scr_updateobtains()
+		_flag = scr_ap_load_data()
+		scr_ap_update_checks()
 	} else {
 		_flag = global.layout_update_required
 	}

@@ -54,7 +54,7 @@
     {"id":{"name":"scr_send_item","path":"scripts/scr_send_item/scr_send_item.yy",},},
     {"id":{"name":"scr_setup","path":"scripts/scr_setup/scr_setup.yy",},},
     {"id":{"name":"scr_uncover_surrounding","path":"scripts/scr_uncover_surrounding/scr_uncover_surrounding.yy",},},
-    {"id":{"name":"scr_updateobtains","path":"scripts/scr_updateobtains/scr_updateobtains.yy",},},
+    {"id":{"name":"scripts_ap","path":"scripts/scripts_ap/scripts_ap.yy",},},
     {"id":{"name":"scripts_debug","path":"scripts/scripts_debug/scripts_debug.yy",},},
     {"id":{"name":"scripts_options","path":"scripts/scripts_options/scripts_options.yy",},},
     {"id":{"name":"snd_digright","path":"sounds/snd_digright/snd_digright.yy",},},

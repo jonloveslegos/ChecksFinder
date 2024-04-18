@@ -1,9 +1,9 @@
 {
   "$GMScript":"",
-  "%Name":"scr_updateobtains",
+  "%Name":"scripts_ap",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_updateobtains",
+  "name":"scripts_ap",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

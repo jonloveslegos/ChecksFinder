@@ -3,7 +3,7 @@ for (var _i = 0; _i < array_length(global.spotlist);_i++)
 {
     if (_i < global.roomthiswidth+global.roomthisheight+global.roomthisbomb-5-5)
     {
-        if (global.spotlist[_i] == 0 && !file_exists(game_save_id+"send"+string(_i+81000)))
+        if (global.spotlist[_i] == 0)
         {
             _cnt++
         }
