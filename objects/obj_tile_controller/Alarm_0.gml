@@ -38,6 +38,5 @@ if (won == true || (global.roomthiswidth >= 10 && global.roomthisheight >= 10 &&
 }
 else
 {
-	scr_updateobtains()
     room_restart()
 }

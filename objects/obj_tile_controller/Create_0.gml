@@ -4,7 +4,9 @@ global.clicked = false
 won = false
 scr_updateobtains()
 global.layout_update_required = false
-alarm[2] = 30
+if (global.other_settings.auto_update) {
+	alarm[2] = 30
+}
 global.roomthisheight = global.tileheight
 global.roomthiswidth = global.tilewidth
 global.roomthisbomb = global.bombcount

@@ -36,7 +36,12 @@ function scr_string_to_color(_str) {
 
 function update_settings() {
 	ini_open(working_directory + "game_options.ini")
-	var _value = scr_string_to_color(ini_read_string("preferences","tile_foreground_color",""))
+	var _value = ini_read_string("preferences","disable_auto_updates","")
+	if (_value == "true" || _value == "t" || _value == "yes" || _value == "yeah" || _value == "ye" || _value == "y") {
+		global.other_settings.auto_update = false
+		
+	}
+	_value = scr_string_to_color(ini_read_string("preferences","tile_foreground_color",""))
 	if (_value != undefined) {
 		global.tile_data.foreground.color = make_color_rgb(_value[0],_value[1],_value[2])
 	}
