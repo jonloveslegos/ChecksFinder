@@ -19,7 +19,7 @@ if (global.canclick && _ended && alarm[0] <= 0)
     {
         if (_i < global.roomthiswidth+global.roomthisheight+global.roomthisbomb-5-5)
         {
-            if (!file_exists("send"+string(_i+81000)))
+            if (!file_exists(game_save_id+"send"+string(_i+81000)))
             {
                 _checksavail = _i
                 global.spotlist[_i] = 0

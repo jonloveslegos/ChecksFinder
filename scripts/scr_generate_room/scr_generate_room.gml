@@ -29,7 +29,7 @@ function scr_generate_room(argument0, argument1) {
 	{
 		if (_i < global.roomthiswidth+global.roomthisheight+global.roomthisbomb-5-5)
 		{
-			if (!file_exists("send"+string(_i+81000)))
+			if (!file_exists(game_save_id+"send"+string(_i+81000)))
 			{
 				_checksavail[_iie] = _i
 				global.spotlist[_i] = 0
