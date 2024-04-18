@@ -1,4 +1,5 @@
 function scr_setup() {
+	global.debug_view = false
 	global.bombcount = 5
 	global.tilewidth = 5
 	global.tileheight = 5
@@ -25,6 +26,7 @@ function scr_setup() {
 		ui_text: c_white,
 		ui_background: c_green
 	}
+	update_settings()
 	draw_set_colour(global.game_color.ui_text);
 	for (var _i = 0; _i < global.tilewidth*global.tileheight; _i++)
 	{
