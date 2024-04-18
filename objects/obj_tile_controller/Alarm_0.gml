@@ -32,7 +32,7 @@ if (won == true || (global.roomthiswidth >= 10 && global.roomthisheight >= 10 &&
     }
     else
     {
-        file_text_close(file_text_open_write("victory"))
+        file_text_close(file_text_open_write(game_save_id+"victory"))
         room_goto(rm_win)
     }
 }
