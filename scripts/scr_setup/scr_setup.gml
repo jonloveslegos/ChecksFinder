@@ -39,7 +39,7 @@ function scr_setup() {
 	while (_file != "")
 	{
 	    if (string_count("send",_file) > 0)
-	        file_delete(_file)
+	        file_delete(game_save_id + _file)
 	    _file = file_find_next();
 	}
 	file_find_close();
