@@ -1,3 +1,5 @@
+A game about revealing tiles and safely marking bombs based on revealed numbers that count the bombs nearby, and collecting AP checks when winning each board.
+
 Controls:
 - Left click - reveal currently closed tile, or reveal closed tiles around a revealed number, if the number has correct amount of marks around it
 - Right click - mark a closed tile as a bomb
