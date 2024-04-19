@@ -14,7 +14,7 @@ function scr_reveal_tile(_tile) {
 		if (global.canclick == true && revealed == false && marked == false)
 		{
 		    revealed = true
-		    scr_gen_particles(x,y,global.tile_data.foreground)
+		    scr_gen_pieces(x,y,global.tile_data.foreground)
 		    if (global.clicked == false)
 		    {
 		        global.clicked = true
@@ -25,7 +25,7 @@ function scr_reveal_tile(_tile) {
 		        with(obj_tile)
 		        {
 					if (!revealed) {
-						scr_gen_particles(x,y,global.tile_data.foreground)
+						scr_gen_pieces(x,y,global.tile_data.foreground)
 					}
 		            revealed = true
 		        }
@@ -53,7 +53,7 @@ function scr_reveal_tile(_tile) {
 		            with(obj_tile)
 		            {
 						if (!revealed) {
-							scr_gen_particles(x,y,global.tile_data.foreground)
+							scr_gen_pieces(x,y,global.tile_data.foreground)
 						}
 		                revealed = true
 		            }

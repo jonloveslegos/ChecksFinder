@@ -22,7 +22,7 @@
     {"name":"rm_win","order":2,"path":"rooms/rm_win/rm_win.yy",},
     {"name":"scr_count_surrounding","order":9,"path":"scripts/scr_count_surrounding/scr_count_surrounding.yy",},
     {"name":"scr_game_end","order":10,"path":"scripts/scr_game_end/scr_game_end.yy",},
-    {"name":"scr_gen_particles","order":8,"path":"scripts/scr_gen_particles/scr_gen_particles.yy",},
+    {"name":"scr_gen_pieces","order":8,"path":"scripts/scr_gen_pieces/scr_gen_pieces.yy",},
     {"name":"scr_generate_room","order":6,"path":"scripts/scr_generate_room/scr_generate_room.yy",},
     {"name":"scr_get_item","order":3,"path":"scripts/scr_get_item/scr_get_item.yy",},
     {"name":"scr_reveal_tile","order":7,"path":"scripts/scr_reveal_tile/scr_reveal_tile.yy",},

@@ -1,9 +1,9 @@
 {
   "$GMScript":"",
-  "%Name":"scr_gen_particles",
+  "%Name":"scr_gen_pieces",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_gen_particles",
+  "name":"scr_gen_pieces",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

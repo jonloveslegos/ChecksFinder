@@ -47,7 +47,7 @@
     {"id":{"name":"rm_win","path":"rooms/rm_win/rm_win.yy",},},
     {"id":{"name":"scr_count_surrounding","path":"scripts/scr_count_surrounding/scr_count_surrounding.yy",},},
     {"id":{"name":"scr_game_end","path":"scripts/scr_game_end/scr_game_end.yy",},},
-    {"id":{"name":"scr_gen_particles","path":"scripts/scr_gen_particles/scr_gen_particles.yy",},},
+    {"id":{"name":"scr_gen_pieces","path":"scripts/scr_gen_pieces/scr_gen_pieces.yy",},},
     {"id":{"name":"scr_generate_room","path":"scripts/scr_generate_room/scr_generate_room.yy",},},
     {"id":{"name":"scr_get_item","path":"scripts/scr_get_item/scr_get_item.yy",},},
     {"id":{"name":"scr_reveal_tile","path":"scripts/scr_reveal_tile/scr_reveal_tile.yy",},},
