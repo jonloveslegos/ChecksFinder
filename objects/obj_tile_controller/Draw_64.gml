@@ -39,6 +39,6 @@ draw_text(60+240,view_get_hport(0)-120,string_hash_to_newline(string(global.tile
 draw_sprite_ext(spr_tiles,6,8+240,view_get_hport(0)-150,3,3,0,c_white,1)
 draw_set_font(fnt_main)
 draw_text(60+240,view_get_hport(0)-170,string_hash_to_newline(string(global.bombcount)+"/20"))
-draw_sprite_ext(spr_tiles,1,8,view_get_hport(0)-50,3,3,0,c_white,1)
+draw_sprite_ext(spr_tiles,global.tile_data.bomb.tile_index,8,view_get_hport(0)-50,3,3,0,c_white,1)
 draw_set_font(fnt_main)
 draw_text(60,view_get_hport(0)-70,string_hash_to_newline(string(_flags)+"/"+string(_bombs)))

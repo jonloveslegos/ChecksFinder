@@ -37,8 +37,21 @@ function scr_string_to_color(_str) {
 function update_settings() {
 	ini_open(working_directory + "game_options.ini")
 	var _value = ini_read_string("preferences","disable_periodic_updates","")
-	if (_value == "true" || _value == "t" || _value == "yes" || _value == "yeah" || _value == "ye" || _value == "y") {
+	if (is_string_truthy(_value)) {
 		global.other_settings.auto_update = false
+	}
+	_value = ini_read_string("preferences","fishing","")
+	if (_value == "") {
+		_value = ini_read_string("preferences","fisher","")
+	}
+	if (_value == "") {
+		_value = ini_read_string("preferences","fish","")
+	}
+	if (is_string_truthy(_value) || (current_month == 4 && current_day == 1)) {
+		global.tile_data.background.color = #0055a2
+		global.tile_data.bomb.tile_index = 2
+		global.tile_data.bomb.piece_index = 4
+		global.game_color.tile_text = c_maroon
 	}
 	_value = scr_string_to_color(ini_read_string("preferences","tile_foreground_color",""))
 	if (_value != undefined) {
@@ -61,4 +74,8 @@ function update_settings() {
 		global.game_color.ui_background = make_color_rgb(_value[0],_value[1],_value[2])
 	}
 	ini_close()
+}
+
+function is_string_truthy(_val) {
+	return _val == "true" || _val == "t" || _val == "yes" || _val == "yeah" || _val == "ye" || _val == "y" || _val == "1"
 }

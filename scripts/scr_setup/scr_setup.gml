@@ -6,12 +6,12 @@ function scr_setup() {
 	global.spotlist = undefined
 	global.tile_data = {
 		foreground: {
-			color: #5ac05a,
+			color: #2a662a,
 			tile_index: 0,
 			piece_index: 0
 		},
 		background: {
-			color: #aa7a50,
+			color: #66442a,
 			tile_index: 0,
 			piece_index: 0
 		},

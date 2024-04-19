@@ -1,6 +1,7 @@
 if (revealed == true)
 {
-    draw_sprite_ext(
+	shader_set(sh_cond);
+	draw_sprite_ext(
 		spr_tiles,
 		global.tile_data.background.tile_index,
 		x,
@@ -11,6 +12,7 @@ if (revealed == true)
 		global.tile_data.background.color,
 		1
 	)
+	shader_reset();
     if (type == "none")
     {
         if (scr_count_surrounding(self,global.fn_is_bomb) > 0)
@@ -35,6 +37,7 @@ if (revealed == true)
 }
 else
 {
+	shader_set(sh_cond);
     draw_sprite_ext(
 		spr_tiles,
 		global.tile_data.foreground.tile_index,
@@ -46,6 +49,7 @@ else
 		global.tile_data.foreground.color,
 		1
 	)
+	shader_reset();
     if (marked == true)
     {
         draw_sprite(spr_xmark,0,x,y)

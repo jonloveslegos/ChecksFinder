@@ -57,6 +57,7 @@
     {"id":{"name":"scripts_ap","path":"scripts/scripts_ap/scripts_ap.yy",},},
     {"id":{"name":"scripts_debug","path":"scripts/scripts_debug/scripts_debug.yy",},},
     {"id":{"name":"scripts_options","path":"scripts/scripts_options/scripts_options.yy",},},
+    {"id":{"name":"sh_cond","path":"shaders/sh_cond/sh_cond.yy",},},
     {"id":{"name":"snd_digright","path":"sounds/snd_digright/snd_digright.yy",},},
     {"id":{"name":"snd_explosion","path":"sounds/snd_explosion/snd_explosion.yy",},},
     {"id":{"name":"snd_win","path":"sounds/snd_win/snd_win.yy",},},
