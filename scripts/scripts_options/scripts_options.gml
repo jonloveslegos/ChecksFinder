@@ -34,7 +34,7 @@ function scr_string_to_color(_str) {
 	return _hex
 }
 
-function update_settings() {
+function update_options() {
 	ini_open(working_directory + "game_options.ini")
 	var _value = ini_read_string("preferences","disable_periodic_updates","")
 	if (is_string_truthy(_value)) {

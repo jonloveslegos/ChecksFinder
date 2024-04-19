@@ -29,7 +29,7 @@ function scr_setup() {
 	global.other_settings = {
 		auto_update: true
 	}
-	update_settings()
+	update_options()
 	draw_set_colour(global.game_color.ui_text);
 	for (var _i = 0; _i < global.tilewidth*global.tileheight; _i++)
 	{
