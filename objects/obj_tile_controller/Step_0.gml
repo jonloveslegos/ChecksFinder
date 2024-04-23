@@ -33,7 +33,7 @@ if (global.canclick && _ended && alarm[0] <= 0)
     }
     if (_checksavail > -1)
     {
-        global.spotlist[_checksavail] = 1
         scr_send_item(_checksavail+81000)
+		global.spotlist[_checksavail] = 1
     }
 }
