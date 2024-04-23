@@ -85,5 +85,5 @@ function update_options() {
 }
 
 function is_string_falsy(_val) {
-	return _val == "" || _val == "false" || _val == "f" || _val == "no" || _val == "nah" || _val == "n" || _val == "nope" || _val == "0"
+	return _val == "" || _val == "false" || _val == "f" || _val == "no" || _val == "nah" || _val == "n" || _val == "nope" || _val == "nop" || _val == "0"
 }
