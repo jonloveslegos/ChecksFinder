@@ -37,17 +37,25 @@ function scr_string_to_color(_str) {
 function update_options() {
 	ini_open(working_directory + "game_options.ini")
 	var _value = ini_read_string("preferences","disable_periodic_updates","")
-	if (is_string_truthy(_value)) {
+	if (!is_string_falsy(_value)) {
 		global.other_settings.auto_update = false
 	}
-	_value = ini_read_string("preferences","fishing","")
+	show_debug_message("disable_periodic_updates = {0} interpreted as {1}.",_value,!global.other_settings.auto_update)
+	_value = ini_read_string("preferences","fishfinder","")
+	show_debug_message("fishfinder = {0}",_value)
+	if (_value == "") {
+		_value = ini_read_string("preferences","fishing","")
+		show_debug_message("fishing = {0}",_value)
+	}
 	if (_value == "") {
 		_value = ini_read_string("preferences","fisher","")
+		show_debug_message("fisher = {0}",_value)
 	}
 	if (_value == "") {
 		_value = ini_read_string("preferences","fish","")
+		show_debug_message("fish = {0}",_value)
 	}
-	if (is_string_truthy(_value) || (current_month == 4 && current_day == 1)) {
+	if (!is_string_falsy(_value) || (current_month == 4 && current_day == 1)) {
 		global.tile_data.background.color = #0055a2
 		global.tile_data.bomb.tile_index = 2
 		global.tile_data.bomb.piece_index = 4
@@ -76,6 +84,6 @@ function update_options() {
 	ini_close()
 }
 
-function is_string_truthy(_val) {
-	return _val == "true" || _val == "t" || _val == "yes" || _val == "yeah" || _val == "ye" || _val == "y" || _val == "1"
+function is_string_falsy(_val) {
+	return _val == "" || _val == "false" || _val == "f" || _val == "no" || _val == "nah" || _val == "n" || _val == "nope" || _val == "0"
 }
