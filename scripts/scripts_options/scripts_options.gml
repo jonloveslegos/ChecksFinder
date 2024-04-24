@@ -113,7 +113,7 @@ function update_options() {
 	_value = scr_string_to_color(ini_read_string("preferences",_opt_name,""))
 	if (_value != undefined) {
 		global.game_color.ui_text = make_color_rgb(_value[0],_value[1],_value[2])
-		global.overwrite_tile_text = true
+		global.other_settings.overwrite_tile_text = true
 	}
 	_opt_name = "ui_background_color"
 	show_debug_message("{0}:",_opt_name)
