@@ -27,7 +27,9 @@ function scr_setup() {
 		ui_background: c_green
 	}
 	global.other_settings = {
-		auto_update: true
+		auto_update: true,
+		pieces_count: 4,
+		pieces_recursive: true,
 	}
 	update_options()
 	draw_set_colour(global.game_color.ui_text);

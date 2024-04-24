@@ -24,7 +24,7 @@ function scr_reveal_tile(_tile) {
 		    {
 		        with(obj_tile)
 		        {
-					if (!revealed) {
+					if (!revealed && global.other_settings.pieces_recursive) {
 						scr_gen_pieces(x,y,global.tile_data.foreground)
 					}
 		            revealed = true

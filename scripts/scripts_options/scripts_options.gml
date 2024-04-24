@@ -55,12 +55,27 @@ function update_options() {
 		_value = ini_read_string("preferences","fish","")
 		show_debug_message("fish = {0}",_value)
 	}
-	if (!is_string_falsy(_value) || (current_month == 4 && current_day == 1)) {
+	_value = !is_string_falsy(_value)
+	show_debug_message("interpreted whether to enable fishing as {0}",_value)
+	if (_value || (current_month == 4 && current_day == 1)) {
 		global.tile_data.background.color = #0055a2
 		global.tile_data.bomb.tile_index = 2
 		global.tile_data.bomb.piece_index = 4
 		global.game_color.tile_text = c_maroon
 	}
+	_value = floor(ini_read_real("preferences","falling_pieces_count",-1))
+	show_debug_message("pieces_count = {0} interpreted as {1}.",ini_read_string("preferences","pieces_count",""),_value)
+	if (_value >= 0 && _value <= 4) {
+		global.other_settings.pieces_count = _value
+		show_debug_message("setting falling pieces count to {0}",_value)
+	} else {
+		show_debug_message("pieces count is outside the valid range of 0 to 4, keeping at default {0}",global.other_settings.pieces_count)
+	}
+	_value = ini_read_string("preferences","falling_pieces_recursive","")
+	if (!is_string_falsy(_value)) {
+		global.other_settings.pieces_recursive = true
+	}
+	show_debug_message("falling_pieces_recursive = {0} interpreted as {1}.",_value,global.other_settings.pieces_recursive)
 	_value = scr_string_to_color(ini_read_string("preferences","tile_foreground_color",""))
 	if (_value != undefined) {
 		global.tile_data.foreground.color = make_color_rgb(_value[0],_value[1],_value[2])
