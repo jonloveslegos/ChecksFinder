@@ -3,7 +3,7 @@ function scr_setup() {
 	global.bombcount = 5
 	global.tilewidth = 5
 	global.tileheight = 5
-	global.spotlist = undefined
+	global.spotlist = array_create(5,undefined)
 	global.tile_data = {
 		foreground: {
 			color: #2a662a,
@@ -30,6 +30,9 @@ function scr_setup() {
 		auto_update: true,
 		pieces_count: 4,
 		pieces_recursive: true,
+		enable_fishfinder: false,
+		overwrite_tile_text: false,
+		overwrite_background: false,
 	}
 	update_options()
 	draw_set_colour(global.game_color.ui_text);

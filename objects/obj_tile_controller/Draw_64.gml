@@ -1,3 +1,13 @@
+if (global.other_settings.enable_fishfinder) {
+	if (!global.other_settings.overwrite_background) {
+		global.tile_data.background.color = #0055a2
+	}
+	global.tile_data.bomb.tile_index = 2
+	global.tile_data.bomb.piece_index = 4
+	if (!global.other_settings.overwrite_tile_text) {
+		global.game_color.tile_text = c_maroon
+	}
+}
 var _cnt = 0
 for (var _i = 0; _i < array_length(global.spotlist);_i++)
 {

@@ -40,35 +40,39 @@ function update_options() {
 	ini_open(working_directory + "game_options.ini")
 	var _opt_name = "disable_periodic_updates"
 	var _value = ini_read_string("preferences",_opt_name,"")
+	var _tmp = false
 	if (!is_string_falsy(_value)) {
 		global.other_settings.auto_update = false
 	}
 	show_debug_message("{0} = \"{1}\" interpreted as {2}",_opt_name,_value,!global.other_settings.auto_update)
 	_opt_name = "fishfinder"
 	_value = ini_read_string("preferences",_opt_name,"")
+	_tmp |= ini_key_exists("preferences",_opt_name)
 	show_debug_message("{0} = \"{1}\"",_opt_name,_value)
 	if (_value == "") {
 		_opt_name = "fishing"
 		_value = ini_read_string("preferences",_opt_name,"")
+		_tmp |= ini_key_exists("preferences",_opt_name)
 		show_debug_message("{0} = \"{1}\"",_opt_name,_value)
 	}
 	if (_value == "") {
 		_opt_name = "fisher"
 		_value = ini_read_string("preferences",_opt_name,"")
+		_tmp |= ini_key_exists("preferences",_opt_name)
 		show_debug_message("{0} = \"{1}\"",_opt_name,_value)
 	}
 	if (_value == "") {
 		_opt_name = "fish"
 		_value = ini_read_string("preferences",_opt_name,"")
+		_tmp |= ini_key_exists("preferences",_opt_name)
 		show_debug_message("{0} = \"{1}\"",_opt_name,_value)
 	}
-	_value = !is_string_falsy(_value)
-	show_debug_message("interpreted whether to enable fishing as {0}",_value)
-	if (_value || (current_month == 4 && current_day == 1)) {
-		global.tile_data.background.color = #0055a2
-		global.tile_data.bomb.tile_index = 2
-		global.tile_data.bomb.piece_index = 4
-		global.game_color.tile_text = c_maroon
+	global.other_settings.enable_fishfinder = !is_string_falsy(_value)
+	show_debug_message("interpreted whether to enable fishing as {0}",global.other_settings.enable_fishfinder)
+	//if state of fishfinder was overwritten, don't enable the april fools joke
+	if (!_tmp && (current_month == 4 && current_day == 1)) {
+		global.other_settings.enable_fishfinder = true
+		show_debug_message("April Fools!")
 	}
 	_opt_name = "falling_pieces_count"
 	_value = floor(ini_read_real("preferences",_opt_name,-1))
@@ -96,6 +100,7 @@ function update_options() {
 	_value = scr_string_to_color(ini_read_string("preferences",_opt_name,""))
 	if (_value != undefined) {
 		global.tile_data.background.color = make_color_rgb(_value[0],_value[1],_value[2])
+		global.other_settings.overwrite_background = true
 	}
 	_opt_name = "tile_text_color"
 	show_debug_message("{0}:",_opt_name)
@@ -108,6 +113,7 @@ function update_options() {
 	_value = scr_string_to_color(ini_read_string("preferences",_opt_name,""))
 	if (_value != undefined) {
 		global.game_color.ui_text = make_color_rgb(_value[0],_value[1],_value[2])
+		global.overwrite_tile_text = true
 	}
 	_opt_name = "ui_background_color"
 	show_debug_message("{0}:",_opt_name)
