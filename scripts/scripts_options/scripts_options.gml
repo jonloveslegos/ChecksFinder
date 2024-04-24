@@ -85,8 +85,8 @@ function update_options() {
 	}
 	_opt_name = "falling_pieces_recursive"
 	_value = ini_read_string("preferences",_opt_name,"")
-	if (!is_string_falsy(_value)) {
-		global.other_settings.pieces_recursive = true
+	if (is_string_falsy(_value)) {
+		global.other_settings.pieces_recursive = false
 	}
 	show_debug_message("{0} = \"{1}\" interpreted as {2}",_opt_name,_value,global.other_settings.pieces_recursive)
 	_opt_name = "tile_foreground_color"
