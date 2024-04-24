@@ -7,6 +7,11 @@ if (global.other_settings.enable_fishfinder) {
 	if (!global.other_settings.overwrite_tile_text) {
 		global.game_color.tile_text = c_maroon
 	}
+} else {
+	global.tile_data.background.color = global.custom_defaults.tile_data.background.color
+	global.tile_data.bomb.tile_index = global.custom_defaults.tile_data.bomb.tile_index
+	global.tile_data.bomb.piece_index = global.custom_defaults.tile_data.bomb.piece_index
+	global.game_color.tile_text = global.custom_defaults.game_color.tile_text
 }
 var _cnt = 0
 for (var _i = 0; _i < array_length(global.spotlist);_i++)
