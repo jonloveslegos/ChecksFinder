@@ -2,12 +2,13 @@ if (ds_map_find_value(async_load, "type") == network_type_non_blocking_connect)
 {
 	if (ds_map_find_value(async_load, "succeeded") == 1)
 	{
-		var _payload = "[{\"cmd\":\"Connect\",\"password\":null,\"name\":\"Mewlif\",\"version\":{\"major\":0,\"minor\":4,\"build\":6,\"class\":\"Version\"},\"tags\":[\"AP\"], \"items_handling\":7, \"uuid\":"+string(irandom_range(281474976710655, 281474976710655))+",\"game\":\"ChecksFinder\",\"slot_data\":true}]"
+		player = get_string("Player name", "")
+		var _payload = "[{\"cmd\":\"Connect\",\"password\":null,\"name\":\""+player+"\",\"version\":{\"major\":0,\"minor\":4,\"build\":6,\"class\":\"Version\"},\"tags\":[\"AP\"], \"items_handling\":7, \"uuid\":"+string(irandom_range(281474976710655, 281474976710655))+",\"game\":\"ChecksFinder\",\"slot_data\":true}]"
 		var _temp_buffer = buffer_create(0, buffer_grow, 1)
 		buffer_seek(_temp_buffer, buffer_seek_start, 0)
 		buffer_write(_temp_buffer, buffer_string, _payload)
 		//show_error(buffer_peek(_temp_buffer, 0, buffer_string), false)
-		network_send_raw(global.client, _temp_buffer, buffer_get_size(_temp_buffer)-48, network_send_text)
+		network_send_raw(global.client, _temp_buffer, string_length(_payload), network_send_text)
 		buffer_delete(_temp_buffer)
 	}
 }
@@ -38,6 +39,17 @@ else if (ds_map_find_value(async_load, "type") == network_type_data)
 		        if (_parsed_message[i].items[e].item == 80002)
 		            scr_get_item("bomb")
 			}
+		}
+		else if (_parsed_message[i].cmd == "ConnectionRefused")
+		{
+			player = get_string("Player name", "")
+			var _payload = "[{\"cmd\":\"Connect\",\"password\":null,\"name\":\""+player+"\",\"version\":{\"major\":0,\"minor\":4,\"build\":6,\"class\":\"Version\"},\"tags\":[\"AP\"], \"items_handling\":7, \"uuid\":"+string(irandom_range(281474976710655, 281474976710655))+",\"game\":\"ChecksFinder\",\"slot_data\":true}]"
+			var _temp_buffer = buffer_create(0, buffer_grow, 1)
+			buffer_seek(_temp_buffer, buffer_seek_start, 0)
+			buffer_write(_temp_buffer, buffer_string, _payload)
+			//show_error(buffer_peek(_temp_buffer, 0, buffer_string), false)
+			network_send_raw(global.client, _temp_buffer, string_length(_payload), network_send_text)
+			buffer_delete(_temp_buffer)
 		}
 	}
 }
