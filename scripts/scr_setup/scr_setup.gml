@@ -61,12 +61,4 @@ function scr_setup() {
 	{
 	    global.spotlist[_i] = 0
 	}
-	var _file = file_find_first(game_save_id + "*", 0);
-	while (_file != "")
-	{
-	    if (string_count("send",_file) > 0)
-	        file_delete(game_save_id + _file)
-	    _file = file_find_next();
-	}
-	file_find_close();
 }

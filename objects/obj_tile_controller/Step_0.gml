@@ -19,7 +19,7 @@ if (global.canclick && _ended && alarm[0] <= 0)
     {
         if (_i < global.roomthiswidth+global.roomthisheight+global.roomthisbomb-5-5)
         {
-            if (!file_exists(game_save_id+"send"+string(_i+81000)))
+            if (array_contains(global.missing_locations, _i+81000))
             {
                 _checksavail = _i
                 global.spotlist[_i] = 0
@@ -35,5 +35,6 @@ if (global.canclick && _ended && alarm[0] <= 0)
     {
         scr_send_item(_checksavail+81000)
 		global.spotlist[_checksavail] = 1
+		array_delete(global.missing_locations, array_get_index(global.missing_locations, _checksavail+81000), 1)
     }
 }

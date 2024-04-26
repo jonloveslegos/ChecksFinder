@@ -63,8 +63,15 @@ function scr_reveal_tile(_tile) {
 		        }
 		        else
 		        {
-		            scr_uncover_surrounding(self)
-		            audio_play_sound(snd_digright,0,false)
+					
+		            with(obj_tile)
+		            {
+						if (type != "bomb") {
+							revealed = true
+						}
+		            }
+		            //scr_uncover_surrounding(self)
+		            //audio_play_sound(snd_digright,0,false)
 		        }
 		    }
 		}

@@ -2,6 +2,9 @@ layer_background_blend(layer_background_get_id(layer_get_id("Colour_main")), glo
 global.canclick = true
 global.clicked = false
 won = false
+global.roomthisheight = global.tileheight
+global.roomthiswidth = global.tilewidth
+global.roomthisbomb = global.bombcount
 scr_ap_load_data()
 global.layout_update_required = false
 if (global.other_settings.auto_update) {
