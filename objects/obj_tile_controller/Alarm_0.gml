@@ -10,7 +10,7 @@ if (won == true || (global.roomthiswidth >= 10 && global.roomthisheight >= 10 &&
         {
             if (_done == false)
             {
-                with (instance_position(_xx*16,_yy*16,obj_tile))
+                with (instance_position(_xx*16+1,_yy*16+1,obj_tile))
                 {
                     if (type == "none")
                     {

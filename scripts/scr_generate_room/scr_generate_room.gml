@@ -3,9 +3,9 @@ function scr_generate_room(argument0, argument1) {
 	{
 	    for(var _yy = argument1-16;_yy <= argument1+16; _yy+=16)
 	    {
-	        with (instance_position(_xx,_yy,obj_tile))
+	        with (instance_position(_xx+1,_yy+1,obj_tile))
 	        {
-	            global.tiletype[_xx/16,_yy/16] = "not_a_bomb"
+	            global.tiletype[_xx div 16,_yy div 16] = "not_a_bomb"
 	        }
 	    }
 	}
@@ -27,7 +27,7 @@ function scr_generate_room(argument0, argument1) {
 	{
 	    for(var _xx = 0;_xx<global.roomthiswidth;_xx++)
 	    {
-	        with(instance_position(_xx*16,_yy*16,obj_tile))
+	        with(instance_position(_xx*16+1,_yy*16+1,obj_tile))
 	        {
 	            type = global.tiletype[_xx,_yy]
 	            if (type == "not_a_bomb")

@@ -7,7 +7,7 @@ global.fn_is_bomb = function(_tile) {
 function scr_count_surrounding(_tile, _tile_fn) {
 	var _count = 0
 	with(_tile) {
-		//these functions are usually used for collision, so edge points can apply to multiple tiles -
+		//instance_position is usually used for collision, so edge points can apply to multiple tiles -
 		//which means we should check non-edge coordinates
 		if (_tile_fn(instance_position(x+1,y-15,obj_tile)))
 		{
