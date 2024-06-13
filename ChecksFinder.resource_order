@@ -15,8 +15,10 @@
   ],
   "ResourceOrderSettings":[
     {"name":"obj_aphandler","order":5,"path":"objects/obj_aphandler/obj_aphandler.yy",},
+    {"name":"obj_button","order":9,"path":"objects/obj_button/obj_button.yy",},
     {"name":"obj_piece","order":4,"path":"objects/obj_piece/obj_piece.yy",},
     {"name":"obj_setup","order":2,"path":"objects/obj_setup/obj_setup.yy",},
+    {"name":"obj_text_box","order":8,"path":"objects/obj_text_box/obj_text_box.yy",},
     {"name":"obj_tile_controller","order":1,"path":"objects/obj_tile_controller/obj_tile_controller.yy",},
     {"name":"obj_win_drawer","order":3,"path":"objects/obj_win_drawer/obj_win_drawer.yy",},
     {"name":"rm_apstuff","order":3,"path":"rooms/rm_apstuff/rm_apstuff.yy",},
@@ -36,6 +38,7 @@
     {"name":"snd_digright","order":1,"path":"sounds/snd_digright/snd_digright.yy",},
     {"name":"snd_win","order":2,"path":"sounds/snd_win/snd_win.yy",},
     {"name":"spr_pieces","order":3,"path":"sprites/spr_pieces/spr_pieces.yy",},
+    {"name":"spr_text_box","order":4,"path":"sprites/spr_text_box/spr_text_box.yy",},
     {"name":"spr_tilenumbers","order":1,"path":"sprites/spr_tilenumbers/spr_tilenumbers.yy",},
     {"name":"spr_xmark","order":2,"path":"sprites/spr_xmark/spr_xmark.yy",},
   ],

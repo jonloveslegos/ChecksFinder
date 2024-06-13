@@ -1,0 +1,1 @@
+image_blend = global.game_color.button_background
