@@ -32,8 +32,11 @@ if (won == true || (global.roomthiswidth >= 10 && global.roomthisheight >= 10 &&
     }
     else
     {
-		var _payload = "[{\"cmd\": \"StatusUpdate\", \"status\": 30}]"
-		scr_send_packet(_payload)
+		var _data = [{
+			cmd: "StatusUpdate",
+			status: int64(30),
+		}]
+		scr_send_packet(json_stringify(_data))
     }
 }
 else

@@ -55,7 +55,6 @@
     {"id":{"name":"scr_generate_room","path":"scripts/scr_generate_room/scr_generate_room.yy",},},
     {"id":{"name":"scr_get_item","path":"scripts/scr_get_item/scr_get_item.yy",},},
     {"id":{"name":"scr_reveal_tile","path":"scripts/scr_reveal_tile/scr_reveal_tile.yy",},},
-    {"id":{"name":"scr_send_item","path":"scripts/scr_send_item/scr_send_item.yy",},},
     {"id":{"name":"scr_setup","path":"scripts/scr_setup/scr_setup.yy",},},
     {"id":{"name":"scr_uncover_surrounding","path":"scripts/scr_uncover_surrounding/scr_uncover_surrounding.yy",},},
     {"id":{"name":"scr_update_select","path":"scripts/scr_update_select/scr_update_select.yy",},},

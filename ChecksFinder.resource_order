@@ -30,7 +30,6 @@
     {"name":"scr_generate_room","order":6,"path":"scripts/scr_generate_room/scr_generate_room.yy",},
     {"name":"scr_get_item","order":3,"path":"scripts/scr_get_item/scr_get_item.yy",},
     {"name":"scr_reveal_tile","order":7,"path":"scripts/scr_reveal_tile/scr_reveal_tile.yy",},
-    {"name":"scr_send_item","order":4,"path":"scripts/scr_send_item/scr_send_item.yy",},
     {"name":"scr_setup","order":1,"path":"scripts/scr_setup/scr_setup.yy",},
     {"name":"scr_uncover_surrounding","order":2,"path":"scripts/scr_uncover_surrounding/scr_uncover_surrounding.yy",},
     {"name":"scr_update_select","order":13,"path":"scripts/scr_update_select/scr_update_select.yy",},

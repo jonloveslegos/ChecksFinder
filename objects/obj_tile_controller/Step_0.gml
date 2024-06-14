@@ -34,8 +34,11 @@ if (global.canclick && _ended && alarm[0] <= 0)
     if (_checksavail > -1)
     {
 		var _check = _checksavail+81000
-		var _payload = "[{\"cmd\":\"LocationChecks\",\"locations\":["+string(_check)+"]}]"
-        scr_send_packet(_payload)
+		var _data = [{
+			cmd: "LocationChecks",
+			locations: [int64(_check)]
+		}]
+        scr_send_packet(json_stringify(_data))
 		global.spotlist[_checksavail] = 1
 		array_delete(global.missing_locations, array_get_index(global.missing_locations, _check), 1)
     }
