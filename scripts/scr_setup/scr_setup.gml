@@ -6,6 +6,7 @@ function scr_setup() {
 	global.tileheight = 5
 	global.spotlist = array_create(5,undefined)
 	global.before_game = true
+	global.save_file = game_save_id + "save_file.ini"
 	layer_background_blend(layer_background_get_id(layer_get_id("Colour_main")), global.game_color.ui_background)
 	for (var _i = 0; _i < global.tilewidth*global.tileheight; _i++)
 	{

@@ -2,7 +2,7 @@ var _async_value = ds_map_find_value(async_load, "type")
 if (_async_value == network_type_non_blocking_connect)
 {
 	if (ds_map_find_value(async_load, "succeeded") == 1) {
-		var _payload = "[{\"cmd\":\"Connect\",\"password\":"+(global.ap.password == ""? "null" : global.ap.password)+",\"name\":\""+global.ap.username+"\",\"version\":{\"major\":0,\"minor\":4,\"build\":6,\"class\":\"Version\"},\"tags\":[\"AP\"], \"items_handling\":7, \"uuid\":"+string(irandom_range(281474976710655, 281474976710655))+",\"game\":\"ChecksFinder\",\"slot_data\":true}]"
+		var _payload = "[{\"cmd\":\"Connect\",\"password\":"+(global.ap.password == ""? "null" : global.ap.password)+",\"name\":\""+global.ap.slotname+"\",\"version\":{\"major\":0,\"minor\":4,\"build\":6,\"class\":\"Version\"},\"tags\":[\"AP\"], \"items_handling\":7, \"uuid\":"+global.ap.uuid+",\"game\":\"ChecksFinder\",\"slot_data\":true}]"
 		scr_send_packet(_payload)
 	} else {
 		show_message_async("Failed to connect. Check if server link is correct.")

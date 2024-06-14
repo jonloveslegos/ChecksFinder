@@ -26,9 +26,29 @@ function scr_send_packet(argument) {
 function scr_save_connection_data() {
 	global.client = network_create_socket(network_socket_ws)
 	global.ap = {
-		server: inst_ap_link.text,
+		server: inst_ap_server.text,
 		port: inst_ap_port.text,
-		username: inst_ap_slotname.text,
+		slotname: inst_ap_slotname.text,
 		password: inst_ap_password.text,
+		uuid: global.ap.uuid,
 	}
+	ini_open(global.save_file)
+	ini_write_string("Archipelago", "server", global.ap.server)
+	ini_write_string("Archipelago", "port", global.ap.port)
+	ini_write_string("Archipelago", "slotname", global.ap.slotname)
+	ini_write_string("Archipelago", "password", global.ap.password)
+	ini_write_string("Archipelago", "uuid", global.ap.uuid)
+	ini_close()
+}
+
+function scr_load_connection_data() {
+	ini_open(global.save_file)
+	global.ap = {
+		server: ini_read_string("Archipelago", "server", "wss://archipelago.gg"),
+		port: ini_read_string("Archipelago", "port", "38281"),
+		slotname: ini_read_string("Archipelago", "slotname", "Player1"),
+		password: ini_read_string("Archipelago", "password", ""),
+		uuid: ini_read_string("Archipelago", "uuid", string(irandom_range(0, 281474976710655))),
+	}
+	ini_close()
 }

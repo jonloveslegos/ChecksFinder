@@ -1,4 +1,4 @@
-with(inst_ap_link) {
+with(inst_ap_server) {
 	draw_text_transformed(x, y-7, "Server IP address", 0.08, 0.08, 0)
 }
 with(inst_ap_port) {
