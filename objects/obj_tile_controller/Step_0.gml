@@ -33,8 +33,10 @@ if (global.canclick && _ended && alarm[0] <= 0)
     }
     if (_checksavail > -1)
     {
-        scr_send_item(_checksavail+81000)
+		var _check = _checksavail+81000
+		var _payload = "[{\"cmd\":\"LocationChecks\",\"locations\":["+string(_check)+"]}]"
+        scr_send_packet(_payload)
 		global.spotlist[_checksavail] = 1
-		array_delete(global.missing_locations, array_get_index(global.missing_locations, _checksavail+81000), 1)
+		array_delete(global.missing_locations, array_get_index(global.missing_locations, _check), 1)
     }
 }

@@ -14,3 +14,21 @@ function scr_ap_update_checks() {
 		}
 	}
 }
+
+function scr_send_packet(argument) {
+	var _temp_buffer = buffer_create(0, buffer_grow, 1)
+	buffer_seek(_temp_buffer, buffer_seek_start, 0)
+	buffer_write(_temp_buffer, buffer_string, argument)
+	network_send_raw(global.client, _temp_buffer, string_length(argument), network_send_text)
+	buffer_delete(_temp_buffer)
+}
+
+function scr_save_connection_data() {
+	global.client = network_create_socket(network_socket_ws)
+	global.ap = {
+		server: inst_ap_link.text,
+		port: inst_ap_port.text,
+		username: inst_ap_slotname.text,
+		password: inst_ap_password.text,
+	}
+}
