@@ -13,17 +13,6 @@ if (global.other_settings.enable_fishfinder) {
 	global.tile_data.bomb.piece_index = global.custom_defaults.tile_data.bomb.piece_index
 	global.game_color.tile_text = global.custom_defaults.game_color.tile_text
 }
-var _cnt = 0
-for (var _i = 0; _i < array_length(global.spotlist);_i++)
-{
-    if (_i < global.tilewidth+global.tileheight+global.bombcount-5-5)
-    {
-        if (global.spotlist[_i] == 0)
-        {
-            _cnt++
-        }
-    }
-}
 var _bombs = 0
 var _flags = 0
 with(obj_tile)
@@ -45,7 +34,7 @@ draw_set_halign(fa_left)
 draw_set_font(fnt_main)
 draw_set_colour(global.game_color.ui_text)
 draw_sprite_ext(spr_tiles,3,8,view_get_hport(0)-150,3,3,0,c_white,1)
-draw_text(60,view_get_hport(0)-170,string_hash_to_newline(string(_cnt)))
+draw_text(60,view_get_hport(0)-170,string_hash_to_newline(string(global.roomthischeck)))
 draw_sprite_ext(spr_tiles,4,8,view_get_hport(0)-100,3,3,0,c_white,1)
 draw_text(60,view_get_hport(0)-120,string_hash_to_newline(string(global.tilewidth)+"/10"))
 draw_sprite_ext(spr_tiles,5,8+240,view_get_hport(0)-100,3,3,0,c_white,1)

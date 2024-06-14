@@ -9,7 +9,7 @@ function scr_ap_update_checks() {
 			if (array_contains(global.missing_locations, _i+81000)) {
 				global.spotlist[_i] = 0
 			} else {
-				global.spotlist[_i] = 1
+				global.spotlist[_i] = _i+81000
 			}
 		}
 	}
