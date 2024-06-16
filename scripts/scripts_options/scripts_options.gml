@@ -59,16 +59,9 @@ function scr_setup_options(){
 
 function scr_update_options() {
 	ini_open(working_directory + "game_options.ini")
-	var _opt_name = "disable_periodic_updates"
+	var _opt_name = "fishfinder"
 	var _value = ini_read_string("preferences",_opt_name,"")
-	var _tmp = false
-	if (!is_string_falsy(_value)) {
-		global.other_settings.auto_update = false
-	}
-	show_debug_message("{0} = \"{1}\" interpreted as {2}",_opt_name,_value,!global.other_settings.auto_update)
-	_opt_name = "fishfinder"
-	_value = ini_read_string("preferences",_opt_name,"")
-	_tmp |= ini_key_exists("preferences",_opt_name)
+	var _tmp = ini_key_exists("preferences",_opt_name)
 	show_debug_message("{0} = \"{1}\"",_opt_name,_value)
 	if (_value == "") {
 		_opt_name = "fishing"
