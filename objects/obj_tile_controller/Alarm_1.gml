@@ -1,1 +1,1 @@
-/// @description Delay update obtains
+/// @description Delay layout update

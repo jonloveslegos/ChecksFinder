@@ -1,14 +1,28 @@
-function scr_get_item(argument0) {
-	if (argument0 == "width")
-	{
-	    global.tilewidth = min(global.tilewidth+1,10)
+function scr_array_count(_arr, _item) {
+	var _count = 0
+	for (var _i = 0; _i < array_length(_arr); _i++) {
+		if (_arr[_i] == _item) {
+			_count++
+		}
 	}
-	if (argument0 == "height")
-	{
-	    global.tileheight = min(global.tileheight+1,10)
+	return _count
+}
+
+function scr_get_item(_type, _index) {
+	while (array_length(global.item_list) > _index) {
+		array_pop(global.item_list)
 	}
-	if (argument0 == "bomb")
+	array_push(global.item_list, _type)
+	if (_type == "width")
 	{
-	    global.bombcount = min(global.bombcount+1,20)
+	    global.tilewidth = min(5+scr_array_count(global.item_list, _type),10)
+	}
+	if (_type == "height")
+	{
+	    global.tileheight = min(5+scr_array_count(global.item_list, _type),10)
+	}
+	if (_type == "bomb")
+	{
+	    global.bombcount = min(5+scr_array_count(global.item_list, _type),20)
 	}
 }
