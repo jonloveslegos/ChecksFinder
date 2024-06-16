@@ -15,7 +15,7 @@ with(inst_ap_slotname) {
 	text = global.ap.slotname
 }
 with(inst_ap_password) {
-	text = global.ap.password
+	pass_text = global.ap.password
 }
 with(inst_btn_online) {
 	text = "Play Online"

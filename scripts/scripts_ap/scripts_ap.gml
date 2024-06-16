@@ -41,7 +41,7 @@ function scr_save_connection_data() {
 		server: inst_ap_server.text,
 		port: inst_ap_port.text,
 		slotname: inst_ap_slotname.text,
-		password: inst_ap_password.text,
+		password: inst_ap_password.pass_text,
 		uuid: global.ap.uuid,
 	}
 	ini_open(global.save_file)
