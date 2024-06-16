@@ -122,7 +122,7 @@
     "name":"Fonts",
     "path":"folders/Fonts.yy",
   },
-  "pointRounding":1,
+  "pointRounding":0,
   "ranges":[
     {"lower":32,"upper":127,},
     {"lower":9647,"upper":9647,},
