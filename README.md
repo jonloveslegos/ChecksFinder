@@ -7,6 +7,7 @@ Controls (connection window):
 - Shift+Tab, Up Arrow - move up
 - Left Click - Switch to the input you are hovering over, or click the button
 - Enter - submit the connection info and connect
+- Ctrl+V - paste your clipboard at the end of selected text input
 
 Controls (main game):
 - Left click - reveal currently closed tile, or reveal closed tiles around a revealed number, if the number has correct amount of marks around it
