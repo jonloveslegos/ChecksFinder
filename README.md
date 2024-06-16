@@ -2,7 +2,13 @@ A game about revealing tiles and safely marking bombs based on revealed numbers 
 
 DO NOT USE ArchipelagoChecksFinderClient !!! Connection to it was removed, all it now does is muck the save folder needlessly!
 
-Controls:
+Controls (connection window):
+- Tab, Down Arrow - move down
+- Shift+Tab, Up Arrow - move up
+- Left Click - Switch to the input you are hovering over, or click the button
+- Enter - submit the connection info and connect
+
+Controls (main game):
 - Left click - reveal currently closed tile, or reveal closed tiles around a revealed number, if the number has correct amount of marks around it
 - Right click - mark a closed tile as a bomb
 - Q - debug screen
