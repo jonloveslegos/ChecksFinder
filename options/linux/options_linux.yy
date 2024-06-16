@@ -20,7 +20,7 @@
   "option_linux_start_fullscreen":false,
   "option_linux_sync":true,
   "option_linux_texture_page":"1024x1024",
-  "option_linux_version":"1.1.7",
+  "option_linux_version":"1.2.0",
   "resourceType":"GMLinuxOptions",
   "resourceVersion":"2.0",
 }
