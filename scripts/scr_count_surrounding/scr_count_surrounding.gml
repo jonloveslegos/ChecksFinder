@@ -9,35 +9,35 @@ function scr_count_surrounding(_tile, _tile_fn) {
 	with(_tile) {
 		//instance_position is usually used for collision, so edge points can apply to multiple tiles -
 		//which means we should check non-edge coordinates
-		if (_tile_fn(instance_position(x+1,y-15,obj_tile)))
+		if (_tile_fn(instance_position(x+2,y-14,obj_tile)))
 		{
 		    _count++
 		}
-		if (_tile_fn(instance_position(x+1,y+17,obj_tile)))
+		if (_tile_fn(instance_position(x+2,y+18,obj_tile)))
 		{
 		    _count++
 		}
-		if (_tile_fn(instance_position(x-15,y+1,obj_tile)))
+		if (_tile_fn(instance_position(x-14,y+2,obj_tile)))
 		{
 		    _count++
 		}
-		if (_tile_fn(instance_position(x+17,y+1,obj_tile)))
+		if (_tile_fn(instance_position(x+18,y+2,obj_tile)))
 		{
 		    _count++
 		}
-		if (_tile_fn(instance_position(x-15,y-15,obj_tile)))
+		if (_tile_fn(instance_position(x-14,y-14,obj_tile)))
 		{
 		    _count++
 		}
-		if (_tile_fn(instance_position(x-15,y+17,obj_tile)))
+		if (_tile_fn(instance_position(x-14,y+18,obj_tile)))
 		{
 		    _count++
 		}
-		if (_tile_fn(instance_position(x+17,y-15,obj_tile)))
+		if (_tile_fn(instance_position(x+18,y-14,obj_tile)))
 		{
 		    _count++
 		}
-		if (_tile_fn(instance_position(x+17,y+17,obj_tile)))
+		if (_tile_fn(instance_position(x+18,y+18,obj_tile)))
 		{
 		    _count++
 		}
