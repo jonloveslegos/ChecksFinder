@@ -57,7 +57,7 @@ else if (_async_value == network_type_data) {
 		} else if (_parsed_message[_i].cmd == "ConnectionRefused") {
 			show_message_async(string(_parsed_message[_i].errors));
 		} else if (_parsed_message[_i].cmd == "RoomUpdate") {
-			if (is_array(_parsed_message[_i].checked_locations)) {
+			if (struct_exists(_parsed_message[_i], "checked_locations")) {
 				for (var _j = 0; _j < array_length(_parsed_message[_i].checked_locations); _j++) {
 					var _index = -1
 					for (var _k = array_length(global.missing_locations) - 1; _k >= 0;) {
