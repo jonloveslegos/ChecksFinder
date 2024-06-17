@@ -4,8 +4,8 @@ if (revealed == true)
 	draw_sprite_ext(
 		spr_tiles,
 		global.tile_data.background.tile_index,
-		x,
-		y,
+		x-1,
+		y-1,
 		1,
 		1,
 		0,
@@ -15,13 +15,14 @@ if (revealed == true)
 	shader_reset();
     if (type == "none")
     {
-        if (scr_count_surrounding(self,global.fn_is_bomb) > 0)
+		var _count = scr_count_surrounding(self,global.fn_is_bomb)
+        if (_count > 0)
         {
             draw_sprite_ext(
 				spr_tilenumbers,
-				scr_count_surrounding(self,global.fn_is_bomb),
-				x,
-				y,
+				_count,
+				x-1,
+				y-1,
 				0.5,
 				0.5,
 				0,
@@ -32,7 +33,7 @@ if (revealed == true)
     }
     if (type == "bomb")
     {
-        draw_sprite(spr_tiles,global.tile_data.bomb.tile_index,x,y)
+        draw_sprite(spr_tiles,global.tile_data.bomb.tile_index,x-1,y-1)
     }
 }
 else
@@ -41,8 +42,8 @@ else
     draw_sprite_ext(
 		spr_tiles,
 		global.tile_data.foreground.tile_index,
-		x,
-		y,
+		x-1,
+		y-1,
 		1,
 		1,
 		0,
@@ -52,6 +53,6 @@ else
 	shader_reset();
     if (marked == true)
     {
-        draw_sprite(spr_xmark,0,x,y)
+        draw_sprite(spr_xmark,0,x-1,y-1)
     }
 }

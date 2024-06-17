@@ -22,9 +22,11 @@ for (var _yy = 0; _yy<global.roomthisheight; _yy++)
 {
     for (var _xx = 0; _xx<global.roomthiswidth; _xx++)
     {
-        with instance_create_layer(_xx*16, _yy*16, "Main", obj_tile)
+        with instance_create_layer(_xx*16+1, _yy*16+1, "Main", obj_tile)
         {
             type = "none"
+			image_xscale = 0.9
+			image_yscale = 0.9
         }
     }
 }
