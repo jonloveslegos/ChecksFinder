@@ -78,7 +78,7 @@ else if (_async_value == network_type_data) {
 			for (var _j = 0; _j < array_length(_parsed_message[_i].data); _j++) {
 				if (struct_exists(_parsed_message[_i].data[_j], "text")) {
 					if (_parsed_message[_i].data[_j].text == "Now that you are connected, you can use !help to list commands to run via the server. If your client supports it, you may have additional local commands you can list with /help.") {
-						_message += "Now that you are connected, you could have use commands, but they are not implemented."
+						_message += "Now that you are connected, you could have used commands, but they are not implemented."
 					} else {
 						_message += _parsed_message[_i].data[_j].text
 					}
