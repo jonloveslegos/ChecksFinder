@@ -57,18 +57,20 @@ else if (_async_value == network_type_data) {
 		} else if (_parsed_message[_i].cmd == "ConnectionRefused") {
 			show_message_async(string(_parsed_message[_i].errors));
 		} else if (_parsed_message[_i].cmd == "RoomUpdate") {
-			for (var _j = 0; _j < array_length(_parsed_message[_i].checked_locations); _j++) {
-				var _index = -1
-				for (var _k = array_length(global.missing_locations) - 1; _k >= 0;) {
-					_index = _k
-					if (global.missing_locations[_k] == _parsed_message[_i].checked_locations[_j]) {
-						break
+			if (is_array(_parsed_message[_i].checked_locations)) {
+				for (var _j = 0; _j < array_length(_parsed_message[_i].checked_locations); _j++) {
+					var _index = -1
+					for (var _k = array_length(global.missing_locations) - 1; _k >= 0;) {
+						_index = _k
+						if (global.missing_locations[_k] == _parsed_message[_i].checked_locations[_j]) {
+							break
+						}
+						_k--
+						_index = _k
 					}
-					_k--
-					_index = _k
-				}
-				if (_index != -1) {
-					array_delete(global.missing_locations, _index, 1)
+					if (_index != -1) {
+						array_delete(global.missing_locations, _index, 1)
+					}
 				}
 			}
 		}
