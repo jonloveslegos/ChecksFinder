@@ -11,7 +11,7 @@ if (_async_value == network_type_non_blocking_connect) {
 				build: int64(6),
 				class: "Version"
 			},
-			tags: ["AP"],
+			tags: [],
 			items_handling: int64(7),
 			uuid: global.ap.uuid,
 			game: "ChecksFinder",
