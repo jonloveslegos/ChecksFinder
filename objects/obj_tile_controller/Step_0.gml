@@ -14,6 +14,9 @@ if (global.canclick && _ended && alarm[0] <= 0)
     with(obj_tile)
     {
         revealed = true
+		if (type == "bomb") {
+			marked = true
+		}
     }
     var _checksavail = -1
 	var _data = [{
