@@ -43,7 +43,6 @@ else if (_async_value == network_type_data) {
 			}
 		}
 		else if (_parsed_message[_i].cmd == "ReceivedItems") {
-			//show_message(_parsed_message[i].items)
 			var _index = _parsed_message[_i].index
 			for (var _e = 0; _e < array_length(_parsed_message[_i].items); _e++) {
 		        if (_parsed_message[_i].items[_e].item == 80000)
@@ -75,13 +74,11 @@ else if (_async_value == network_type_data) {
 			}
 		} else if (_parsed_message[_i].cmd == "PrintJSON") {
 			var _message = ""
-			for (var _j = 0; _j < array_length(_parsed_message[_i].data); _j++) {
+			if (_parsed_message[_i].type == "Tutorial") {
+				_message += "Now that you are connected, you could have used commands, but they are not implemented."
+			} else for (var _j = 0; _j < array_length(_parsed_message[_i].data); _j++) {
 				if (struct_exists(_parsed_message[_i].data[_j], "text")) {
-					if (_parsed_message[_i].data[_j].text == "Now that you are connected, you can use !help to list commands to run via the server. If your client supports it, you may have additional local commands you can list with /help.") {
-						_message += "Now that you are connected, you could have used commands, but they are not implemented."
-					} else {
-						_message += _parsed_message[_i].data[_j].text
-					}
+					_message += _parsed_message[_i].data[_j].text
 				}
 			}
 			show_debug_message(_message)
