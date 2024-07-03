@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_update_select",
   "isCompatibility":false,
   "isDnD":false,

@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_gen_pieces",
   "isCompatibility":false,
   "isDnD":false,

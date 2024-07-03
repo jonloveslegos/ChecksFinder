@@ -1,4 +1,5 @@
 function scr_setup() {
+	global.client = undefined
 	global.fishfinder_countdown = 0
 	global.layout_update_required = false
 	global.debug_view = false

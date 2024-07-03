@@ -36,7 +36,6 @@ function scr_send_packet(_data, _send_bounce = true, _do_backup = true) {
 }
 
 function scr_save_connection_data() {
-	global.client = network_create_socket(network_socket_ws)
 	global.ap = {
 		server: inst_ap_server.text,
 		port: inst_ap_port.text,
@@ -63,4 +62,12 @@ function scr_load_connection_data() {
 		uuid: ini_read_string("Archipelago", "uuid", string(irandom_range(0, 281474976710655))),
 	}
 	ini_close()
+}
+
+function scr_connect_to_ap() {
+	if (!is_undefined(global.client)) {
+		network_destroy(global.client);
+	}
+	global.client = network_create_socket(network_socket_ws);
+	network_connect_raw_async(global.client, global.ap.server, global.ap.port)
 }

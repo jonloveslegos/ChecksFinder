@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_uncover_surrounding",
   "isCompatibility":false,
   "isDnD":false,
