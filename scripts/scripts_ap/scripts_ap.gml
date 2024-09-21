@@ -27,11 +27,13 @@ function scr_send_packet(_data, _send_bounce = true, _do_backup = true) {
 		global.last_payload = _data
 	}
 	obj_aphandler.alarm[0] = 30*5 // timeout before asking to reconnect
-	show_debug_message("sent payload: {0}", _payload)
 	var _temp_buffer = buffer_create(0, buffer_grow, 1)
 	buffer_seek(_temp_buffer, buffer_seek_start, 0)
 	buffer_write(_temp_buffer, buffer_string, _payload)
-	network_send_raw(global.client, _temp_buffer, string_length(_payload), network_send_text)
+	buffer_seek(_temp_buffer, buffer_seek_start, 0)
+	show_debug_message("sending payload: {0}", buffer_read(_temp_buffer, buffer_string))
+	show_debug_message("payload size: {0}", buffer_tell(_temp_buffer) - 1)
+	network_send_raw(global.client, _temp_buffer, buffer_tell(_temp_buffer) - 1, network_send_text)
 	buffer_delete(_temp_buffer)
 }
 

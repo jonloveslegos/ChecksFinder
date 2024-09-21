@@ -1,24 +1,6 @@
 var _async_value = ds_map_find_value(async_load, "type")
 if (_async_value == network_type_non_blocking_connect) {
-	if (ds_map_find_value(async_load, "succeeded") == 1) {
-		var _data = [{
-			cmd: "Connect",
-			password: global.ap.password,
-			name: global.ap.slotname,
-			version: {
-				major: int64(0),
-				minor: int64(4),
-				build: int64(6),
-				class: "Version"
-			},
-			tags: [],
-			items_handling: int64(7),
-			uuid: global.ap.uuid,
-			game: "ChecksFinder",
-			slot_data: true
-		}]
-		scr_send_packet(_data, false, false)
-	} else {
+	if (ds_map_find_value(async_load, "succeeded") != 1) {
 		show_message_async("Failed to connect. Check if multiworld server link and port are correct, and that the server is up.")
 	}
 }
@@ -29,7 +11,25 @@ else if (_async_value == network_type_data) {
 	var _parsed_message = []
 	_parsed_message = json_parse(_payload)
 	for (var _i = 0; _i < array_length(_parsed_message); _i++) {
-		if (_parsed_message[_i].cmd == "Connected") {
+		if (_parsed_message[_i].cmd == "RoomInfo") { 
+			var _data = [{
+				cmd: "Connect",
+				name: global.ap.slotname,
+				password: global.ap.password == "" ? "None" : global.ap.password,
+				version: {
+					major: int64(0),
+					minor: int64(5),
+					build: int64(0),
+					class: "Version"
+				},
+				tags: [],
+				items_handling: int64(7),
+				uuid: global.ap.uuid,
+				game: "ChecksFinder",
+				slot_data: true
+			}]
+			scr_send_packet(_data, false, false)
+		} else if (_parsed_message[_i].cmd == "Connected") {
 			global.ap.slotid = _parsed_message[_i].slot
 			global.missing_locations = []
 			global.missing_locations = _parsed_message[_i].missing_locations
