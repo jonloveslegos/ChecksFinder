@@ -16,6 +16,7 @@ with(inst_ap_slotname) {
 }
 with(inst_ap_password) {
 	pass_text = global.ap.password
+	text = scr_secure_string(pass_text)
 }
 with(inst_btn_online) {
 	text = "Play Online"

@@ -60,6 +60,7 @@
     {"id":{"name":"scr_update_select","path":"scripts/scr_update_select/scr_update_select.yy",},},
     {"id":{"name":"scripts_ap","path":"scripts/scripts_ap/scripts_ap.yy",},},
     {"id":{"name":"scripts_debug","path":"scripts/scripts_debug/scripts_debug.yy",},},
+    {"id":{"name":"scripts_misc","path":"scripts/scripts_misc/scripts_misc.yy",},},
     {"id":{"name":"scripts_options","path":"scripts/scripts_options/scripts_options.yy",},},
     {"id":{"name":"sh_cond","path":"shaders/sh_cond/sh_cond.yy",},},
     {"id":{"name":"snd_digright","path":"sounds/snd_digright/snd_digright.yy",},},
