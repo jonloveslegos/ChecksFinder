@@ -38,13 +38,16 @@ function scr_send_packet(_data, _send_bounce = true, _do_backup = true) {
 }
 
 function scr_save_connection_data() {
+	var _is_valid = scr_is_url_valid(inst_ap_server.text)
 	global.ap = {
-		server: scr_format_server(inst_ap_server.text),
+		is_server_valid: _is_valid,
+		server: _is_valid ? scr_format_url(inst_ap_server.text) : inst_ap_server.text,
 		port: inst_ap_port.text,
 		slotname: inst_ap_slotname.text,
 		password: inst_ap_password.pass_text,
 		uuid: global.ap.uuid,
 	}
+	inst_ap_server.text = global.ap.server
 	ini_open(global.save_file)
 	ini_write_string("Archipelago", "server", global.ap.server)
 	ini_write_string("Archipelago", "port", global.ap.port)
@@ -56,8 +59,11 @@ function scr_save_connection_data() {
 
 function scr_load_connection_data() {
 	ini_open(global.save_file)
+	var _server = ini_read_string("Archipelago", "server", "wss://archipelago.gg")
+	var _is_valid = scr_is_url_valid(_server)
 	global.ap = {
-		server: scr_format_server(ini_read_string("Archipelago", "server", "wss://archipelago.gg")),
+		is_server_valid: _is_valid,
+		server: _is_valid ? scr_format_url(_server) : _server,
 		port: ini_read_string("Archipelago", "port", "38281"),
 		slotname: ini_read_string("Archipelago", "slotname", "Player1"),
 		password: ini_read_string("Archipelago", "password", ""),
@@ -75,10 +81,16 @@ function scr_connect_to_ap() {
 	network_connect_raw_async(global.client, global.ap.server, global.ap.port)
 }
 
-function scr_format_server(_server) {
-	if (string_starts_with(_server, "ws://") || string_starts_with(_server, "wss://")) {
-		return _server
-	} else if (string_starts_with(_server, "http://") || string_starts_with(_server, "https://")) {
+function scr_is_url_valid(_server) {
+	return string_starts_with(_server, "ws://") ||
+		string_starts_with(_server, "wss://") ||
+		string_starts_with(_server, "http://") ||
+		string_starts_with(_server, "https://")
+}
+
+
+function scr_format_url(_server) {
+	if (string_starts_with(_server, "h")) {
 		return string_concat("ws",string_delete(_server, 0, 4))
 	} else return _server
 }
