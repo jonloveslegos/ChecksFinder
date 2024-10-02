@@ -248,8 +248,7 @@
   },
   "pointRounding":1,
   "ranges":[
-    {"lower":32,"upper":127,},
-    {"lower":160,"upper":65535,},
+    {"lower":32,"upper":65535,},
   ],
   "regenerateBitmap":false,
   "resourceType":"GMFont",
