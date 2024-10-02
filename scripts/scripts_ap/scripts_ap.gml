@@ -39,7 +39,7 @@ function scr_send_packet(_data, _send_bounce = true, _do_backup = true) {
 
 function scr_save_connection_data() {
 	global.ap = {
-		server: inst_ap_server.text,
+		server: scr_format_ws(inst_ap_server.text),
 		port: inst_ap_port.text,
 		slotname: inst_ap_slotname.text,
 		password: inst_ap_password.pass_text,
@@ -57,7 +57,7 @@ function scr_save_connection_data() {
 function scr_load_connection_data() {
 	ini_open(global.save_file)
 	global.ap = {
-		server: ini_read_string("Archipelago", "server", "wss://archipelago.gg"),
+		server: scr_format_ws(ini_read_string("Archipelago", "server", "wss://archipelago.gg")),
 		port: ini_read_string("Archipelago", "port", "38281"),
 		slotname: ini_read_string("Archipelago", "slotname", "Player1"),
 		password: ini_read_string("Archipelago", "password", ""),
@@ -70,6 +70,15 @@ function scr_connect_to_ap() {
 	if (!is_undefined(global.client)) {
 		network_destroy(global.client);
 	}
-	global.client = network_create_socket(network_socket_ws);
+	global.client = network_create_socket(network_socket_ws)
+	obj_aphandler.alarm[1] = 130
 	network_connect_raw_async(global.client, global.ap.server, global.ap.port)
+}
+
+function scr_format_ws(_server) {
+	if (string_starts_with(_server, "ws://") || string_starts_with(_server, "wss://")) {
+		return _server
+	} else if (string_starts_with(_server, "http://") || string_starts_with(_server, "https://")) {
+		return string_concat("ws",string_delete(_server, 0, 4))
+	} else return _server
 }

@@ -1,7 +1,8 @@
+obj_aphandler.alarm[1] = -1
 var _async_value = ds_map_find_value(async_load, "type")
 if (_async_value == network_type_non_blocking_connect) {
 	if (ds_map_find_value(async_load, "succeeded") != 1) {
-		show_message_async("Failed to connect. Check if multiworld server link and port are correct, and that the server is up.")
+		show_message_async("Failed to connect. Check if multiworld server link and port are correct, and that the server is up. The server link must start with ws://, wss://, http://, or https://")
 	}
 }
 else if (_async_value == network_type_data) {
