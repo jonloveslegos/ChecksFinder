@@ -107,63 +107,63 @@ function scr_update_options() {
 	show_debug_message("{0}:",_opt_name)
 	_value = scr_string_to_color(ini_read_string("preferences",_opt_name,""))
 	if (_value != undefined) {
-		global.tile_data.foreground.color = make_color_rgb(_value[0],_value[1],_value[2])
+		global.tile_data.foreground.color = _value
 	}
 	_opt_name = "tile_background_color"
 	show_debug_message("{0}:",_opt_name)
 	_value = scr_string_to_color(ini_read_string("preferences",_opt_name,""))
 	if (_value != undefined) {
-		global.tile_data.background.color = make_color_rgb(_value[0],_value[1],_value[2])
+		global.tile_data.background.color = _value
 		global.other_settings.overwrite_background = true
 	}
 	_opt_name = "tile_text_color"
 	show_debug_message("{0}:",_opt_name)
 	_value = scr_string_to_color(ini_read_string("preferences",_opt_name,""))
 	if (_value != undefined) {
-		global.game_color.tile_text = make_color_rgb(_value[0],_value[1],_value[2])
+		global.game_color.tile_text = _value
 	}
 	_opt_name = "ui_text_color"
 	show_debug_message("{0}:",_opt_name)
 	_value = scr_string_to_color(ini_read_string("preferences",_opt_name,""))
 	if (_value != undefined) {
-		global.game_color.ui_text = make_color_rgb(_value[0],_value[1],_value[2])
+		global.game_color.ui_text = _value
 		global.other_settings.overwrite_tile_text = true
 	}
 	_opt_name = "ui_background_color"
 	show_debug_message("{0}:",_opt_name)
 	_value = scr_string_to_color(ini_read_string("preferences",_opt_name,""))
 	if (_value != undefined) {
-		global.game_color.ui_background = make_color_rgb(_value[0],_value[1],_value[2])
+		global.game_color.ui_background = _value
 	}
 	_opt_name = "textbox_text_color"
 	show_debug_message("{0}:",_opt_name)
 	_value = scr_string_to_color(ini_read_string("preferences",_opt_name,""))
 	if (_value != undefined) {
-		global.game_color.textbox_text = make_color_rgb(_value[0],_value[1],_value[2])
+		global.game_color.textbox_text = _value
 	}
 	_opt_name = "textbox_background_color"
 	show_debug_message("{0}:",_opt_name)
 	_value = scr_string_to_color(ini_read_string("preferences",_opt_name,""))
 	if (_value != undefined) {
-		global.game_color.textbox_background = make_color_rgb(_value[0],_value[1],_value[2])
+		global.game_color.textbox_background = _value
 	}
 	_opt_name = "input_text_color"
 	show_debug_message("{0}:",_opt_name)
 	_value = scr_string_to_color(ini_read_string("preferences",_opt_name,""))
 	if (_value != undefined) {
-		global.game_color.input_text = make_color_rgb(_value[0],_value[1],_value[2])
+		global.game_color.input_text = _value
 	}
 	_opt_name = "button_text_color"
 	show_debug_message("{0}:",_opt_name)
 	_value = scr_string_to_color(ini_read_string("preferences",_opt_name,""))
 	if (_value != undefined) {
-		global.game_color.button_text = make_color_rgb(_value[0],_value[1],_value[2])
+		global.game_color.button_text = _value
 	}
 	_opt_name = "button_background_color"
 	show_debug_message("{0}:",_opt_name)
 	_value = scr_string_to_color(ini_read_string("preferences",_opt_name,""))
 	if (_value != undefined) {
-		global.game_color.button_background = make_color_rgb(_value[0],_value[1],_value[2])
+		global.game_color.button_background = _value
 	}
 	ini_close()
 }
@@ -203,7 +203,7 @@ function scr_string_to_color(_str) {
 	_hex[0] = real(_hex[0]) //red
 	_hex[1] = real(_hex[1]) //green
 	_hex[2] = real(_hex[2]) //blue
-	return _hex
+	return make_color_rgb(_hex[0],_hex[1],_hex[2])
 }
 
 function is_string_falsy(_val) {
