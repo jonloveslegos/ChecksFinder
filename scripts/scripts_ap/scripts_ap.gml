@@ -65,7 +65,7 @@ function scr_load_connection_data() {
 		is_server_valid: _is_valid,
 		server: _is_valid ? scr_format_url(_server) : _server,
 		port: ini_read_string("Archipelago", "port", "38281"),
-		slotname: ini_read_string("Archipelago", "slotname", "Player1"),
+		slotname: ini_read_string("Archipelago", "slotname", "Player"),
 		password: ini_read_string("Archipelago", "password", ""),
 		uuid: ini_read_string("Archipelago", "uuid", string(irandom_range(0, 281474976710655))),
 	}
