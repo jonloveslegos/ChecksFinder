@@ -38,7 +38,7 @@
   "name":"ChecksFinder",
   "resources":[
     {"id":{"name":"fnt_main","path":"fonts/fnt_main/fnt_main.yy",},},
-    {"id":{"name":"obj_aphandler","path":"objects/obj_aphandler/obj_aphandler.yy",},},
+    {"id":{"name":"obj_ap_handler","path":"objects/obj_ap_handler/obj_ap_handler.yy",},},
     {"id":{"name":"obj_button","path":"objects/obj_button/obj_button.yy",},},
     {"id":{"name":"obj_piece","path":"objects/obj_piece/obj_piece.yy",},},
     {"id":{"name":"obj_setup","path":"objects/obj_setup/obj_setup.yy",},},
@@ -47,7 +47,7 @@
     {"id":{"name":"obj_tile_controller","path":"objects/obj_tile_controller/obj_tile_controller.yy",},},
     {"id":{"name":"obj_tile","path":"objects/obj_tile/obj_tile.yy",},},
     {"id":{"name":"obj_win_drawer","path":"objects/obj_win_drawer/obj_win_drawer.yy",},},
-    {"id":{"name":"rm_apstuff","path":"rooms/rm_apstuff/rm_apstuff.yy",},},
+    {"id":{"name":"rm_ap_data","path":"rooms/rm_ap_data/rm_ap_data.yy",},},
     {"id":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},},
     {"id":{"name":"rm_setup","path":"rooms/rm_setup/rm_setup.yy",},},
     {"id":{"name":"rm_win","path":"rooms/rm_win/rm_win.yy",},},
@@ -77,7 +77,7 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"rm_setup","path":"rooms/rm_setup/rm_setup.yy",},},
-    {"roomId":{"name":"rm_apstuff","path":"rooms/rm_apstuff/rm_apstuff.yy",},},
+    {"roomId":{"name":"rm_ap_data","path":"rooms/rm_ap_data/rm_ap_data.yy",},},
     {"roomId":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},},
     {"roomId":{"name":"rm_win","path":"rooms/rm_win/rm_win.yy",},},
   ],

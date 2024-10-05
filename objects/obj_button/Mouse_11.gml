@@ -1,3 +1,3 @@
-if (obj_aphandler.selectable_items[obj_aphandler.selected_input] != self.id) {
+if (obj_ap_handler.selectable_items[obj_ap_handler.selected_input] != self.id) {
 	highlighted = false
 }

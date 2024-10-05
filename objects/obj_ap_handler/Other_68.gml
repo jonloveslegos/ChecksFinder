@@ -1,4 +1,4 @@
-obj_aphandler.alarm[1] = -1
+obj_ap_handler.alarm[1] = -1
 var _async_value = ds_map_find_value(async_load, "type")
 if (_async_value == network_type_non_blocking_connect) {
 	if (ds_map_find_value(async_load, "succeeded") != 1) {

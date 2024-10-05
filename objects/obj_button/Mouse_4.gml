@@ -1,2 +1,2 @@
 scr_update_select(selectable_index)
-event_perform_object(obj_aphandler,ev_keypress,vk_enter)
+event_perform_object(obj_ap_handler,ev_keypress,vk_enter)
