@@ -14,8 +14,10 @@
     {"name":"Timelines","order":9,"path":"folders/Timelines.yy",},
   ],
   "ResourceOrderSettings":[
-    {"name":"obj_ap_handler","order":5,"path":"objects/obj_ap_handler/obj_ap_handler.yy",},
+    {"name":"obj_ap_data_getter","order":5,"path":"objects/obj_ap_data_getter/obj_ap_data_getter.yy",},
+    {"name":"obj_ap_network","order":11,"path":"objects/obj_ap_network/obj_ap_network.yy",},
     {"name":"obj_button","order":9,"path":"objects/obj_button/obj_button.yy",},
+    {"name":"obj_global","order":12,"path":"objects/obj_global/obj_global.yy",},
     {"name":"obj_piece","order":4,"path":"objects/obj_piece/obj_piece.yy",},
     {"name":"obj_setup","order":2,"path":"objects/obj_setup/obj_setup.yy",},
     {"name":"obj_text_box","order":8,"path":"objects/obj_text_box/obj_text_box.yy",},

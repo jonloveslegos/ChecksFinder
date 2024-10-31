@@ -1,3 +1,4 @@
+/// @description Fish
 if (global.fishfinder_countdown == 2) {
 	global.fishfinder_countdown = 3
 	show_debug_message("FI{S}H Countdown is at {0}",global.fishfinder_countdown)

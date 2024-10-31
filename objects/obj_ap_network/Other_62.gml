@@ -1,4 +1,4 @@
-obj_ap_handler.alarm[1] = -1
+obj_ap_network.alarm[1] = -1
 var _async_value = ds_map_find_value(async_load, "type")
 if (_async_value == network_type_non_blocking_connect) {
 	if (ds_map_find_value(async_load, "succeeded") != 1) {
@@ -8,7 +8,7 @@ if (_async_value == network_type_non_blocking_connect) {
 else if (_async_value == network_type_data) {
 	var _payload = buffer_read(ds_map_find_value(async_load, "buffer"), buffer_string)
 	show_debug_message("received payload: {0}",_payload)
-	alarm[0] = -1 //reset reconnection timeout, as we got a responce from the server 
+	obj_ap_network.alarm[0] = -1 //reset reconnection timeout, as we got a responce from the server 
 	var _parsed_message = []
 	_parsed_message = json_parse(_payload)
 	for (var _i = 0; _i < array_length(_parsed_message); _i++) {

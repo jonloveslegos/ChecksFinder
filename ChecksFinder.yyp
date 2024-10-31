@@ -38,8 +38,10 @@
   "name":"ChecksFinder",
   "resources":[
     {"id":{"name":"fnt_main","path":"fonts/fnt_main/fnt_main.yy",},},
-    {"id":{"name":"obj_ap_handler","path":"objects/obj_ap_handler/obj_ap_handler.yy",},},
+    {"id":{"name":"obj_ap_data_getter","path":"objects/obj_ap_data_getter/obj_ap_data_getter.yy",},},
+    {"id":{"name":"obj_ap_network","path":"objects/obj_ap_network/obj_ap_network.yy",},},
     {"id":{"name":"obj_button","path":"objects/obj_button/obj_button.yy",},},
+    {"id":{"name":"obj_global","path":"objects/obj_global/obj_global.yy",},},
     {"id":{"name":"obj_piece","path":"objects/obj_piece/obj_piece.yy",},},
     {"id":{"name":"obj_setup","path":"objects/obj_setup/obj_setup.yy",},},
     {"id":{"name":"obj_text_box","path":"objects/obj_text_box/obj_text_box.yy",},},

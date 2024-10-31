@@ -1,5 +1,5 @@
 if (room == rm_ap_data) {
-	with(obj_ap_handler.selectable_items[obj_ap_handler.selected_input]) {
+	with(obj_ap_data_getter.selectable_items[obj_ap_data_getter.selected_input]) {
 		if (object_index == obj_button) {
 			scr_save_connection_data()
 			if (global.ap.is_server_valid) {

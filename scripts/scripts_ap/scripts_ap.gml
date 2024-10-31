@@ -26,7 +26,7 @@ function scr_send_packet(_data, _send_bounce = true, _do_backup = true) {
 	if (_do_backup) {
 		global.last_payload = _data
 	}
-	obj_ap_handler.alarm[0] = 30*5 // timeout before asking to reconnect
+	obj_ap_network.alarm[0] = 30*5 // timeout before asking to reconnect
 	var _temp_buffer = buffer_create(0, buffer_grow, 1)
 	buffer_seek(_temp_buffer, buffer_seek_start, 0)
 	buffer_write(_temp_buffer, buffer_string, _payload)
@@ -76,9 +76,11 @@ function scr_connect_to_ap() {
 	if (!is_undefined(global.client)) {
 		network_destroy(global.client);
 	}
-	global.client = network_create_socket(network_socket_ws)
-	obj_ap_handler.alarm[1] = 130
-	network_connect_raw_async(global.client, global.ap.server, global.ap.port)
+	obj_ap_network.alarm[1] = 130
+	show_debug_message(global.ap.server)
+	with (obj_ap_network) {
+		event_user(0)
+	}
 }
 
 function scr_is_url_valid(_server) {
