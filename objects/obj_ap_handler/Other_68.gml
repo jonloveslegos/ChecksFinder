@@ -75,7 +75,8 @@ else if (_async_value == network_type_data) {
 			}
 		} else if (_parsed_message[_i].cmd == "PrintJSON") {
 			var _message = ""
-			if (_parsed_message[_i].type == "Tutorial") {
+			var _has_type = struct_exists(_parsed_message[_i], "type")
+			if (_has_type && _parsed_message[_i].type == "Tutorial") {
 				_message += "Now that you are connected, you could have used commands, but they are not implemented."
 			} else for (var _j = 0; _j < array_length(_parsed_message[_i].data); _j++) {
 				if (struct_exists(_parsed_message[_i].data[_j], "text")) {
