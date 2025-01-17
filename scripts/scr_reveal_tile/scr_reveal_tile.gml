@@ -30,21 +30,21 @@ function scr_reveal_tile(_tile) {
 		            revealed = true
 		        }
 		        global.canclick = false
-				// Send Deathlink if enabled
-				if (global.ap.deathlink == 1)
-				{
-					var deathlink_time = scr_unix_timestamp()
-					var deathlink_send = [{
-						cmd: "Bounce",
-						tags: ["DeathLink"],
-						data: {
-							time: deathlink_time,
-							source: global.ap.slotname,
-							cause: ""
-						},
-					}]
-					scr_send_packet(deathlink_send)
-				}
+		        // Send Deathlink if enabled
+		        if (global.ap.deathlink == 1)
+		        {
+		        	var deathlink_time = scr_unix_timestamp()
+		        	var deathlink_send = [{
+		        		cmd: "Bounce",
+		        		tags: ["DeathLink"],
+		        		data: {
+		        			time: deathlink_time,
+		        			source: global.ap.slotname,
+		        			cause: ""
+		        		},
+		        	}]
+		        	scr_send_packet(deathlink_send)
+		        }
 		        alarm[0] = 30
 		        audio_play_sound(snd_explosion,0,false)
 		    }
