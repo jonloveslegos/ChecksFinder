@@ -32,11 +32,20 @@ else if (_async_value == network_type_data) {
 			scr_send_packet(_data, false, false)
 		} else if (_parsed_message[_i].cmd == "Connected") {
 			global.ap.slotid = _parsed_message[_i].slot
+			global.ap.deathlink = _parsed_message[_i].slot_data.deathlink
 			global.missing_locations = []
 			global.missing_locations = _parsed_message[_i].missing_locations
 			global.checksgotten = 25-array_length(_parsed_message[_i].missing_locations)
 			if (array_length(global.last_payload) > 0) {
 				scr_send_packet(global.last_payload)
+			}
+			// Update Connection Tags if DeathLink is enabled
+			if (global.ap.deathlink == 1) {
+				var _data = [{
+					cmd: "ConnectUpdate",
+					tags: ["DeathLink"]
+				}]
+				scr_send_packet(_data, false, false)
 			}
 			if (global.before_game) {
 				global.before_game = false
@@ -53,6 +62,29 @@ else if (_async_value == network_type_data) {
 		        if (_parsed_message[_i].items[_e].item == 80002)
 		            scr_get_item("bomb", _index)
 				_index++
+			}
+		} else if (_parsed_message[_i].cmd == "Bounced" ) {
+			var _has_tags = struct_exists(_parsed_message[_i], "tags")
+			if (_has_tags) {
+				var _got_deathlink = array_contains(_parsed_message[_i].tags, "DeathLink")
+				if (global.ap.deathlink == 1 && _got_deathlink) {
+					// Clear Board similar to clicking a bomb
+					for (var _yy = 0;_yy<global.roomthisheight;_yy++) {
+						for (var _xx = 0;_xx<global.roomthiswidth;_xx++) {
+							with (instance_position(_xx*16+1,_yy*16+1,obj_tile)) {
+								if (type == "none") {
+									scr_gen_pieces(x,y,global.tile_data.background)
+								}
+								if (type == "bomb") {
+									scr_gen_pieces(x,y,global.tile_data.bomb)
+								}
+								instance_destroy(obj_tile_controller)
+							}
+						}
+					}
+					obj_tile.alarm[0] = 30
+					audio_play_sound(snd_explosion,0,false)
+				}
 			}
 		} else if (_parsed_message[_i].cmd == "ConnectionRefused") {
 			show_message_async(string(_parsed_message[_i].errors));
