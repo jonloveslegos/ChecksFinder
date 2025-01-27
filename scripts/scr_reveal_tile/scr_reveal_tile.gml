@@ -34,13 +34,14 @@ function scr_reveal_tile(_tile) {
 		        if (global.ap.deathlink == 1)
 		        {
 		        	var deathlink_time = scr_unix_timestamp()
+		        	var deathlink_cause = global.ap.slotname + " clicked on a bomb."
 		        	var deathlink_send = [{
 		        		cmd: "Bounce",
 		        		tags: ["DeathLink"],
 		        		data: {
 		        			time: deathlink_time,
 		        			source: global.ap.slotname,
-		        			cause: ""
+		        			cause: deathlink_cause
 		        		},
 		        	}]
 		        	scr_send_packet(deathlink_send)
