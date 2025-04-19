@@ -11,8 +11,15 @@ config_version=5
 [application]
 
 config/name="ChecksFinder"
+run/main_scene="uid://c0ovofocoscyg"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Archipelago="*res://godot_ap/autoloads/archipelago.tscn"
+TrackerManager="*res://godot_ap/autoloads/tracker_manager.gd"
+Saves="*res://godot_ap/autoloads/saves.gd"
 
 [dotnet]
 
