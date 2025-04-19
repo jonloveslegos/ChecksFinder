@@ -5,15 +5,15 @@
 
 [sub_resource type="Resource" id="Resource_pmgvy"]
 script = ExtResource("2_2e7gq")
-major = 0
+major = 2
 minor = 0
 build = 0
 
 [sub_resource type="Resource" id="Resource_m1v20"]
 script = ExtResource("2_2e7gq")
 major = 0
-minor = 5
-build = 0
+minor = 6
+build = 1
 
 [node name="AP" type="Node"]
 script = ExtResource("1_41ph8")

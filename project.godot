@@ -11,8 +11,11 @@ config_version=5
 [application]
 
 config/name="ChecksFinder"
-run/main_scene="uid://c0ovofocoscyg"
+config/version="2.0.0"
+run/main_scene="uid://b43knps7haecr"
 config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0.501961, 0, 1)
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -29,3 +32,4 @@ project/assembly_name="ChecksFinder"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0.501961, 0, 1)
