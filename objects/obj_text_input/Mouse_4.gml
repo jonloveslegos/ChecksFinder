@@ -1,1 +1,0 @@
-scr_update_select(selectable_index)
