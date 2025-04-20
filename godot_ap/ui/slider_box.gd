@@ -7,7 +7,7 @@ class_name SliderBox extends MarginContainer
 @onready var box: Control = $Row/Box
 @onready var connect_btn: Button = $Row/Box/Margins/VBox/ButtonRow/ConnectBtn
 @onready var disconnect_btn: Button = $Row/Box/Margins/VBox/ButtonRow/DisconnectBtn
-var is_open := false :
+var is_open := true :
 	set(val):
 		if is_open != val:
 			is_open = val
