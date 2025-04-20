@@ -24,12 +24,23 @@ Archipelago="*res://godot_ap/autoloads/archipelago.tscn"
 TrackerManager="*res://godot_ap/autoloads/tracker_manager.gd"
 Saves="*res://godot_ap/autoloads/saves.gd"
 
+[display]
+
+window/size/viewport_width=864
+window/stretch/aspect="keep_height"
+window/stretch/scale_mode="integer"
+
 [dotnet]
 
 project/assembly_name="ChecksFinder"
 
+[gui]
+
+theme/custom_font="uid://73rjoc23d4ub"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0, 0.501961, 0, 1)

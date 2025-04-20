@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://b43knps7haecr"]
-
-[node name="ChecksFinder" type="GridContainer"]
-custom_minimum_size = Vector2(100, 100)
-columns = 50
