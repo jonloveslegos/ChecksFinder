@@ -17,12 +17,13 @@ build = 1
 
 [node name="AP" type="Node"]
 script = ExtResource("1_41ph8")
-AP_GAME_NAME = "Checksfinder"
+AP_GAME_NAME = "ChecksFinder"
 AP_CLIENT_VERSION = SubResource("Resource_pmgvy")
 AP_VERSION = SubResource("Resource_m1v20")
 AP_HIDE_NONLOCAL_ITEMSENDS = false
 AP_AUTO_OPEN_CONSOLE = true
 AP_ALLOW_TRACKERPACKS = false
+READABLE_DATAPACK_FILES = false
 
 [node name="HangTimer" type="Timer" parent="."]
 wait_time = 5.0
