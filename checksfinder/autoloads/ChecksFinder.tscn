@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dajq8p8l557ws"]
+
+[ext_resource type="Script" uid="uid://jqa7npddbl44" path="res://checksfinder/autoloads/checksfinder.gd" id="1_30ftd"]
+
+[node name="ChecksFinder" type="Node"]
+script = ExtResource("1_30ftd")

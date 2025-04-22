@@ -1,0 +1,245 @@
+[gd_scene load_steps=16 format=3 uid="uid://cv1akcim6mdc5"]
+
+[ext_resource type="Theme" uid="uid://bxysniydt2th7" path="res://checksfinder/ui/themes/checksfinder.tres" id="1_1rejh"]
+[ext_resource type="Script" uid="uid://cu5d1k0k8thhx" path="res://checksfinder/game_scene.gd" id="2_5n5vg"]
+[ext_resource type="Script" uid="uid://b57bmqqmfng17" path="res://checksfinder/game_grid.gd" id="3_77tm3"]
+[ext_resource type="Script" uid="uid://cm0sxmcf7lc2t" path="res://checksfinder/volume_slider.gd" id="4_lfntj"]
+[ext_resource type="Texture2D" uid="uid://b10aij180tx2y" path="res://checksfinder/ui/graphics/check_icon.png" id="5_333wg"]
+[ext_resource type="Texture2D" uid="uid://c4lf2ly4ort5p" path="res://checksfinder/ui/graphics/completed_check_icon.png" id="6_frkbr"]
+[ext_resource type="Texture2D" uid="uid://cn536dxgj7ysk" path="res://checksfinder/ui/graphics/bomb_icon.png" id="7_verhn"]
+[ext_resource type="Texture2D" uid="uid://deqoj6m3mihq6" path="res://checksfinder/ui/graphics/height_icon.png" id="8_npbh7"]
+[ext_resource type="Texture2D" uid="uid://cmedmorrxk8s0" path="res://checksfinder/ui/graphics/width_icon.png" id="9_2mk5m"]
+[ext_resource type="Texture2D" uid="uid://bmh1op1r54xtx" path="res://checksfinder/ui/graphics/bomb.png" id="10_pofn2"]
+[ext_resource type="Theme" uid="uid://cc8k6b5sq7rg3" path="res://checksfinder/ui/themes/lightgreenborder_topleft.tres" id="11_npbh7"]
+[ext_resource type="Theme" uid="uid://dxdkrilr8iug8" path="res://checksfinder/ui/themes/darkgreenborder_bottomright.tres" id="12_2mk5m"]
+[ext_resource type="Script" uid="uid://dhun534k07ftn" path="res://checksfinder/ui/themes/button_focus.gd" id="13_pofn2"]
+[ext_resource type="AudioStream" uid="uid://byxudx157vjax" path="res://checksfinder/audio/digright.wav" id="14_2mk5m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7jtk"]
+bg_color = Color(0.141176, 0.345098, 0.141176, 1)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.141176, 0.345098, 0.141176, 1)
+corner_detail = 1
+
+[node name="GameScene" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1rejh")
+script = ExtResource("2_5n5vg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="GameGrid" type="GridContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 5
+script = ExtResource("3_77tm3")
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_n7jtk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VolumeContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/VolumeContainer"]
+layout_mode = 2
+tooltip_text = "Amount of checks you can do"
+
+[node name="Label" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/VolumeContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="VolumeSlider" type="HSlider" parent="HBoxContainer/PanelContainer/VBoxContainer/VolumeContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 0.1
+step = 0.01
+value = 0.1
+script = ExtResource("4_lfntj")
+
+[node name="InLogicContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/InLogicContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+tooltip_text = "Amount of checks you can currently do"
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/PanelContainer/VBoxContainer/InLogicContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("5_333wg")
+stretch_mode = 4
+
+[node name="InLogic" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/InLogicContainer/HBoxContainer"]
+layout_mode = 2
+text = "00"
+
+[node name="LocationCountContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/LocationCountContainer"]
+layout_mode = 2
+tooltip_text = "Amount of completed locations / Total amount of locations"
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/PanelContainer/VBoxContainer/LocationCountContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("6_frkbr")
+stretch_mode = 4
+
+[node name="CompletedChecks" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/LocationCountContainer/HBoxContainer"]
+layout_mode = 2
+text = "00"
+
+[node name="Slash" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/LocationCountContainer/HBoxContainer"]
+layout_mode = 2
+text = "/"
+
+[node name="AllChecks" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/LocationCountContainer/HBoxContainer"]
+layout_mode = 2
+text = "25"
+
+[node name="BombCountContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/BombCountContainer"]
+layout_mode = 2
+tooltip_text = "Amount of Map Bombs items you received / Total amount of Map Bomb items in multiworld"
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/PanelContainer/VBoxContainer/BombCountContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("7_verhn")
+stretch_mode = 4
+
+[node name="CurrentBombs" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/BombCountContainer/HBoxContainer"]
+layout_mode = 2
+text = "00"
+
+[node name="Slash" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/BombCountContainer/HBoxContainer"]
+layout_mode = 2
+text = "/"
+
+[node name="TotalBombs" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/BombCountContainer/HBoxContainer"]
+layout_mode = 2
+text = "20"
+
+[node name="HeightCountContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/HeightCountContainer"]
+layout_mode = 2
+tooltip_text = "Amount of Map Height items you received / Total amount of Map Height items in multiworld"
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/PanelContainer/VBoxContainer/HeightCountContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("8_npbh7")
+stretch_mode = 4
+
+[node name="CurrentHeight" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/HeightCountContainer/HBoxContainer"]
+layout_mode = 2
+text = "00"
+
+[node name="Slash" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/HeightCountContainer/HBoxContainer"]
+layout_mode = 2
+text = "/"
+
+[node name="TotalHeight" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/HeightCountContainer/HBoxContainer"]
+layout_mode = 2
+text = "10"
+
+[node name="WidthCountContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/WidthCountContainer"]
+layout_mode = 2
+tooltip_text = "Amount of Map Width items you received / Total amount of Map Width items in multiworld"
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/PanelContainer/VBoxContainer/WidthCountContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("9_2mk5m")
+stretch_mode = 4
+
+[node name="CurrentWidth" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/WidthCountContainer/HBoxContainer"]
+layout_mode = 2
+text = "00"
+
+[node name="Slash" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/WidthCountContainer/HBoxContainer"]
+layout_mode = 2
+text = "/"
+
+[node name="TotalWidth" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/WidthCountContainer/HBoxContainer"]
+layout_mode = 2
+text = "10"
+
+[node name="MinesOnBoardCountContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/MinesOnBoardCountContainer"]
+layout_mode = 2
+tooltip_text = "Amount of mines you marked (whether correctly or not) / Total amount of mines on the current board"
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer/PanelContainer/VBoxContainer/MinesOnBoardCountContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("10_pofn2")
+stretch_mode = 4
+
+[node name="MarkedMineCount" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/MinesOnBoardCountContainer/HBoxContainer"]
+layout_mode = 2
+text = "00"
+
+[node name="Slash" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/MinesOnBoardCountContainer/HBoxContainer"]
+layout_mode = 2
+text = "/"
+
+[node name="TotalMineCount" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/MinesOnBoardCountContainer/HBoxContainer"]
+layout_mode = 2
+text = "05"
+
+[node name="Control" type="Control" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ExitContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/ExitContainer"]
+layout_mode = 2
+theme = ExtResource("11_npbh7")
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/ExitContainer/PanelContainer"]
+layout_mode = 2
+theme = ExtResource("12_2mk5m")
+
+[node name="Exit" type="Button" parent="HBoxContainer/PanelContainer/VBoxContainer/ExitContainer/PanelContainer/PanelContainer"]
+layout_mode = 2
+text = "Exit"
+script = ExtResource("13_pofn2")
+
+[node name="DigSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_2mk5m")
+
+[connection signal="pressed" from="HBoxContainer/PanelContainer/VBoxContainer/ExitContainer/PanelContainer/PanelContainer/Exit" to="." method="_on_exit_pressed"]

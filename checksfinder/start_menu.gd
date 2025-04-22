@@ -1,14 +1,16 @@
-class_name StartMenu extends Control
+class_name StartMenu extends PanelContainer
 
 func _ready():
-	var viewport = get_viewport()
-	viewport.disable_3d = true
-	viewport.gui_embed_subwindows = false
-	
+	ChecksFinder.status = ChecksFinder.CFStatus.START_MENU
+	get_node(
+		"VBoxContainer/CenterContainer2/PanelContainer/PanelContainer/PlayOnline"
+		).grab_focus()
 
-func _shortcut_input(event):
-	if event.is_action_pressed("console_toggle"):
-		if Archipelago.output_console != null:
-			Archipelago.close_console()
-		else:
-			Archipelago.open_console()
+func _on_play_online_pressed():
+	$ClickSound.finished.connect(func():
+		get_tree().change_scene_to_file("res://checksfinder/Connection Scene.tscn"),
+		CONNECT_ONE_SHOT)
+	$ClickSound.play()
+	
+func _on_play_offline_pressed():
+	$ClickSound.play()

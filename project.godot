@@ -18,17 +18,22 @@ boot_splash/bg_color=Color(0, 0.501961, 0, 1)
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://checksfinder/audio/default_bus_layout.tres"
+
 [autoload]
 
 Archipelago="*res://godot_ap/autoloads/archipelago.tscn"
-TrackerManager="*res://godot_ap/autoloads/tracker_manager.gd"
 Saves="*res://godot_ap/autoloads/saves.gd"
+ChecksFinder="*res://checksfinder/autoloads/checksfinder.gd"
+TrackerManager="*res://godot_ap/autoloads/tracker_manager.gd"
 
 [display]
 
 window/size/viewport_width=864
+window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
-window/stretch/scale_mode="integer"
 
 [dotnet]
 
@@ -36,7 +41,6 @@ project/assembly_name="ChecksFinder"
 
 [gui]
 
-theme/custom="uid://cxykl3ktlymdu"
 theme/custom_font="uid://73rjoc23d4ub"
 
 [input]
@@ -52,4 +56,3 @@ console_toggle={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0, 0.501961, 0, 1)

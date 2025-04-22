@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1nauj0tffnq1"]
+
+[ext_resource type="Theme" uid="uid://bxysniydt2th7" path="res://checksfinder/ui/themes/checksfinder.tres" id="1_eog8g"]
+[ext_resource type="Theme" uid="uid://cc8k6b5sq7rg3" path="res://checksfinder/ui/themes/lightgreenborder_topleft.tres" id="2_8ij2a"]
+[ext_resource type="Script" uid="uid://yxegehhgpohs" path="res://checksfinder/game_cell.gd" id="2_n68ep"]
+[ext_resource type="Theme" uid="uid://dxdkrilr8iug8" path="res://checksfinder/ui/themes/darkgreenborder_bottomright.tres" id="3_n68ep"]
+[ext_resource type="Script" uid="uid://dhun534k07ftn" path="res://checksfinder/ui/themes/button_focus.gd" id="5_cpmku"]
+
+[node name="PanelContainer" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_eog8g")
+script = ExtResource("2_n68ep")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("2_8ij2a")
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer"]
+layout_mode = 2
+theme = ExtResource("3_n68ep")
+
+[node name="Game Cell" type="Button" parent="PanelContainer/PanelContainer"]
+layout_mode = 2
+script = ExtResource("5_cpmku")

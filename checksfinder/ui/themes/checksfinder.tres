@@ -1,0 +1,47 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bxysniydt2th7"]
+
+[ext_resource type="FontFile" uid="uid://b7rwgny4lcgyx" path="res://checksfinder/ui/themes/determinationmonoweb-webfont.ttf" id="1_01uxv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_01uxv"]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nyo06"]
+bg_color = Color(0.164706, 0.4, 0.164706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tdmv"]
+bg_color = Color(0.164706, 0.4, 0.164706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_giwha"]
+bg_color = Color(0.164706, 0.4, 0.164706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pqtbh"]
+bg_color = Color(0, 0.501961, 0, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljvsi"]
+bg_color = Color(0, 0.501961, 0, 1)
+
+[resource]
+Button/font_sizes/font_size = 50
+Button/fonts/font = ExtResource("1_01uxv")
+Button/styles/focus = SubResource("StyleBoxFlat_01uxv")
+Button/styles/hover = SubResource("StyleBoxFlat_nyo06")
+Button/styles/normal = SubResource("StyleBoxFlat_0tdmv")
+Button/styles/pressed = SubResource("StyleBoxFlat_giwha")
+Label/font_sizes/font_size = 50
+Label/fonts/font = ExtResource("1_01uxv")
+MarginContainer/constants/margin_bottom = 5
+MarginContainer/constants/margin_left = 5
+MarginContainer/constants/margin_right = 5
+MarginContainer/constants/margin_top = 5
+Panel/styles/panel = SubResource("StyleBoxFlat_pqtbh")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_ljvsi")
+TooltipLabel/font_sizes/font_size = 25
+TooltipLabel/fonts/font = ExtResource("1_01uxv")
+TooltipPanel/font_sizes/title_font_size = 25
+TooltipPanel/fonts/title_font = ExtResource("1_01uxv")
