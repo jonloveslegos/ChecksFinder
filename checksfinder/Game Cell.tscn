@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1nauj0tffnq1"]
+[gd_scene load_steps=7 format=3 uid="uid://d1nauj0tffnq1"]
 
 [ext_resource type="Theme" uid="uid://bxysniydt2th7" path="res://checksfinder/ui/themes/checksfinder.tres" id="1_eog8g"]
 [ext_resource type="Theme" uid="uid://cc8k6b5sq7rg3" path="res://checksfinder/ui/themes/lightgreenborder_topleft.tres" id="2_8ij2a"]
 [ext_resource type="Script" uid="uid://yxegehhgpohs" path="res://checksfinder/game_cell.gd" id="2_n68ep"]
 [ext_resource type="Theme" uid="uid://dxdkrilr8iug8" path="res://checksfinder/ui/themes/darkgreenborder_bottomright.tres" id="3_n68ep"]
-[ext_resource type="Script" uid="uid://dhun534k07ftn" path="res://checksfinder/ui/themes/button_focus.gd" id="5_cpmku"]
+[ext_resource type="Script" uid="uid://ybd37h5k2p2p" path="res://checksfinder/cell_button.gd" id="5_cpmku"]
+[ext_resource type="Theme" uid="uid://dh7h45h5vj3xh" path="res://checksfinder/ui/themes/empty.tres" id="6_cpmku"]
 
-[node name="PanelContainer" type="PanelContainer"]
+[node name="Game Cell" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -25,6 +26,36 @@ theme = ExtResource("2_8ij2a")
 layout_mode = 2
 theme = ExtResource("3_n68ep")
 
-[node name="Game Cell" type="Button" parent="PanelContainer/PanelContainer"]
+[node name="Button Cell" type="Button" parent="PanelContainer/PanelContainer"]
 layout_mode = 2
+mouse_filter = 1
+action_mode = 0
+button_mask = 3
 script = ExtResource("5_cpmku")
+
+[node name="Panel" type="Panel" parent="PanelContainer/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("6_cpmku")
+
+[node name="Label" type="Label" parent="PanelContainer/PanelContainer/Panel"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -12.0
+offset_right = 2.0
+offset_bottom = -12.0
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 0
+horizontal_alignment = 2
+
+[connection signal="mouse_entered" from="PanelContainer/PanelContainer/Button Cell" to="PanelContainer/PanelContainer/Button Cell" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/PanelContainer/Button Cell" to="PanelContainer/PanelContainer/Button Cell" method="_on_mouse_exited"]
+[connection signal="pressed" from="PanelContainer/PanelContainer/Button Cell" to="." method="_on_button_cell_pressed"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cdbqofweg6k3k"
+path="res://.godot/imported/checksfinder loop.wav-2a5a4062bad2f13420767369a25d4b05.sample"
+
+[deps]
+
+source_file="res://checksfinder/audio/checksfinder loop.wav"
+dest_files=["res://.godot/imported/checksfinder loop.wav-2a5a4062bad2f13420767369a25d4b05.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

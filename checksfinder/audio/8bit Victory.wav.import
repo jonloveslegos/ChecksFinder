@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dp87fcjtd24vk"
+path="res://.godot/imported/8bit Victory.wav-77fd2c0d959ed40891a2e9ee3049c064.sample"
+
+[deps]
+
+source_file="res://checksfinder/audio/8bit Victory.wav"
+dest_files=["res://.godot/imported/8bit Victory.wav-77fd2c0d959ed40891a2e9ee3049c064.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,30 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://diwcdcyq0q1vh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_too0m"]
+bg_color = Color(0.4, 0.266667, 0.164706, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h3a5v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7840"]
+bg_color = Color(0.4, 0.266667, 0.164706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1rin"]
+bg_color = Color(0.65098, 0.517647, 0.415686, 1)
+border_width_left = 5
+border_width_top = 5
+border_color = Color(0.65098, 0.517647, 0.415686, 1)
+
+[resource]
+Button/colors/font_color = Color(1, 0, 0, 1)
+Button/colors/font_focus_color = Color(1, 0, 0, 1)
+Button/colors/font_hover_color = Color(1, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(1, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 0, 0, 1)
+Button/styles/disabled = SubResource("StyleBoxFlat_too0m")
+Button/styles/focus = SubResource("StyleBoxEmpty_h3a5v")
+Button/styles/normal = SubResource("StyleBoxFlat_u7840")
+MarginContainer/constants/margin_bottom = 0
+MarginContainer/constants/margin_left = 5
+MarginContainer/constants/margin_right = 0
+MarginContainer/constants/margin_top = 5
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_e1rin")

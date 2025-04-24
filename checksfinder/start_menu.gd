@@ -14,3 +14,7 @@ func _on_play_online_pressed():
 	
 func _on_play_offline_pressed():
 	$ClickSound.play()
+
+func _gui_input(event: InputEvent) -> void:
+	if ChecksFinder.is_event_ui(event):
+		ChecksFinder.has_used_ui_buttons = true

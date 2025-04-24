@@ -1,4 +1,4 @@
-extends Button
+class_name WrappedButton extends Button
 
 
 func _on_mouse_entered() -> void:
@@ -15,7 +15,7 @@ func _on_mouse_exited() -> void:
 		var outer = inner.get_parent()
 		set_button_margin_theme("res://checksfinder/ui/themes/lightgreenborder_topleft.tres", outer)
 
-func set_button_margin_theme(path: String, margin_node: Node) -> void:
+func set_button_margin_theme(path: String, margin_node: Control) -> void:
 	if path.is_empty(): return
 	var theme_res := load(path) as Theme
 	if not theme_res: return

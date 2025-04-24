@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://daysi51wer37e"]
+
+[ext_resource type="Texture2D" uid="uid://cfcnhq7c7mexm" path="res://checksfinder/ui/graphics/x_mark.png" id="1_8n326"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_trjwk"]
+texture = ExtResource("1_8n326")
+modulate_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8n326"]
+texture = ExtResource("1_8n326")
+modulate_color = Color(1, 0, 0, 1)
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxTexture_trjwk")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_8n326")

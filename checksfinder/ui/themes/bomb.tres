@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dp5mf5nwbre78"]
+
+[ext_resource type="Texture2D" uid="uid://bmh1op1r54xtx" path="res://checksfinder/ui/graphics/bomb.png" id="1_h0w5v"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l4ye7"]
+texture = ExtResource("1_h0w5v")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h0w5v"]
+texture = ExtResource("1_h0w5v")
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxTexture_l4ye7")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_h0w5v")

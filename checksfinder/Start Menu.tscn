@@ -45,12 +45,26 @@ layout_mode = 2
 text = "Volume"
 horizontal_alignment = 1
 
-[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/CenterContainer1/VBoxContainer"]
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/CenterContainer1/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+selected = 0
+allow_reselect = true
+item_count = 3
+popup/item_0/text = "Master"
+popup/item_0/id = 0
+popup/item_1/text = "Music"
+popup/item_1/id = 2
+popup/item_2/text = "Sound Effects"
+popup/item_2/id = 1
+
+[node name="VolumeSlider" type="HSlider" parent="VBoxContainer/CenterContainer1/VBoxContainer" node_paths=PackedStringArray("option_button")]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 script = ExtResource("2_3yyqv")
+option_button = NodePath("../OptionButton")
 
 [node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -97,7 +111,9 @@ script = ExtResource("6_esdqp")
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_kst3m")
+bus = &"Sound Effects"
 
+[connection signal="item_selected" from="VBoxContainer/CenterContainer1/VBoxContainer/OptionButton" to="VBoxContainer/CenterContainer1/VBoxContainer/VolumeSlider" method="_on_option_button_item_selected"]
 [connection signal="value_changed" from="VBoxContainer/CenterContainer1/VBoxContainer/VolumeSlider" to="VBoxContainer/CenterContainer1/VBoxContainer/VolumeSlider" method="_on_value_changed"]
 [connection signal="mouse_entered" from="VBoxContainer/CenterContainer2/PanelContainer/PanelContainer/PlayOnline" to="VBoxContainer/CenterContainer2/PanelContainer/PanelContainer/PlayOnline" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/CenterContainer2/PanelContainer/PanelContainer/PlayOnline" to="VBoxContainer/CenterContainer2/PanelContainer/PanelContainer/PlayOnline" method="_on_mouse_exited"]

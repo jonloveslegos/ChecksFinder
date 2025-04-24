@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cv1akcim6mdc5"]
+[gd_scene load_steps=17 format=3 uid="uid://cv1akcim6mdc5"]
 
 [ext_resource type="Theme" uid="uid://bxysniydt2th7" path="res://checksfinder/ui/themes/checksfinder.tres" id="1_1rejh"]
 [ext_resource type="Script" uid="uid://cu5d1k0k8thhx" path="res://checksfinder/game_scene.gd" id="2_5n5vg"]
@@ -14,6 +14,8 @@
 [ext_resource type="Theme" uid="uid://dxdkrilr8iug8" path="res://checksfinder/ui/themes/darkgreenborder_bottomright.tres" id="12_2mk5m"]
 [ext_resource type="Script" uid="uid://dhun534k07ftn" path="res://checksfinder/ui/themes/button_focus.gd" id="13_pofn2"]
 [ext_resource type="AudioStream" uid="uid://byxudx157vjax" path="res://checksfinder/audio/digright.wav" id="14_2mk5m"]
+
+[sub_resource type="Theme" id="Theme_2mk5m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7jtk"]
 bg_color = Color(0.141176, 0.345098, 0.141176, 1)
@@ -38,9 +40,11 @@ script = ExtResource("2_5n5vg")
 layout_mode = 2
 
 [node name="GameGrid" type="GridContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
+theme = SubResource("Theme_2mk5m")
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 5
@@ -68,12 +72,25 @@ theme_override_font_sizes/font_size = 30
 text = "Volume"
 horizontal_alignment = 1
 
-[node name="VolumeSlider" type="HSlider" parent="HBoxContainer/PanelContainer/VBoxContainer/VolumeContainer/VBoxContainer"]
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/PanelContainer/VBoxContainer/VolumeContainer/VBoxContainer"]
 layout_mode = 2
-max_value = 0.1
+alignment = 1
+selected = 0
+allow_reselect = true
+item_count = 3
+popup/item_0/text = "Master"
+popup/item_0/id = 0
+popup/item_1/text = "Sound Effects"
+popup/item_1/id = 1
+popup/item_2/text = "Music"
+popup/item_2/id = 2
+
+[node name="VolumeSlider" type="HSlider" parent="HBoxContainer/PanelContainer/VBoxContainer/VolumeContainer/VBoxContainer" node_paths=PackedStringArray("option_button")]
+layout_mode = 2
+max_value = 1.0
 step = 0.01
-value = 0.1
 script = ExtResource("4_lfntj")
+option_button = NodePath("../OptionButton")
 
 [node name="InLogicContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -241,5 +258,8 @@ script = ExtResource("13_pofn2")
 
 [node name="DigSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_2mk5m")
+bus = &"Sound Effects"
 
+[connection signal="item_selected" from="HBoxContainer/PanelContainer/VBoxContainer/VolumeContainer/VBoxContainer/OptionButton" to="HBoxContainer/PanelContainer/VBoxContainer/VolumeContainer/VBoxContainer/VolumeSlider" method="_on_option_button_item_selected"]
+[connection signal="value_changed" from="HBoxContainer/PanelContainer/VBoxContainer/VolumeContainer/VBoxContainer/VolumeSlider" to="HBoxContainer/PanelContainer/VBoxContainer/VolumeContainer/VBoxContainer/VolumeSlider" method="_on_value_changed"]
 [connection signal="pressed" from="HBoxContainer/PanelContainer/VBoxContainer/ExitContainer/PanelContainer/PanelContainer/Exit" to="." method="_on_exit_pressed"]

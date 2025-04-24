@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bv3ws2co8618x"
+path="res://.godot/imported/8bit Filler.wav-9c562173061edea057cdec03784f1a3d.sample"
+
+[deps]
+
+source_file="res://checksfinder/audio/8bit Filler.wav"
+dest_files=["res://.godot/imported/8bit Filler.wav-9c562173061edea057cdec03784f1a3d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

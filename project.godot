@@ -16,7 +16,9 @@ run/main_scene="uid://b43knps7haecr"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0.501961, 0, 1)
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="uid://cfbmx80dv45e7"
+config/macos_native_icon="res://icon.icns"
+config/windows_native_icon="res://icon.ico"
 
 [audio]
 
@@ -25,9 +27,8 @@ buses/default_bus_layout="res://checksfinder/audio/default_bus_layout.tres"
 [autoload]
 
 Archipelago="*res://godot_ap/autoloads/archipelago.tscn"
-Saves="*res://godot_ap/autoloads/saves.gd"
-ChecksFinder="*res://checksfinder/autoloads/checksfinder.gd"
 TrackerManager="*res://godot_ap/autoloads/tracker_manager.gd"
+ChecksFinder="*res://checksfinder/autoloads/ChecksFinder.tscn"
 
 [display]
 
@@ -60,3 +61,4 @@ pointing/android/enable_long_press_as_right_click=true
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
