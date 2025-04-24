@@ -1,5 +1,4 @@
-extends Node
-# Autoload 'TrackerManager'
+class_name TrackerManager extends Node
 
 signal tracking_reloaded
 
@@ -111,6 +110,7 @@ func _ready():
 			Archipelago.on_attach_console.connect(load_tracker_packs, CONNECT_ONE_SHOT)
 
 func load_tracker_packs() -> void:
+	if not Archipelago.AP_ALLOW_TRACKERPACKS: return
 	var dir := DirAccess.open("tracker_packs/")
 	if not dir:
 		dir = DirAccess.open("./")

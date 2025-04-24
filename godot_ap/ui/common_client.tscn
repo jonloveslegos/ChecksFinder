@@ -15,12 +15,6 @@
 [sub_resource type="ButtonGroup" id="ButtonGroup_oksvb"]
 
 [node name="ConsoleContainer" instance=ExtResource("1_i5jgm")]
-custom_minimum_size = Vector2(1920, 1001)
-offset_right = 1920.0
-offset_bottom = 1001.0
-
-[node name="Tabs" parent="." index="0"]
-custom_minimum_size = Vector2(1920, 1001)
 
 [node name="Tracking" type="MarginContainer" parent="Tabs" index="3"]
 visible = false
