@@ -27,7 +27,6 @@ buses/default_bus_layout="res://checksfinder/audio/default_bus_layout.tres"
 [autoload]
 
 Archipelago="*res://godot_ap/autoloads/archipelago.tscn"
-TrackerManager="*res://godot_ap/autoloads/tracker_manager.gd"
 ChecksFinder="*res://checksfinder/autoloads/ChecksFinder.tscn"
 
 [display]
