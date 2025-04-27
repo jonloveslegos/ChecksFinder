@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://cmedmorrxk8s0" path="res://checksfinder/ui/graphics/width_icon.png" id="9_2mk5m"]
 [ext_resource type="Texture2D" uid="uid://bmh1op1r54xtx" path="res://checksfinder/ui/graphics/bomb.png" id="10_pofn2"]
 [ext_resource type="Theme" uid="uid://cc8k6b5sq7rg3" path="res://checksfinder/ui/themes/lightgreenborder_topleft.tres" id="11_npbh7"]
+[ext_resource type="PackedScene" uid="uid://byqp3jea6xq5w" path="res://checksfinder/ui/themes/button_wrapper.tscn" id="11_xwlk7"]
 [ext_resource type="Theme" uid="uid://dxdkrilr8iug8" path="res://checksfinder/ui/themes/darkgreenborder_bottomright.tres" id="12_2mk5m"]
-[ext_resource type="Script" uid="uid://dhun534k07ftn" path="res://checksfinder/ui/themes/button_focus.gd" id="13_pofn2"]
 [ext_resource type="AudioStream" uid="uid://byxudx157vjax" path="res://checksfinder/audio/digright.wav" id="14_2mk5m"]
 [ext_resource type="Theme" uid="uid://dh7h45h5vj3xh" path="res://checksfinder/ui/themes/empty.tres" id="14_xwlk7"]
 [ext_resource type="Script" uid="uid://c84vn3k22tq32" path="res://checksfinder/victory_screen.gd" id="15_hynhs"]
@@ -272,19 +272,9 @@ size_flags_vertical = 3
 [node name="ExitContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/ExitContainer"]
+[node name="Exit" parent="HBoxContainer/PanelContainer/VBoxContainer/ExitContainer" instance=ExtResource("11_xwlk7")]
 layout_mode = 2
-tooltip_text = "Exit to main menu"
-theme = ExtResource("11_npbh7")
-
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/ExitContainer/PanelContainer"]
-layout_mode = 2
-theme = ExtResource("12_2mk5m")
-
-[node name="Exit" type="Button" parent="HBoxContainer/PanelContainer/VBoxContainer/ExitContainer/PanelContainer/PanelContainer"]
-layout_mode = 2
-text = "Exit"
-script = ExtResource("13_pofn2")
+button_text = "Exit"
 
 [node name="DisconnectScreen" type="PanelContainer" parent="."]
 visible = false
@@ -371,5 +361,5 @@ bus = &"Sound Effects"
 
 [connection signal="game_grid_sound" from="HBoxContainer/GameGrid" to="." method="_on_game_grid_sound"]
 [connection signal="updated_marked_mines" from="HBoxContainer/GameGrid" to="." method="_on_updated_marked_mines"]
-[connection signal="pressed" from="HBoxContainer/PanelContainer/VBoxContainer/ExitContainer/PanelContainer/PanelContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="wrapped_button_pressed" from="HBoxContainer/PanelContainer/VBoxContainer/ExitContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="VictoryScreen/Button" to="VictoryScreen/Button" method="_on_pressed"]

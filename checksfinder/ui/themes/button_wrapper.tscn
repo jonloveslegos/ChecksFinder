@@ -15,12 +15,10 @@ layout_mode = 2
 theme = ExtResource("3_7jxov")
 
 [node name="WrappedButton" type="Button" parent="PanelContainer" node_paths=PackedStringArray("inner", "outer")]
-custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 tooltip_text = "Play using Archipelago server"
-text = " Play Online "
+text = "Test Message"
 script = ExtResource("4_t3mou")
 inner = NodePath("..")
 outer = NodePath("../..")
