@@ -111,7 +111,7 @@ func get_cur_bombs() -> int:
 
 func get_count_in_logic() -> int:
 	var count = 0
-	for i in range(cur_location_index, min(get_all_item_count() + 5 - 1, 24)):
+	for i in range(cur_location_index, min(get_all_item_count() + 5, 25)):
 		if not Archipelago.conn.slot_locations[location_list[i]]:
 			count += 1
 	return count
