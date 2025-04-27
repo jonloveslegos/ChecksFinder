@@ -1,8 +1,57 @@
 class_name GameScene extends PanelContainer
 
-enum SoundType{
-	DIG, EXPLOSION, VICTORY
-}
+@export var dig_sound: AudioStreamPlayer
+@export var explosion_sound: AudioStreamPlayer
+@export var generic_win_sound: AudioStreamPlayer
+
+@export var InLogic: Label
+@export var CompletedChecks: Label
+
+@export var CurrentBombs: Label
+@export var CurrentMaxBombs: Label
+
+@export var CurrentHeight: Label
+@export var CurrentMaxHeight: Label
+
+@export var CurrentWidth: Label
+@export var CurrentMaxWidth: Label
+
+@export var MarkedMines: Label
+@export var TotalCurrentMines: Label
+
+@export var DisconnectScreen: PanelContainer
+@export var VictoryScreen: PanelContainer
+@export var game_grid: GameGrid
+
+func number_to_text(number: int, digit_count: int) -> String:
+	var _str = str(number)
+	while _str.length() < digit_count:
+		_str = '0' + _str
+	return _str
+
+func _ready() -> void:
+	ChecksFinder.update_item_info.connect(_on_update_item_info)
+	set_info()
+	Archipelago.disconnected.connect(_on_disconnect)
+	ChecksFinder.changed_connection.connect(_on_changed_connection)
+	ChecksFinder.item_status_updated.connect(_on_item_status_updated)
+
+func _on_update_item_info():
+	set_info()
+
+func set_info():
+	InLogic.text = number_to_text(ChecksFinder.get_count_in_logic(), 2)
+	CompletedChecks.text = number_to_text(ChecksFinder.get_completed_count(), 2)
+	CurrentBombs.text = number_to_text(game_grid.bombs, 2)
+	CurrentMaxBombs.text = number_to_text(ChecksFinder.get_all_bombs(), 2)
+	CurrentHeight.text = number_to_text(game_grid.height, 2)
+	CurrentMaxHeight.text = number_to_text(ChecksFinder.get_all_height(), 2)
+	CurrentWidth.text = number_to_text(game_grid.width, 2)
+	CurrentMaxWidth.text = number_to_text(ChecksFinder.get_all_width(), 2)
+	TotalCurrentMines.text = number_to_text(game_grid.mine_count, 2)
+
+func _on_updated_marked_mines(count: int) -> void:
+	MarkedMines.text = number_to_text(count, 2)
 
 func _on_exit_pressed() -> void:
 	$DigSound.finished.connect(func():
@@ -11,7 +60,26 @@ func _on_exit_pressed() -> void:
 		get_tree().change_scene_to_file("res://checksfinder/Start Menu.tscn"), CONNECT_ONE_SHOT)
 	$DigSound.play()
 
-func _on_game_cell_pressed(sound_type: SoundType) -> void:
+func play_sound(sound_type):
 	match sound_type:
 		SoundType.DIG:
 			$DigSound.play()
+		SoundType.EXPLOSION:
+			$Explosion.play()
+		SoundType.GENERIC_WIN:
+			$GenericWin.play()
+
+func _on_game_cell_pressed_sound(sound_type) -> void:
+	play_sound(sound_type)
+
+func _on_game_grid_sound(sound_type) -> void:
+	play_sound(sound_type)
+
+func _on_disconnect() -> void:
+	DisconnectScreen.visible = true
+
+func _on_changed_connection() -> void:
+	get_tree().change_scene_to_file("res://checksfinder/Game Scene.tscn")
+
+func _on_item_status_updated() -> void:
+	DisconnectScreen.visible = false

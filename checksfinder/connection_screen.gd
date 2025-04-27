@@ -10,9 +10,9 @@ func _ready():
 	go_to_game.call_deferred()
 
 func go_to_game():
-	if Archipelago.status == Archipelago.APStatus.PLAYING:
+	if ChecksFinder.item_status == ChecksFinder.ItemStatus.RECEIVED_ITEMS:
 		Archipelago.set_client_status(Archipelago.ClientStatus.CLIENT_PLAYING)
 		ChecksFinder.music.start()
 		get_tree().change_scene_to_file("res://checksfinder/Game Scene.tscn")
 	else:
-		Archipelago.status_updated.connect(go_to_game, CONNECT_ONE_SHOT)
+		ChecksFinder.item_status_updated.connect(go_to_game, CONNECT_ONE_SHOT)

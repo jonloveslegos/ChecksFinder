@@ -1,9 +1,37 @@
-[gd_scene load_steps=8 format=3 uid="uid://dajq8p8l557ws"]
+[gd_scene load_steps=9 format=3 uid="uid://dajq8p8l557ws"]
 
 [ext_resource type="Script" uid="uid://jqa7npddbl44" path="res://checksfinder/autoloads/checksfinder.gd" id="1_30ftd"]
 [ext_resource type="AudioStream" uid="uid://cwu2g1c1kwcin" path="res://checksfinder/audio/checksfinder intro.wav" id="2_0jtvp"]
 [ext_resource type="Script" uid="uid://dpta1ac8jdy0m" path="res://checksfinder/autoloads/music_controller.gd" id="2_cxgin"]
 [ext_resource type="AudioStream" uid="uid://cdbqofweg6k3k" path="res://checksfinder/audio/checksfinder loop.wav" id="3_cxgin"]
+[ext_resource type="AudioStream" uid="uid://dp87fcjtd24vk" path="res://checksfinder/audio/8bit Victory.wav" id="5_cyvo4"]
+
+[sub_resource type="Animation" id="Animation_nomo8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("loop:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("intro:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_cyvo4"]
 resource_name = "sound_fadeout"
@@ -33,33 +61,6 @@ tracks/1/keys = {
 "values": [0.0, -30.0, -80.0]
 }
 
-[sub_resource type="Animation" id="Animation_nomo8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("loop:volume_db")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("intro:volume_db")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_db0jq"]
 _data = {
 &"RESET": SubResource("Animation_nomo8"),
@@ -81,10 +82,16 @@ bus = &"Music"
 stream = ExtResource("2_0jtvp")
 bus = &"Music"
 
+[node name="victory" type="AudioStreamPlayer" parent="MusicController"]
+stream = ExtResource("5_cyvo4")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MusicController"]
 libraries = {
 &"": SubResource("AnimationLibrary_db0jq")
 }
 
+[connection signal="needed_item_received" from="." to="." method="_on_needed_item_received"]
+[connection signal="finished" from="MusicController/loop" to="MusicController" method="_on_loop_finished"]
 [connection signal="finished" from="MusicController/intro" to="MusicController" method="_on_intro_finished"]
+[connection signal="finished" from="MusicController/victory" to="MusicController" method="_on_victory_finished"]
 [connection signal="animation_finished" from="MusicController/AnimationPlayer" to="MusicController" method="_on_animation_player_animation_finished"]

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://byqp3jea6xq5w"]
+
+[ext_resource type="Theme" uid="uid://cc8k6b5sq7rg3" path="res://checksfinder/ui/themes/lightgreenborder_topleft.tres" id="1_vjs5k"]
+[ext_resource type="Script" uid="uid://bvwbf6yy385rk" path="res://checksfinder/ui/themes/button_wrapper.gd" id="2_5vm27"]
+[ext_resource type="Theme" uid="uid://dxdkrilr8iug8" path="res://checksfinder/ui/themes/darkgreenborder_bottomright.tres" id="3_7jxov"]
+[ext_resource type="Script" uid="uid://dhun534k07ftn" path="res://checksfinder/ui/themes/button_focus.gd" id="4_t3mou"]
+
+[node name="ButtonWrapper" type="PanelContainer" node_paths=PackedStringArray("button")]
+theme = ExtResource("1_vjs5k")
+script = ExtResource("2_5vm27")
+button = NodePath("PanelContainer/WrappedButton")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("3_7jxov")
+
+[node name="WrappedButton" type="Button" parent="PanelContainer" node_paths=PackedStringArray("inner", "outer")]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tooltip_text = "Play using Archipelago server"
+text = " Play Online "
+script = ExtResource("4_t3mou")
+inner = NodePath("..")
+outer = NodePath("../..")
+
+[connection signal="mouse_entered" from="PanelContainer/WrappedButton" to="PanelContainer/WrappedButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PanelContainer/WrappedButton" to="PanelContainer/WrappedButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="PanelContainer/WrappedButton" to="." method="_on_wrapped_button_pressed"]

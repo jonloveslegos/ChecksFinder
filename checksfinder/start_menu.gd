@@ -1,10 +1,10 @@
 class_name StartMenu extends PanelContainer
 
+@export var starting_focus: ButtonWrapper
+
 func _ready():
 	ChecksFinder.status = ChecksFinder.CFStatus.START_MENU
-	get_node(
-		"VBoxContainer/CenterContainer2/PanelContainer/PanelContainer/PlayOnline"
-		).grab_focus()
+	starting_focus.inner_grab_focus()
 
 func _on_play_online_pressed():
 	$ClickSound.finished.connect(func():

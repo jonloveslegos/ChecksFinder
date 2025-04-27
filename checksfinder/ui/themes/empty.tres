@@ -1,9 +1,21 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dh7h45h5vj3xh"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dh7h45h5vj3xh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rsr6h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a6q1h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a038l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xgsr7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yxhht"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kukt4"]
 
 [resource]
+Button/styles/focus = SubResource("StyleBoxEmpty_rsr6h")
+Button/styles/hover = SubResource("StyleBoxEmpty_a6q1h")
+Button/styles/normal = SubResource("StyleBoxEmpty_a038l")
+Button/styles/pressed = SubResource("StyleBoxEmpty_xgsr7")
 Panel/styles/panel = SubResource("StyleBoxEmpty_yxhht")
 PanelContainer/styles/panel = SubResource("StyleBoxEmpty_kukt4")

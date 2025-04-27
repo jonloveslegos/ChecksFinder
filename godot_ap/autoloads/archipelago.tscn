@@ -1,24 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0ovofocoscyg"]
+[gd_scene load_steps=6 format=3 uid="uid://c0ovofocoscyg"]
 
 [ext_resource type="Script" uid="uid://0mq4s883pbat" path="res://godot_ap/autoloads/archipelago.gd" id="1_41ph8"]
 [ext_resource type="Script" uid="uid://dc70htepylffm" path="res://godot_ap/ap_files/version.gd" id="2_2e7gq"]
+[ext_resource type="Script" uid="uid://d0c7n2adr5kd0" path="res://checksfinder/configs.gd" id="3_rcf7h"]
 
 [sub_resource type="Resource" id="Resource_pmgvy"]
 script = ExtResource("2_2e7gq")
-major = 0
+major = 2
 minor = 0
 build = 0
 
 [sub_resource type="Resource" id="Resource_m1v20"]
 script = ExtResource("2_2e7gq")
 major = 0
-minor = 5
-build = 0
+minor = 6
+build = 1
 
 [node name="AP" type="Node"]
 script = ExtResource("1_41ph8")
+AP_GAME_NAME = "ChecksFinder"
 AP_CLIENT_VERSION = SubResource("Resource_pmgvy")
 AP_VERSION = SubResource("Resource_m1v20")
+AP_HIDE_NONLOCAL_ITEMSENDS = false
+AP_ALLOW_TRACKERPACKS = false
+
+[node name="ChecksFinderConfigManager" type="Node" parent="."]
+script = ExtResource("3_rcf7h")
+metadata/_custom_type_script = "uid://d0c7n2adr5kd0"
 
 [node name="HangTimer" type="Timer" parent="."]
 wait_time = 5.0

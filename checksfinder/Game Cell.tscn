@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://ybd37h5k2p2p" path="res://checksfinder/cell_button.gd" id="5_cpmku"]
 [ext_resource type="Theme" uid="uid://dh7h45h5vj3xh" path="res://checksfinder/ui/themes/empty.tres" id="6_cpmku"]
 
-[node name="Game Cell" type="PanelContainer"]
+[node name="Game Cell" type="PanelContainer" node_paths=PackedStringArray("button_cell", "panel", "label")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -17,6 +17,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_eog8g")
 script = ExtResource("2_n68ep")
+button_cell = NodePath("PanelContainer/PanelContainer/Button Cell")
+panel = NodePath("PanelContainer/PanelContainer/Panel")
+label = NodePath("PanelContainer/PanelContainer/Panel/Label")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -26,12 +29,16 @@ theme = ExtResource("2_8ij2a")
 layout_mode = 2
 theme = ExtResource("3_n68ep")
 
-[node name="Button Cell" type="Button" parent="PanelContainer/PanelContainer"]
+[node name="Button Cell" type="Button" parent="PanelContainer/PanelContainer" node_paths=PackedStringArray("root_game_cell", "label", "inner", "outer")]
 layout_mode = 2
 mouse_filter = 1
 action_mode = 0
 button_mask = 3
 script = ExtResource("5_cpmku")
+root_game_cell = NodePath("../../..")
+label = NodePath("../Panel/Label")
+inner = NodePath("..")
+outer = NodePath("../..")
 
 [node name="Panel" type="Panel" parent="PanelContainer/PanelContainer"]
 layout_mode = 2
@@ -56,6 +63,7 @@ theme_override_constants/outline_size = 0
 theme_override_constants/shadow_outline_size = 0
 horizontal_alignment = 2
 
+[connection signal="gui_input" from="PanelContainer/PanelContainer/Button Cell" to="PanelContainer/PanelContainer/Button Cell" method="_on_gui_input"]
 [connection signal="mouse_entered" from="PanelContainer/PanelContainer/Button Cell" to="PanelContainer/PanelContainer/Button Cell" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PanelContainer/PanelContainer/Button Cell" to="PanelContainer/PanelContainer/Button Cell" method="_on_mouse_exited"]
 [connection signal="pressed" from="PanelContainer/PanelContainer/Button Cell" to="." method="_on_button_cell_pressed"]

@@ -1,0 +1,4 @@
+class_name SoundType
+enum {
+	DIG, EXPLOSION, FILLER, PROGRESSION, TRAP, USEFUL, GENERIC_WIN
+}
