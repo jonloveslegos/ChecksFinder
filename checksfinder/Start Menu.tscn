@@ -47,6 +47,7 @@ size_flags_vertical = 6
 [node name="PlayOnline" parent="VBoxContainer/CenterContainer2" instance=ExtResource("4_tk0ql")]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
+tooltip_text = "Play online via Archipelago Server"
 button_text = "Play Online"
 
 [node name="CenterContainer3" type="CenterContainer" parent="VBoxContainer"]
@@ -56,7 +57,8 @@ size_flags_vertical = 2
 [node name="PlayOffline" parent="VBoxContainer/CenterContainer3" instance=ExtResource("4_tk0ql")]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
-button_text = "Play Online"
+tooltip_text = "Play Offline with a custom board"
+button_text = "Play Offline"
 disabled = true
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]

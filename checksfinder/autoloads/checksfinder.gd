@@ -77,8 +77,6 @@ func send_location(index):
 			if item.dest_player_id == Archipelago.conn.player_id:
 				item_status = ItemStatus.WAITING_FOR_CURRENT_ITEM)
 		Archipelago.collect_location(location_list[index])
-	elif index == location_list.size():
-		Archipelago.set_client_status(AP.ClientStatus.CLIENT_GOAL)
 
 func build_items_dict(items: Array[NetworkItem], count: int) -> Dictionary[String, int]:
 	var dict: Dictionary[String, int] = {
@@ -113,7 +111,7 @@ func get_cur_bombs() -> int:
 
 func get_count_in_logic() -> int:
 	var count = 0
-	for i in range(cur_location_index, min(get_all_item_count(), 24)):
+	for i in range(cur_location_index, min(get_all_item_count() + 5 - 1, 24)):
 		if not Archipelago.conn.slot_locations[location_list[i]]:
 			count += 1
 	return count

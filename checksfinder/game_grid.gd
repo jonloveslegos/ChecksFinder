@@ -6,7 +6,7 @@ enum GameState{
 var game_state = GameState.EMPTY
 
 var children: Array[GameCell] = []
-var delay: float = 0.1
+var delay: float = 0.09
 @onready var height = ChecksFinder.get_cur_height()
 @onready var width = ChecksFinder.get_cur_width()
 @onready var bombs = ChecksFinder.get_cur_bombs()
@@ -106,11 +106,12 @@ func _on_game_cell_revealed(game_cell: GameCell) -> void:
 				if ChecksFinder.get_all_item_count() == 25:
 					game_scene.VictoryScreen.visible = true
 					ChecksFinder.music.victory()
+					Archipelago.set_client_status(AP.ClientStatus.CLIENT_GOAL)
+				await get_tree().create_timer(0.1).timeout
 				if ChecksFinder.item_status == CF.ItemStatus.WAITING_FOR_CURRENT_ITEM:
 					await ChecksFinder.needed_item_received
 				if game_scene.generic_win_sound.playing:
 					await game_scene.generic_win_sound.finished
-					await get_tree().create_timer(0.1).timeout
 				if not game_scene.VictoryScreen.visible:
 					get_tree().change_scene_to_file("res://checksfinder/Game Scene.tscn")
 	elif game_state == GameState.LOST:
@@ -126,7 +127,7 @@ func loss(game_cell: GameCell) -> void:
 	if not opened and children.all(func(cell: GameCell): return cell.revealed):
 		var tree = get_tree()
 		if is_instance_valid(tree):
-			await tree.process_frame
+			await get_tree().create_timer(0.1).timeout
 			if game_scene.explosion_sound.playing:
 				await game_scene.explosion_sound.finished
 			tree = get_tree()

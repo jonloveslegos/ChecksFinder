@@ -274,6 +274,7 @@ layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/ExitContainer"]
 layout_mode = 2
+tooltip_text = "Exit to main menu"
 theme = ExtResource("11_npbh7")
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/ExitContainer/PanelContainer"]
