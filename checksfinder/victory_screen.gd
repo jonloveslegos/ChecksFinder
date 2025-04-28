@@ -2,4 +2,5 @@ extends Button
 
 
 func _on_pressed() -> void:
-	get_tree().change_scene_to_file("res://checksfinder/Game Scene.tscn")
+	var scene = load("res://checksfinder/Game Scene.tscn").instantiate()
+	ChecksFinder.replace_scene(scene)

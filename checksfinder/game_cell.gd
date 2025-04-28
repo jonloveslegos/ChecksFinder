@@ -15,6 +15,7 @@ signal revealed_cell(cell: GameCell)
 signal pressed_sound(sound)
 var nearby_bomb_count: int = -1
 var has_blown_up: bool = false
+var index: int = -1
 
 func _ready():
 	button_cell.root_game_cell = self
@@ -53,7 +54,8 @@ func try_to_reveal(recursive: bool) -> bool:
 			revealed = true
 			if not recursive:
 				pressed_sound.emit(SoundType.DIG)
-		revealed_cell.emit(self)
+		if not game_grid.game_state == GameGrid.GameState.VICTORY:
+			revealed_cell.emit(self)
 		react_to_cell_state_change()
 		return true
 	return false

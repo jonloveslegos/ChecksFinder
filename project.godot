@@ -12,7 +12,7 @@ config_version=5
 
 config/name="ChecksFinder"
 config/version="2.0.2"
-run/main_scene="uid://b43knps7haecr"
+run/main_scene="uid://coh12wn1rwkuf"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0.501961, 0, 1)
 boot_splash/show_image=false
@@ -31,9 +31,10 @@ ChecksFinder="*res://checksfinder/autoloads/ChecksFinder.tscn"
 
 [display]
 
-window/size/viewport_width=972
+window/size/viewport_width=648
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
+window/handheld/orientation=6
 
 [dotnet]
 

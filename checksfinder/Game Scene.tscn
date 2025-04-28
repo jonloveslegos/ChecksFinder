@@ -31,7 +31,7 @@ border_width_bottom = 5
 border_color = Color(0.141176, 0.345098, 0.141176, 1)
 corner_detail = 1
 
-[node name="GameScene" type="PanelContainer" node_paths=PackedStringArray("dig_sound", "explosion_sound", "generic_win_sound", "InLogic", "CompletedChecks", "CurrentBombs", "CurrentMaxBombs", "CurrentHeight", "CurrentMaxHeight", "CurrentWidth", "CurrentMaxWidth", "MarkedMines", "TotalCurrentMines", "DisconnectScreen", "VictoryScreen", "game_grid")]
+[node name="GameScene" type="PanelContainer" node_paths=PackedStringArray("dig_sound", "explosion_sound", "generic_win_sound", "InLogic", "CompletedChecks", "CurrentBombs", "CurrentMaxBombs", "CurrentHeight", "CurrentMaxHeight", "CurrentWidth", "CurrentMaxWidth", "MarkedMines", "TotalCurrentMines", "DisconnectScreen", "VictoryScreen", "game_grid", "volume_container", "exit")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -55,6 +55,8 @@ TotalCurrentMines = NodePath("HBoxContainer/PanelContainer/VBoxContainer/MinesOn
 DisconnectScreen = NodePath("DisconnectScreen")
 VictoryScreen = NodePath("VictoryScreen")
 game_grid = NodePath("HBoxContainer/GameGrid")
+volume_container = NodePath("HBoxContainer/PanelContainer/VBoxContainer/VolumeContainer/VolumeContainer")
+exit = NodePath("HBoxContainer/PanelContainer/VBoxContainer/ExitContainer/Exit")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

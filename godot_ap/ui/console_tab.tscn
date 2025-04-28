@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bx4d5pih77vp4"]
 
-[ext_resource type="PackedScene" uid="uid://c51q4vrwhlcl7" path="res://godot_ap/ui/console_container.tscn" id="1_karta"]
+[ext_resource type="PackedScene" uid="uid://co162msh0me6e" path="res://godot_ap/ui/console_container.tscn" id="1_karta"]
 [ext_resource type="Script" uid="uid://cs0261v4jx4b" path="res://godot_ap/ui/slider_box.gd" id="2_t718y"]
 [ext_resource type="SystemFont" uid="uid://73rjoc23d4ub" path="res://godot_ap/ui/console_font.tres" id="3_iispj"]
 [ext_resource type="Script" uid="uid://cyc8jkqjagswj" path="res://godot_ap/ui/connect_box.gd" id="4_rlrcu"]

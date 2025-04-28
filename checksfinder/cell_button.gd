@@ -38,11 +38,3 @@ func act_on_neighbour_cells(action: Callable) -> bool:
 			if action.call(bottom_right):
 				has_acted = true
 	return has_acted
-
-
-func _on_gui_input(event: InputEvent) -> void:
-	if get_viewport().gui_get_focus_owner() == self:
-		if event is InputEventMouseButton:
-			self.release_focus()
-		elif event.is_action_pressed("flag"):
-			pressed.emit()

@@ -6,7 +6,10 @@ enum GameState{
 var game_state = GameState.EMPTY
 
 var children: Array[GameCell] = []
-var delay: float = 0.09
+var recursive_delay: float = 0.09
+var end_screen_delay_win: float = 0.9
+var end_screen_delay_loss: float = 0.9
+var has_loss_animation_finished: bool = false
 @onready var height = ChecksFinder.get_cur_height()
 @onready var width = ChecksFinder.get_cur_width()
 @onready var bombs = ChecksFinder.get_cur_bombs()
@@ -22,13 +25,14 @@ var marked_count = 0:
 			marked_count = val
 			updated_marked_mines.emit(marked_count)
 
-
 func _ready() -> void:
 	columns = width
 	for i in range(width * height):
 		var cell = load("res://checksfinder/Game Cell.tscn").instantiate() as GameCell
-		add_child.call_deferred(cell)
+		add_child(cell)
+		cell.index = i
 		children.append(cell)
+		cell.name = "Game Cell %d" % [cell.index]
 		cell.pressed_sound.connect(game_scene._on_game_cell_pressed_sound)
 		cell.revealed_cell.connect(_on_game_cell_revealed)
 		cell.game_grid = self
@@ -55,11 +59,17 @@ func _ready() -> void:
 				CONNECT_ONE_SHOT
 		)
 
-func _gui_input(event: InputEvent) -> void:
-		if ChecksFinder.has_used_ui_buttons or ChecksFinder.is_event_ui(event):
-			if get_viewport().gui_get_focus_owner() == null:
-				children[0].game_cell.grab_focus()
-			ChecksFinder.has_used_ui_buttons = true
+func _input(event: InputEvent) -> void:
+	var focus_owner = get_viewport().gui_get_focus_owner()
+	if ChecksFinder.is_event_ui(event) or event.is_action("flag"):
+		if not focus_owner:
+			children[0].button_cell.grab_focus()
+		ChecksFinder.has_used_ui_buttons = true
+	if focus_owner is CellButton:
+		if event.is_action("flag"):
+			focus_owner.root_game_cell._on_button_cell_pressed()
+		elif event is InputEventMouseButton:
+			focus_owner.release_focus()
 
 func _on_game_cell_revealed(game_cell: GameCell) -> void:
 	if game_state == GameState.EMPTY:
@@ -86,7 +96,7 @@ func _on_game_cell_revealed(game_cell: GameCell) -> void:
 		game_cell.try_to_reveal(false)
 	elif game_state == GameState.PLAYING:
 		if game_cell.nearby_bomb_count == 0:
-			await get_tree().create_timer(delay).timeout
+			await get_tree().create_timer(recursive_delay).timeout
 			var opened = game_cell.act_on_neighbour_cells(func(cell: CellButton):
 				return cell.root_game_cell.try_to_reveal(true))
 			if opened:
@@ -94,42 +104,48 @@ func _on_game_cell_revealed(game_cell: GameCell) -> void:
 		elif game_cell.contents == GameCell.CellContents.BOMB:
 			game_state = GameState.LOST
 			game_cell.has_blown_up = true
-			await get_tree().create_timer(delay).timeout
+			await get_tree().create_timer(recursive_delay).timeout
 			game_grid_sound.emit(SoundType.EXPLOSION)
 			loss(game_cell)
-		elif children.all(func(cell: GameCell):
-			return cell.contents == GameCell.CellContents.BOMB or cell.revealed):
-				game_state = GameState.VICTORY
-				await get_tree().create_timer(delay).timeout
-				game_grid_sound.emit(SoundType.GENERIC_WIN)
-				ChecksFinder.send_location(current_location_index)
-				if ChecksFinder.get_all_item_count() == 25:
-					game_scene.VictoryScreen.visible = true
-					ChecksFinder.music.victory()
-					Archipelago.set_client_status(AP.ClientStatus.CLIENT_GOAL)
-				await get_tree().create_timer(0.1).timeout
-				if ChecksFinder.item_status == CF.ItemStatus.WAITING_FOR_CURRENT_ITEM:
-					await ChecksFinder.needed_item_received
-				if game_scene.generic_win_sound.playing:
-					await game_scene.generic_win_sound.finished
-				if not game_scene.VictoryScreen.visible:
-					get_tree().change_scene_to_file("res://checksfinder/Game Scene.tscn")
+			return
+		if children.all(func(cell: GameCell):
+				return cell.contents == GameCell.CellContents.BOMB or cell.revealed):
+			game_state = GameState.VICTORY
+			var scene = load("res://checksfinder/Game Scene.tscn").instantiate()
+			await get_tree().create_timer(recursive_delay).timeout
+			game_grid_sound.emit(SoundType.GENERIC_WIN)
+			for cell in children:
+				cell.marked = false
+				cell.revealed = true
+				cell.react_to_cell_state_change()
+			await get_tree().create_timer(end_screen_delay_win).timeout
+			ChecksFinder.send_location(current_location_index)
+			if ChecksFinder.get_all_item_count() == 25:
+				game_scene.VictoryScreen.visible = true
+				ChecksFinder.music.victory()
+				Archipelago.set_client_status(AP.ClientStatus.CLIENT_GOAL)
+			if ChecksFinder.item_status == CF.ItemStatus.WAITING_FOR_CURRENT_ITEM:
+				await ChecksFinder.needed_item_received
+			if game_scene.generic_win_sound.playing:
+				await game_scene.generic_win_sound.finished
+			if not game_scene.VictoryScreen.visible:
+				ChecksFinder.replace_scene(scene)
 	elif game_state == GameState.LOST:
 		await get_tree().process_frame
 		loss(game_cell)
 
 func loss(game_cell: GameCell) -> void:
-	var opened = game_cell.act_on_neighbour_cells(func(cell: CellButton):
+	game_cell.act_on_neighbour_cells(func(cell: CellButton):
 		if not cell.root_game_cell.has_blown_up:
 			cell.root_game_cell.has_blown_up = true
 			cell.root_game_cell.marked = false
-			return cell.root_game_cell.try_to_reveal(true))
-	if not opened and children.all(func(cell: GameCell): return cell.revealed):
-		var tree = get_tree()
-		if is_instance_valid(tree):
-			await get_tree().create_timer(0.1).timeout
-			if game_scene.explosion_sound.playing:
-				await game_scene.explosion_sound.finished
-			tree = get_tree()
-			if is_instance_valid(tree):
-				tree.change_scene_to_file("res://checksfinder/Game Scene.tscn")
+			return cell.root_game_cell.try_to_reveal(true)
+		return false)
+	if not has_loss_animation_finished and children.all(func(cell: GameCell): return cell.revealed):
+		has_loss_animation_finished = true
+		var scene = load("res://checksfinder/Game Scene.tscn").instantiate()
+		await get_tree().create_timer(end_screen_delay_loss).timeout
+		AP.log("ended delay")
+		if game_scene.explosion_sound.playing:
+			await game_scene.explosion_sound.finished
+		ChecksFinder.replace_scene(scene)

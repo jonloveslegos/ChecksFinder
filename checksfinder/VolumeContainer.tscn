@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dkui66qlklmdb" path="res://checksfinder/volume_container.gd" id="1_b1wpj"]
 [ext_resource type="Script" uid="uid://cm0sxmcf7lc2t" path="res://checksfinder/volume_slider.gd" id="1_rt8sr"]
 
-[node name="VolumeContainer" type="VBoxContainer" node_paths=PackedStringArray("label")]
+[node name="VolumeContainer" type="VBoxContainer" node_paths=PackedStringArray("label", "option_button", "volume_slider")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,6 +14,8 @@ size_flags_vertical = 10
 alignment = 1
 script = ExtResource("1_b1wpj")
 label = NodePath("Label")
+option_button = NodePath("OptionButton")
+volume_slider = NodePath("VolumeSlider")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2

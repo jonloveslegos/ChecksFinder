@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dc53gpio88ssm"]
+
+[ext_resource type="Script" uid="uid://c67sl02ix7k58" path="res://checksfinder/checksfinder_client.gd" id="1_tu685"]
+[ext_resource type="PackedScene" uid="uid://b43knps7haecr" path="res://checksfinder/Start Menu.tscn" id="2_hvq18"]
+[ext_resource type="PackedScene" uid="uid://bx4d5pih77vp4" path="res://godot_ap/ui/console_tab.tscn" id="2_rfxli"]
+[ext_resource type="PackedScene" uid="uid://dhya6ucgf72i8" path="res://godot_ap/ui/hints_tab.tscn" id="4_05c37"]
+[ext_resource type="PackedScene" uid="uid://dp2yir3r1061y" path="res://godot_ap/ui/settings_tab.tscn" id="5_81hy7"]
+
+[node name="ChecksFinderClient" type="PanelContainer" node_paths=PackedStringArray("checksfinder_tab")]
+custom_minimum_size = Vector2(1920, 1001)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1272.0
+offset_bottom = 353.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tu685")
+checksfinder_tab = NodePath("Tabs/ChecksFinder")
+
+[node name="Tabs" type="TabContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1001)
+layout_mode = 2
+current_tab = 0
+tab_focus_mode = 0
+
+[node name="ChecksFinder" type="MarginContainer" parent="Tabs"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Start Menu" parent="Tabs/ChecksFinder" instance=ExtResource("2_hvq18")]
+layout_mode = 2
+
+[node name="Console" parent="Tabs" instance=ExtResource("2_rfxli")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Hints" parent="Tabs" instance=ExtResource("4_05c37")]
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Settings" parent="Tabs" instance=ExtResource("5_81hy7")]
+layout_mode = 2

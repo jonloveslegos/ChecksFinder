@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhya6ucgf72i8"]
 
 [ext_resource type="Script" uid="uid://bow4x4xntl26h" path="res://godot_ap/ui/hints_tab.gd" id="1_bwydx"]
-[ext_resource type="PackedScene" uid="uid://c51q4vrwhlcl7" path="res://godot_ap/ui/console_container.tscn" id="2_iqo4x"]
+[ext_resource type="PackedScene" uid="uid://co162msh0me6e" path="res://godot_ap/ui/console_container.tscn" id="2_iqo4x"]
 
 [node name="Hints" type="MarginContainer"]
 visible = false

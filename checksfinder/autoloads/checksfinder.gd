@@ -1,6 +1,5 @@
 class_name CF extends Node
 
-
 enum CFStatus{
 	START_MENU,
 	CONNECTING,
@@ -29,6 +28,7 @@ var item_status: ItemStatus = ItemStatus.NO_ITEMS:
 @export var user_reminder_to_connect: String = (
 		"Please write archipelago connection data into the slider box on the right"
 	)
+@export var force_mobile: bool = false
 
 var all_items_dict: Dictionary[String, int] = build_items_dict([], 0)
 var current_items_dict: Dictionary[String, int] = build_items_dict([], 0)
@@ -48,9 +48,17 @@ var music: MusicController:
 func _ready():
 	randomize()
 	var root = get_tree().root
-	root.set_min_size(Vector2i(400, 300))
 	root.disable_3d = true
-	root.gui_embed_subwindows = false
+	root.set_min_size(Vector2i(400, 300))
+	if OS.get_name() == "Web":
+		root.set_max_size(Vector2i(972, 648))
+	root.gui_embed_subwindows = is_os_mobile()
+	if root.size == Vector2i(648, 648):
+		root.size = Vector2i(972, 648)
+	if is_os_mobile():
+		get_tree().change_scene_to_file.call_deferred("res://checksfinder/ChecksFinderClient.tscn")
+	else:
+		get_tree().change_scene_to_file.call_deferred("res://checksfinder/Start Menu.tscn")
 	Archipelago.on_attach_console.connect(func():
 		if (Archipelago.status == Archipelago.APStatus.DISCONNECTED
 				and ChecksFinder.status != ChecksFinder.CFStatus.START_MENU):
@@ -111,6 +119,8 @@ func get_cur_bombs() -> int:
 
 func get_count_in_logic() -> int:
 	var count = 0
+	if not Archipelago.conn:
+		return 0
 	for i in range(cur_location_index, min(get_all_item_count() + 5, 25)):
 		if not Archipelago.conn.slot_locations[location_list[i]]:
 			count += 1
@@ -184,17 +194,35 @@ func _on_disconnected():
 	current_items_dict_backup = current_items_dict
 
 func _shortcut_input(event):
-	if event.is_action_pressed("console_toggle"):
+	if event.is_action_pressed("console_toggle") and not is_os_mobile():
 		if Archipelago.output_console:
 			Archipelago.close_console()
 		else:
 			Archipelago.open_console()
 
 func is_event_ui(event: InputEvent) -> bool:
-	return (event.is_action_pressed("ui_down") or event.is_action_pressed("ui_left") or 
+	var _bool = (event.is_action_pressed("ui_down") or event.is_action_pressed("ui_left") or 
 			event.is_action_pressed("ui_right") or event.is_action_pressed("ui_up") or 
 			event.is_action_pressed("ui_accept") or event.is_action_pressed("ui_select") or
 			event.is_action_pressed("ui_focus_next") or event.is_action_pressed("ui_focus_prev"))
+	return _bool
 
 func act_on_neighbour_cells(cell: GameCell, action: Callable):
 	return cell.button_cell.act_on_neighbour_cells(action)
+
+func is_os_mobile() -> bool:
+	return force_mobile or OS.get_name() in ["Android", "iOS", "Web"]
+
+func replace_scene(scene: Node):
+	var tree = get_tree()
+	if is_instance_valid(tree):
+		var location
+		if not is_os_mobile():
+			location = tree.current_scene
+		else:
+			var client = tree.current_scene as ChecksFinderClient
+			location = client.checksfinder_tab
+		location.add_child(scene)
+		var arr = location.get_children()
+		for i in range(arr.size() - 1):
+			arr[i].free.call_deferred()

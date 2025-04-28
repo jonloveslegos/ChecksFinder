@@ -22,6 +22,8 @@ class_name GameScene extends PanelContainer
 @export var DisconnectScreen: PanelContainer
 @export var VictoryScreen: PanelContainer
 @export var game_grid: GameGrid
+@export var volume_container: VolumeContainer
+@export var exit: ButtonWrapper
 
 func number_to_text(number: int, digit_count: int) -> String:
 	var _str = str(number)
@@ -52,12 +54,18 @@ func set_info():
 
 func _on_updated_marked_mines(count: int) -> void:
 	MarkedMines.text = number_to_text(count, 2)
+	if count > game_grid.mine_count:
+		MarkedMines.theme = load("res://checksfinder/ui/themes/error_text.tres") as Theme
+	else:
+		MarkedMines.theme = load("res://checksfinder/ui/themes/empty.tres") as Theme
 
 func _on_exit_pressed() -> void:
 	$DigSound.finished.connect(func():
+		var scene = load("res://checksfinder/Start Menu.tscn").instantiate()
 		Archipelago.ap_disconnect()
+		ChecksFinder.item_status = CF.ItemStatus.NO_ITEMS
 		ChecksFinder.music.stop_gradually()
-		get_tree().change_scene_to_file("res://checksfinder/Start Menu.tscn"), CONNECT_ONE_SHOT)
+		ChecksFinder.replace_scene(scene), CONNECT_ONE_SHOT)
 	$DigSound.play()
 
 func play_sound(sound_type):
@@ -79,7 +87,7 @@ func _on_disconnect() -> void:
 	DisconnectScreen.visible = true
 
 func _on_changed_connection() -> void:
-	get_tree().change_scene_to_file("res://checksfinder/Game Scene.tscn")
+	ChecksFinder.replace_scene(load("res://checksfinder/Game Scene.tscn").instantiate())
 
 func _on_item_status_updated() -> void:
 	DisconnectScreen.visible = false
