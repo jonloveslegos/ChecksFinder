@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ChecksFinder"
-config/version="2.0.2"
+config/version="2.0.3"
 run/main_scene="uid://coh12wn1rwkuf"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0.501961, 0, 1)
