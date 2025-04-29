@@ -97,6 +97,7 @@ func _on_game_cell_revealed(game_cell: GameCell) -> void:
 	elif game_state == GameState.PLAYING:
 		if game_cell.nearby_bomb_count == 0:
 			await get_tree().create_timer(recursive_delay).timeout
+			game_cell.button_cell.outer.hover_enabled = false
 			var opened = game_cell.act_on_neighbour_cells(func(cell: CellButton):
 				return cell.root_game_cell.try_to_reveal(true))
 			if opened:
