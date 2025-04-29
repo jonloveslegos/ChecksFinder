@@ -36,7 +36,7 @@ var current_items_dict_backup: Dictionary[String, int] = current_items_dict
 var location_list: Array[int]
 var cur_location_index: int:
 	get:
-		return min(theoretical_loc_index, get_all_item_count() + 5, 25)
+		return min(theoretical_loc_index, get_all_item_count() + 5 - 1, 24)
 var theoretical_loc_index: int = -1:
 	set(val):
 		theoretical_loc_index = min(val, location_list.size(), 25)
