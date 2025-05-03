@@ -33,7 +33,7 @@ ChecksFinder="*res://checksfinder/autoloads/ChecksFinder.tscn"
 
 window/size/viewport_width=648
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="expand"
 window/handheld/orientation=6
 
 [dotnet]

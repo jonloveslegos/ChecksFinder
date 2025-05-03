@@ -50,15 +50,13 @@ func _ready():
 	var root = get_tree().root
 	root.disable_3d = true
 	root.set_min_size(Vector2i(400, 300))
-	if OS.get_name() == "Web":
-		root.set_max_size(Vector2i(972, 648))
 	root.gui_embed_subwindows = is_os_mobile()
-	if root.size == Vector2i(648, 648):
-		root.size = Vector2i(972, 648)
 	if is_os_mobile():
-		get_tree().change_scene_to_file.call_deferred("res://checksfinder/ChecksFinderClient.tscn")
+		replace_scene(load("res://checksfinder/ChecksFinderClient.tscn").instantiate())
 	else:
-		get_tree().change_scene_to_file.call_deferred("res://checksfinder/Start Menu.tscn")
+		if root.size == Vector2i(648, 648):
+			root.size = Vector2i(972, 648)
+		replace_scene(load("res://checksfinder/Start Menu.tscn").instantiate())
 	Archipelago.on_attach_console.connect(func():
 		if (Archipelago.status == Archipelago.APStatus.DISCONNECTED
 				and ChecksFinder.status != ChecksFinder.CFStatus.START_MENU):
