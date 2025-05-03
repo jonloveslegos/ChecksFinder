@@ -1,4 +1,4 @@
-MIT License
+MIT license
 
 Copyright (c) 2024 jonloveslegos
 Copyright (c) 2024 SunCatMC
