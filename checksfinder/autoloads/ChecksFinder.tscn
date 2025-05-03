@@ -69,6 +69,7 @@ _data = {
 
 [node name="ChecksFinder" type="Node"]
 script = ExtResource("1_30ftd")
+force_mobile = true
 
 [node name="MusicController" type="Node" parent="."]
 script = ExtResource("2_cxgin")

@@ -52,10 +52,8 @@ func _ready():
 	root.set_min_size(Vector2i(400, 300))
 	root.gui_embed_subwindows = is_os_mobile()
 	if is_os_mobile():
-		replace_scene(load("res://checksfinder/ChecksFinderClient.tscn").instantiate())
+		get_tree().change_scene_to_file.call_deferred("res://checksfinder/ChecksFinderClient.tscn")
 	else:
-		if root.size == Vector2i(648, 648):
-			root.size = Vector2i(972, 648)
 		replace_scene(load("res://checksfinder/Start Menu.tscn").instantiate())
 	Archipelago.on_attach_console.connect(func():
 		if (Archipelago.status == Archipelago.APStatus.DISCONNECTED
