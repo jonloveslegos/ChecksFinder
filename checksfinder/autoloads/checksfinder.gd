@@ -40,6 +40,7 @@ var cur_location_index: int:
 var theoretical_loc_index: int = -1:
 	set(val):
 		theoretical_loc_index = min(val, location_list.size(), 25)
+var location_waiting_on: int = 0
 var has_used_ui_buttons: bool = false
 var music: MusicController:
 	get:
@@ -79,7 +80,8 @@ func send_location(index):
 	if index >= 0 and index < location_list.size():
 		Archipelago.conn.scout(location_list[index], 0, func(item: NetworkItem):
 			if item.dest_player_id == Archipelago.conn.player_id:
-				item_status = ItemStatus.WAITING_FOR_CURRENT_ITEM)
+				item_status = ItemStatus.WAITING_FOR_CURRENT_ITEM
+				location_waiting_on = location_list[index])
 		Archipelago.collect_location(location_list[index])
 
 func build_items_dict(items: Array[NetworkItem], count: int) -> Dictionary[String, int]:
@@ -159,7 +161,13 @@ func _on_refresh_items(items: Array[NetworkItem]) -> void:
 	current_items_dict = dict
 	if current_items_dict_backup != current_items_dict:
 		changed_connection.emit()
-	item_status = ItemStatus.RECEIVED_ITEMS
+	if item_status == ItemStatus.WAITING_FOR_CURRENT_ITEM:
+		if items.any(func(item: NetworkItem):
+				return item.loc_id == location_waiting_on):
+			needed_item_received.emit()
+			item_status = ItemStatus.RECEIVED_ITEMS
+	else:
+		item_status = ItemStatus.RECEIVED_ITEMS
 	update_item_info.emit()
 
 func _on_obtained_items(items: Array[NetworkItem]) -> void:
@@ -168,9 +176,13 @@ func _on_obtained_items(items: Array[NetworkItem]) -> void:
 	for key in all_items_dict.keys():
 		all_items_dict[key] += dict[key]
 	theoretical_loc_index = _get_cur_location_index()
-	if old_loc_index != cur_location_index:
+	if item_status == ItemStatus.WAITING_FOR_CURRENT_ITEM:
+		if items.any(func(item: NetworkItem):
+				return item.loc_id == location_waiting_on):
+			needed_item_received.emit()
+			item_status = ItemStatus.RECEIVED_ITEMS
+	if old_loc_index != cur_location_index and item_status != ItemStatus.WAITING_FOR_CURRENT_ITEM:
 		item_status = ItemStatus.RECEIVED_ITEMS
-		needed_item_received.emit()
 	update_item_info.emit()
 
 func _on_removed_location(_loc_id: int) -> void:
