@@ -1,25 +1,43 @@
 class_name AP extends Node
 
-@export var AP_GAME_NAME := "" ## The game name to connect to. Empty string for TextOnly or HintGame clients.
-@export var AP_GAME_TAGS: Array[String] = [] ## The tags for your game.
-@export var AP_CLIENT_VERSION := Version.val(0,0,0) ## The version of your client. Arbitrary number for you to manage.
-@export var AP_VERSION := Version.val(0,5,0) ## The target AP version. Not arbitrary - used in `Connect` packet.
-@export var AP_ITEM_HANDLING := ItemHandling.ALL ## The ItemHandling to use when connecting.
+## The game name to connect to. Empty string for TextOnly or HintGame clients.
+@export var AP_GAME_NAME := ""
+## The tags for your game.
+@export var AP_GAME_TAGS: Array[String] = []
+## The version of your client. Arbitrary number for you to manage.
+@export var AP_CLIENT_VERSION := Version.val(0,0,0)
+## The target AP version. Not arbitrary - used in `Connect` packet.
+@export var AP_VERSION := Version.val(0,5,0)
+## The ItemHandling to use when connecting.
+@export var AP_ITEM_HANDLING := ItemHandling.ALL
 @export_group("Client Settings")
-@export var AP_PRINT_ITEMS_ON_CONNECT := false ## Prints what items have been previously collected when reconnecting to a slot.
-@export var AP_HIDE_NONLOCAL_ITEMSENDS := true ## Hide item send messages that don't involve the client.
-@export var AP_AUTO_OPEN_CONSOLE := false ## Automatically opens a default AP text console.
-@export var AP_ALLOW_TRACKERPACKS := true ## Allow loading custom tracker packs.
+## Prints what items have been previously collected when reconnecting to a slot.
+@export var AP_PRINT_ITEMS_ON_CONNECT := false
+## Hide item send messages that don't involve the client.
+@export var AP_HIDE_NONLOCAL_ITEMSENDS := true
+## Automatically opens a default AP text console.
+@export var AP_AUTO_OPEN_CONSOLE := false
+## Allow loading custom tracker packs.
+@export var AP_ALLOW_TRACKERPACKS := true
 @export_subgroup("UI")
-@export var AP_CONSOLE_CONNECTION_OPEN := false ## Automatically open the Connection box when the console opens
-@export var AP_CONSOLE_CONNECTION_AUTO := true ## Automatically open/close the Connection box based on connected status
+## Automatically open the Connection box when the console opens
+@export var AP_CONSOLE_CONNECTION_OPEN := false
+## Automatically open/close the Connection box based on connected status
+@export var AP_CONSOLE_CONNECTION_AUTO := true
 
 @export_subgroup("Logging")
-@export var AP_LOG_COMMUNICATION := false ## Enables additional logging.
-@export var AP_LOG_RECIEVED := false ## Enables additional logging.
+## Enables additional logging.
+@export var AP_LOG_COMMUNICATION := false
+## Enables additional logging.
+@export var AP_LOG_RECIEVED := false
 @export_subgroup("Data Packs")
-@export var READABLE_DATAPACK_FILES := true ## If true, datapackage local files will be stringified in a readable mode.
-@export var datapack_cached_fields: Array[String] = ["item_name_to_id","location_name_to_id","checksum"] ## Which fields should be saved from received DataPacks.
+## If true, datapackage local files will be stringified in a readable mode.
+@export var READABLE_DATAPACK_FILES := true
+## Which fields should be saved from received DataPacks.
+@export var datapack_cached_fields: Array[String] = ["item_name_to_id","location_name_to_id","checksum"]
+@export_group("Misc")
+## Size, in MB, of the websocket inbound buffer. Raising may help if large datapackages are causing disconnections.
+@export_range(5, 500, 1, "or_greater", "hide_slider") var websocket_inbuffer_mb: int = 50
 @export_group("")
 
 @onready var hang_clock: Timer = $HangTimer
@@ -198,7 +216,7 @@ func force_disconnect() -> void:
 func create_socket() -> void:
 	const BYTE_PER_MB := 1000000
 	_socket = WebSocketPeer.new()
-	_socket.inbound_buffer_size = 5*BYTE_PER_MB
+	_socket.inbound_buffer_size = websocket_inbuffer_mb*BYTE_PER_MB
 #endregion CONNECTION
 
 #region LOGGING TO FILE
@@ -329,7 +347,9 @@ func _handle_command(json: Dictionary) -> void:
 			args["tags"] = AP_GAME_TAGS
 			args["items_handling"] = AP_ITEM_HANDLING
 			roominfo.emit(conn, json)
-			all_datapacks_loaded.connect(send_command.bind("Connect",args), CONNECT_ONE_SHOT)
+			SignalChooser.new().register_multiple(
+				[all_datapacks_loaded, disconnected],
+				[send_command.bind("Connect",args), Util.nil])
 			_send_datapack_request()
 		"ConnectionRefused":
 			var err_str := str(json["errors"])
