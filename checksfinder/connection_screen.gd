@@ -4,7 +4,7 @@ extends PanelContainer
 
 func _ready():
 	if ChecksFinder.is_os_mobile():
-		label.text = ("Please connect to Archepilago using console window,\n"+
+		label.text = ("Please connect to Archipelago using console window, "+
 			"located in a tab at the top")
 	ChecksFinder.status = ChecksFinder.CFStatus.CONNECTING
 	if (Archipelago.status == Archipelago.APStatus.DISCONNECTED
@@ -13,6 +13,18 @@ func _ready():
 	elif not ChecksFinder.is_os_mobile():
 		Archipelago.open_console()
 	go_to_game.call_deferred()
+
+func _draw():
+	if size.x >= 800:
+		label.custom_minimum_size = Vector2(750.0, 0.0)
+	elif 750.0 <= size.x and size.x < 800.0:
+		label.custom_minimum_size = Vector2(700.0, 0.0)
+	elif 700.0 <= size.x and size.x < 750.0:
+		label.custom_minimum_size = Vector2(650.0, 0.0)
+	elif 650.0 <= size.x and size.x < 700.0:
+		label.custom_minimum_size = Vector2(600.0, 0.0)
+	elif size.x < 650.0:
+		label.custom_minimum_size = Vector2(550.0, 0.0)
 
 func go_to_game():
 	if ChecksFinder.item_status == ChecksFinder.ItemStatus.RECEIVED_ITEMS:

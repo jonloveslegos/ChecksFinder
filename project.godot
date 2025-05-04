@@ -31,7 +31,8 @@ ChecksFinder="*res://checksfinder/autoloads/ChecksFinder.tscn"
 
 [display]
 
-window/size/viewport_width=648
+window/size/viewport_width=600
+window/size/viewport_height=600
 window/size/window_width_override=972
 window/size/window_height_override=648
 window/handheld/orientation=6

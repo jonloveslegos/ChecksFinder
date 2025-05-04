@@ -50,7 +50,7 @@ func _ready():
 	randomize()
 	var root = get_tree().root
 	root.disable_3d = true
-	root.set_min_size(Vector2i(648, 648))
+	root.set_min_size(Vector2i(600, 600))
 	root.gui_embed_subwindows = is_os_mobile()
 	if is_os_mobile():
 		get_tree().change_scene_to_file.call_deferred("res://checksfinder/ChecksFinderClient.tscn")
