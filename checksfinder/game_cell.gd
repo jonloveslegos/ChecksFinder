@@ -23,28 +23,35 @@ func _ready():
 
 func _on_button_cell_pressed() -> void:
 	if game_grid.game_state in [GameGrid.GameState.PLAYING, GameGrid.GameState.EMPTY]:
-		if (Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) or
-			Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_select")
-		):
-			var _opened = try_to_reveal(false)
-			if not _opened and revealed and contents == CellContents.NUMBER:
-				if nearby_bomb_count == count_neighbouring_marks():
-					var opened = act_on_neighbour_cells(func(cell: CellButton):
-						return cell.root_game_cell.try_to_reveal(true))
-					if opened:
-						pressed_sound.emit(SoundType.DIG)
-		elif ((Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) or 
-			Input.is_action_just_pressed("flag")) and 
+		if (Input.is_action_just_released("flag_all") and 
 			game_grid.game_state == GameGrid.GameState.PLAYING
 		):
-			if not revealed and game_grid.game_state == game_grid.GameState.PLAYING:
-				if marked:
-					marked = false
-					game_grid.marked_count -= 1
-				else:
-					marked = true
-					game_grid.marked_count += 1
-				react_to_cell_state_change()
+			action_flag()
+		elif ((Input.is_action_just_released("reveal") or
+			Input.is_action_just_released("ui_accept") or
+			Input.is_action_just_released("ui_select")) and 
+			not game_grid.has_long_tapped
+		):
+			action_reveal()
+
+func action_flag():
+	if not revealed:
+		if marked:
+			marked = false
+			game_grid.marked_count -= 1
+		else:
+			marked = true
+			game_grid.marked_count += 1
+		react_to_cell_state_change()
+
+func action_reveal():
+	var _opened = try_to_reveal(false)
+	if not _opened and revealed and contents == CellContents.NUMBER:
+		if nearby_bomb_count == count_neighbouring_marks():
+			var opened = act_on_neighbour_cells(func(cell: CellButton):
+				return cell.root_game_cell.try_to_reveal(true))
+			if opened:
+				pressed_sound.emit(SoundType.DIG)
 
 func try_to_reveal(recursive: bool) -> bool:
 	if not marked and (not revealed or game_grid.game_state == GameGrid.GameState.LOST):

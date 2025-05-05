@@ -38,3 +38,19 @@ func act_on_neighbour_cells(action: Callable) -> bool:
 			if action.call(bottom_right):
 				has_acted = true
 	return has_acted
+
+func _gui_input(event: InputEvent) -> void:
+	if (has_focus() and (event.is_action_released("ui_accept") or
+			event.is_action_released("ui_select") or
+			event.is_action_released("flag_keyboard")) or 
+			(is_hovered() and event.is_action_released("reveal"))):
+		pressed.emit()
+
+func _on_mouse_entered() -> void:
+	super()
+	root_game_cell.game_grid.hovered_cell = root_game_cell
+
+func _on_mouse_exited() -> void:
+	super()
+	if root_game_cell.game_grid.hovered_cell == root_game_cell:
+		root_game_cell.game_grid.hovered_cell = null

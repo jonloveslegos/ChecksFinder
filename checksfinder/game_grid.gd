@@ -10,6 +10,8 @@ var recursive_delay: float = 0.09
 var end_screen_delay_win: float = 0.9
 var end_screen_delay_loss: float = 0.9
 var has_loss_animation_finished: bool = false
+var hovered_cell: GameCell = null
+var has_long_tapped: bool = false
 @onready var height = ChecksFinder.get_cur_height()
 @onready var width = ChecksFinder.get_cur_width()
 @onready var bombs = ChecksFinder.get_cur_bombs()
@@ -17,6 +19,7 @@ var has_loss_animation_finished: bool = false
 @onready var mine_count = min(bombs, width*height/5)
 @onready var current_location_index = ChecksFinder.cur_location_index
 @export var game_scene: GameScene
+@export var timer: Timer
 signal game_grid_sound(sound)
 signal updated_marked_mines(count: int)
 var marked_count = 0:
@@ -61,15 +64,23 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	var focus_owner = get_viewport().gui_get_focus_owner()
-	if ChecksFinder.is_event_ui(event) or event.is_action("flag"):
+	if ChecksFinder.is_event_ui(event) or event.is_action("flag_keyboard"):
 		if not focus_owner:
 			children[0].button_cell.grab_focus()
 		ChecksFinder.has_used_ui_buttons = true
 	if focus_owner is CellButton:
-		if event.is_action("flag"):
-			focus_owner.root_game_cell._on_button_cell_pressed()
-		elif event is InputEventMouseButton:
+		if event is InputEventMouseButton:
 			focus_owner.release_focus()
+	if event is InputEventScreenTouch and event.index == 0:
+		if event.is_pressed() and not has_long_tapped and timer.is_stopped():
+			timer.start()
+		else:
+			has_long_tapped = false
+			timer.stop()
+
+func _on_timer_timeout() -> void:
+	has_long_tapped = true
+	hovered_cell.action_flag()
 
 func _on_game_cell_revealed(game_cell: GameCell) -> void:
 	if game_state == GameState.EMPTY:

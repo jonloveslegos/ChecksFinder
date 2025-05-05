@@ -1,10 +1,14 @@
 class_name StartMenu extends PanelContainer
 
 @export var starting_focus: ButtonWrapper
+@export var version_label: Label
 
 func _ready():
 	ChecksFinder.status = ChecksFinder.CFStatus.START_MENU
 	starting_focus.inner_grab_focus()
+	version_label.text = "v%s.%s.%s" % [Archipelago.AP_CLIENT_VERSION.major,
+		Archipelago.AP_CLIENT_VERSION.minor,
+		Archipelago.AP_CLIENT_VERSION.build]
 
 func _input(event: InputEvent) -> void:
 	if ChecksFinder.is_event_ui(event):

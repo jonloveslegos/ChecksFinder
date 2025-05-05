@@ -61,7 +61,7 @@ exit = NodePath("HBoxContainer/PanelContainer/VBoxContainer/ExitContainer/Exit")
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="GameGrid" type="GridContainer" parent="HBoxContainer" node_paths=PackedStringArray("game_scene")]
+[node name="GameGrid" type="GridContainer" parent="HBoxContainer" node_paths=PackedStringArray("game_scene", "timer")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -72,6 +72,11 @@ theme_override_constants/v_separation = 0
 columns = 5
 script = ExtResource("3_77tm3")
 game_scene = NodePath("../..")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="HBoxContainer/GameGrid"]
+wait_time = 0.3
+one_shot = true
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -363,5 +368,6 @@ bus = &"Sound Effects"
 
 [connection signal="game_grid_sound" from="HBoxContainer/GameGrid" to="." method="_on_game_grid_sound"]
 [connection signal="updated_marked_mines" from="HBoxContainer/GameGrid" to="." method="_on_updated_marked_mines"]
+[connection signal="timeout" from="HBoxContainer/GameGrid/Timer" to="HBoxContainer/GameGrid" method="_on_timer_timeout"]
 [connection signal="wrapped_button_pressed" from="HBoxContainer/PanelContainer/VBoxContainer/ExitContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="VictoryScreen/Button" to="VictoryScreen/Button" method="_on_pressed"]

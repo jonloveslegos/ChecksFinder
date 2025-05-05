@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://byqp3jea6xq5w" path="res://checksfinder/ui/themes/button_wrapper.tscn" id="4_tk0ql"]
 [ext_resource type="AudioStream" uid="uid://byxudx157vjax" path="res://checksfinder/audio/digright.wav" id="6_kst3m"]
 
-[node name="Start Menu" type="PanelContainer" node_paths=PackedStringArray("starting_focus")]
+[node name="Start Menu" type="PanelContainer" node_paths=PackedStringArray("starting_focus", "version_label")]
 custom_minimum_size = Vector2(400, 300)
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +15,7 @@ grow_vertical = 2
 theme = ExtResource("1_3earw")
 script = ExtResource("2_esdqp")
 starting_focus = NodePath("VBoxContainer/CenterContainer2/PlayOnline")
+version_label = NodePath("MarginContainer/Version")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -61,6 +62,17 @@ layout_mode = 2
 tooltip_text = "Play Offline with a custom board"
 button_text = "Play Offline"
 disabled = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="Version" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 30
+text = "v0.0.0"
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_kst3m")
