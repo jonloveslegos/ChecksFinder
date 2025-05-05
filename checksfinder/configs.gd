@@ -19,6 +19,13 @@ var slot: String = "" :
 			slot = val
 			save_cfg()
 			config_changed.emit()
+var scale: float = 1.0 :
+	set(val):
+		var clamped = clamp(val, 1.0, 2.0)
+		if clamped != scale:
+			scale = clamped
+			save_cfg()
+			config_changed.emit()
 
 class CustomVolumeStorage:
 	signal changed_volume
@@ -49,6 +56,7 @@ func _ready():
 		volume_storage.get_volume(volume_storage.music))
 	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(volume_storage.sound_effects),
 		volume_storage.get_volume(volume_storage.sound_effects))
+	get_tree().root.content_scale_factor = scale
 
 func _on_update() -> void:
 	save_cfg()
@@ -57,7 +65,7 @@ func _on_update() -> void:
 func _load_cfg(file: FileAccess) -> bool:
 	if not super(file):
 		return false
-	var _vers := file.get_32()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+	var _vers := file.get_32()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
 	ip = file.get_pascal_string()
 	port = file.get_pascal_string()
 	slot = file.get_pascal_string()
@@ -65,6 +73,7 @@ func _load_cfg(file: FileAccess) -> bool:
 	volume_storage.set_volume(volume_storage.master, file.get_float())
 	volume_storage.set_volume(volume_storage.music, file.get_float())
 	volume_storage.set_volume(volume_storage.sound_effects, file.get_float())
+	scale = file.get_float()
 	return true
 
 func _save_cfg(file: FileAccess) -> void:
@@ -76,6 +85,7 @@ func _save_cfg(file: FileAccess) -> void:
 	file.store_float(volume_storage.get_volume(volume_storage.master))
 	file.store_float(volume_storage.get_volume(volume_storage.music))
 	file.store_float(volume_storage.get_volume(volume_storage.sound_effects))
+	file.store_float(scale)
 
 func update_credentials(creds: APCredentials) -> void:
 	_pause_saving = true

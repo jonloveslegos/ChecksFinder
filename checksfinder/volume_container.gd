@@ -4,6 +4,7 @@ class_name VolumeContainer extends VBoxContainer
 @export var label_font_size: int = -1
 @export var option_button: OptionButton
 @export var volume_slider: HSlider
+@export var timer: Timer
 
 func _ready():
 	if label_font_size >= 0:

@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdxr7l778ra3m"]
+
+[ext_resource type="Script" uid="uid://doaoxjifjldke" path="res://checksfinder/ui/themes/labeled_container.gd" id="1_164sp"]
+
+[node name="SliderContainer" type="VBoxContainer" node_paths=PackedStringArray("label")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_164sp")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Test Message"
+horizontal_alignment = 1

@@ -17,7 +17,7 @@ label = NodePath("CenterContainer/Label")
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer"]
-custom_minimum_size = Vector2(750, 0)
+custom_minimum_size = Vector2(550, 0)
 layout_mode = 2
 text = "Please connect to Archepilago using console window.
 If it is currently closed, press Ctrl+Q to open it."

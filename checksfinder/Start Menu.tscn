@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b43knps7haecr"]
+[gd_scene load_steps=5 format=3 uid="uid://b43knps7haecr"]
 
 [ext_resource type="Theme" uid="uid://bxysniydt2th7" path="res://checksfinder/ui/themes/checksfinder.tres" id="1_3earw"]
 [ext_resource type="Script" uid="uid://dflnsiy4d4ql1" path="res://checksfinder/start_menu.gd" id="2_esdqp"]
-[ext_resource type="PackedScene" uid="uid://hy1yrayxjela" path="res://checksfinder/VolumeContainer.tscn" id="3_esdqp"]
 [ext_resource type="PackedScene" uid="uid://byqp3jea6xq5w" path="res://checksfinder/ui/themes/button_wrapper.tscn" id="4_tk0ql"]
 [ext_resource type="AudioStream" uid="uid://byxudx157vjax" path="res://checksfinder/audio/digright.wav" id="6_kst3m"]
 
@@ -34,11 +33,13 @@ horizontal_alignment = 1
 
 [node name="CenterContainer1" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 10
 
-[node name="VolumeContainer" parent="VBoxContainer/CenterContainer1" instance=ExtResource("3_esdqp")]
+[node name="Settings" parent="VBoxContainer/CenterContainer1" instance=ExtResource("4_tk0ql")]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
+tooltip_text = "Change settings of the game"
+button_text = "Settings"
 
 [node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -65,5 +66,6 @@ disabled = true
 stream = ExtResource("6_kst3m")
 bus = &"Sound Effects"
 
+[connection signal="wrapped_button_pressed" from="VBoxContainer/CenterContainer1/Settings" to="." method="_on_settings_pressed"]
 [connection signal="wrapped_button_pressed" from="VBoxContainer/CenterContainer2/PlayOnline" to="." method="_on_play_online_pressed"]
 [connection signal="wrapped_button_pressed" from="VBoxContainer/CenterContainer3/PlayOffline" to="." method="_on_play_offline_pressed"]

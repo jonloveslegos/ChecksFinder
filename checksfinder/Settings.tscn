@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0ixxn6obyyyb"]
+
+[ext_resource type="Theme" uid="uid://bxysniydt2th7" path="res://checksfinder/ui/themes/checksfinder.tres" id="1_t5xis"]
+[ext_resource type="PackedScene" uid="uid://hy1yrayxjela" path="res://checksfinder/VolumeContainer.tscn" id="2_0rxpt"]
+[ext_resource type="PackedScene" uid="uid://byqp3jea6xq5w" path="res://checksfinder/ui/themes/button_wrapper.tscn" id="2_fy8cs"]
+[ext_resource type="Script" uid="uid://c66l0e805axui" path="res://checksfinder/settings.gd" id="2_k4ytu"]
+[ext_resource type="PackedScene" uid="uid://cdxr7l778ra3m" path="res://checksfinder/ui/themes/labeled_container.tscn" id="3_k4ytu"]
+[ext_resource type="AudioStream" uid="uid://byxudx157vjax" path="res://checksfinder/audio/digright.wav" id="6_p2ifw"]
+
+[node name="Settings" type="PanelContainer" node_paths=PackedStringArray("scale_slider", "volume_container")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_t5xis")
+script = ExtResource("2_k4ytu")
+scale_slider = NodePath("VBoxContainer/CenterContainer/ScaleContainer/ScaleSlider")
+volume_container = NodePath("VBoxContainer/CenterContainer2/VolumeContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="ScaleContainer" parent="VBoxContainer/CenterContainer" instance=ExtResource("3_k4ytu")]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+text = "Content Scale Factor"
+
+[node name="ScaleSlider" type="HSlider" parent="VBoxContainer/CenterContainer/ScaleContainer"]
+layout_mode = 2
+min_value = 1.0
+max_value = 2.0
+step = 0.01
+value = 1.0
+
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="VolumeContainer" parent="VBoxContainer/CenterContainer2" instance=ExtResource("2_0rxpt")]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+
+[node name="ExitContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 10
+
+[node name="Exit" parent="VBoxContainer/ExitContainer" instance=ExtResource("2_fy8cs")]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "Some settings apply and save only on exit"
+button_text = "Exit and save"
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_p2ifw")
+bus = &"Sound Effects"
+
+[connection signal="wrapped_button_pressed" from="VBoxContainer/ExitContainer/Exit" to="." method="_on_exit_pressed"]

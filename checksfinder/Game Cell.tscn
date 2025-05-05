@@ -35,7 +35,6 @@ theme = ExtResource("3_n68ep")
 [node name="Button Cell" type="Button" parent="ButtonWrapper/PanelContainer" node_paths=PackedStringArray("root_game_cell", "label", "inner", "outer")]
 layout_mode = 2
 mouse_filter = 1
-action_mode = 0
 button_mask = 3
 script = ExtResource("5_cpmku")
 root_game_cell = NodePath("../../..")

@@ -62,6 +62,8 @@ func _on_updated_marked_mines(count: int) -> void:
 func _on_exit_pressed() -> void:
 	$DigSound.finished.connect(func():
 		var scene = load("res://checksfinder/Start Menu.tscn").instantiate()
+		if not volume_container.timer.is_stopped():
+			await volume_container.timer.timeout
 		Archipelago.ap_disconnect()
 		ChecksFinder.item_status = CF.ItemStatus.NO_ITEMS
 		ChecksFinder.music.stop_gradually()
