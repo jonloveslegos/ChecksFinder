@@ -65,7 +65,7 @@ func _on_update() -> void:
 func _load_cfg(file: FileAccess) -> bool:
 	if not super(file):
 		return false
-	var _vers := file.get_32()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+	var _vers := file.get_32()
 	ip = file.get_pascal_string()
 	port = file.get_pascal_string()
 	slot = file.get_pascal_string()
