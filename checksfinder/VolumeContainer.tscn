@@ -46,6 +46,7 @@ option_button = NodePath("../OptionButton")
 timer = NodePath("../Timer")
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="item_selected" from="OptionButton" to="VolumeSlider" method="_on_option_button_item_selected"]
 [connection signal="value_changed" from="VolumeSlider" to="VolumeSlider" method="_on_value_changed"]
