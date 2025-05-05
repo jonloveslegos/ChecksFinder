@@ -65,6 +65,9 @@ disabled = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 2
 
 [node name="Version" type="Label" parent="MarginContainer"]
 layout_mode = 2
