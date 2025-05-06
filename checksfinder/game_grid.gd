@@ -6,9 +6,6 @@ enum GameState{
 var game_state = GameState.EMPTY
 
 var children: Array[GameCell] = []
-var recursive_delay: float = 0.09
-var end_screen_delay_win: float = 0.9
-var end_screen_delay_loss: float = 0.9
 var has_loss_animation_finished: bool = false
 var hovered_cell: GameCell = null
 var has_long_tapped: bool = false
@@ -18,6 +15,9 @@ var has_long_tapped: bool = false
 @warning_ignore("integer_division")
 @onready var mine_count = min(bombs, width*height/5)
 @onready var current_location_index = ChecksFinder.cur_location_index
+@export var recursive_delay: float = 0.09
+@export var end_screen_delay_win: float = 0.9
+@export var end_screen_delay_loss: float = 0.9
 @export var game_scene: GameScene
 @export var timer: Timer
 signal game_grid_sound(sound)
