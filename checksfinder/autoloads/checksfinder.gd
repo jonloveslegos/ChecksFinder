@@ -36,10 +36,10 @@ var current_items_dict_backup: Dictionary[String, int] = current_items_dict
 var location_list: Array[int]
 var cur_location_index: int:
 	get:
-		return min(theoretical_loc_index, get_all_item_count() + 5 - 1, 24)
+		return min(theoretical_loc_index, max_in_logic_location_index())
 var theoretical_loc_index: int = -1:
 	set(val):
-		theoretical_loc_index = min(val, location_list.size(), 25)
+		theoretical_loc_index = min(val, location_list.size())
 var location_waiting_on: int = 0
 var has_used_ui_buttons: bool = false
 var music: MusicController:
@@ -76,8 +76,15 @@ func _on_connected(conn: ConnectionInfo, _json: Dictionary):
 	conn.all_scout_cached.connect(_on_all_scout_cached)
 	conn.force_scout_all()
 
-func send_location(index):
-	if index >= 0 and index < location_list.size():
+func send_location(min_index, max_index):
+	if min_index >= 0 and min_index <= location_list.size():
+		var index = min_index
+		if max_index >= min_index and max_index <= location_list.size():
+			for i in range(min_index, max_index + 1):
+				if i == location_list.size() or not Archipelago.conn.slot_locations[location_list[index]]:
+					index = i
+		if index == location_list.size():
+			return
 		Archipelago.conn.scout(location_list[index], 0, func(item: NetworkItem):
 			if item.dest_player_id == Archipelago.conn.player_id:
 				item_status = ItemStatus.WAITING_FOR_CURRENT_ITEM
@@ -115,11 +122,14 @@ func get_cur_width() -> int:
 func get_cur_bombs() -> int:
 	return min(current_items_dict["Map Bombs"] + 5, 20)
 
+func get_cur_item_count() -> int:
+	return get_cur_height() + get_cur_width() + get_cur_bombs() - 15
+
 func get_count_in_logic() -> int:
 	var count = 0
 	if not Archipelago.conn:
 		return 0
-	for i in range(cur_location_index, min(get_all_item_count() + 5, 25)):
+	for i in range(cur_location_index, min(get_all_item_count() + 5, location_list.size())):
 		if not Archipelago.conn.slot_locations[location_list[i]]:
 			count += 1
 	return count
@@ -127,8 +137,8 @@ func get_count_in_logic() -> int:
 func get_completed_count() -> int:
 	return Archipelago.conn.slot_locations.values().count(true)
 
-func get_all_item_count() -> int:
-	return get_all_height() + get_all_width() + get_all_bombs() - 15
+func max_in_logic_location_index(cur_item_count = get_all_item_count()) -> int:
+	return max(cur_item_count + 5 - 1, location_list.size())
 
 func get_all_height() -> int:
 	return min(all_items_dict["Map Height"] + 5, 10)
@@ -139,8 +149,11 @@ func get_all_width() -> int:
 func get_all_bombs() -> int:
 	return min(all_items_dict["Map Bombs"] + 5, 20)
 
+func get_all_item_count() -> int:
+	return get_all_height() + get_all_width() + get_all_bombs() - 15
+
 func _get_cur_location_index() -> int:
-	if not location_list or Archipelago.conn.slot_locations.size() < 25:
+	if not location_list or Archipelago.conn.slot_locations.size() < location_list.size():
 		return -1
 	else:
 		var index = 0
@@ -148,7 +161,7 @@ func _get_cur_location_index() -> int:
 			if not Archipelago.conn.slot_locations[id]:
 				return index
 			index += 1
-	return location_list.size()
+		return index
 
 func _on_all_scout_cached() -> void:
 	if item_status == ItemStatus.NO_ITEMS:
@@ -171,17 +184,20 @@ func _on_refresh_items(items: Array[NetworkItem]) -> void:
 	update_item_info.emit()
 
 func _on_obtained_items(items: Array[NetworkItem]) -> void:
+	var old_item_count = get_all_item_count()
 	var dict = build_items_dict(items, -1)
-	var old_loc_index = cur_location_index
 	for key in all_items_dict.keys():
 		all_items_dict[key] += dict[key]
+	dict = build_items_dict(Archipelago.conn.received_items, cur_location_index + 1)
+	for key in current_items_dict.keys():
+		current_items_dict[key] += dict[key]
 	theoretical_loc_index = _get_cur_location_index()
 	if item_status == ItemStatus.WAITING_FOR_CURRENT_ITEM:
 		if items.any(func(item: NetworkItem):
 				return item.loc_id == location_waiting_on):
 			needed_item_received.emit()
 			item_status = ItemStatus.RECEIVED_ITEMS
-	if old_loc_index != cur_location_index and item_status != ItemStatus.WAITING_FOR_CURRENT_ITEM:
+	if old_item_count != get_all_item_count() and item_status != ItemStatus.WAITING_FOR_CURRENT_ITEM:
 		item_status = ItemStatus.RECEIVED_ITEMS
 	update_item_info.emit()
 

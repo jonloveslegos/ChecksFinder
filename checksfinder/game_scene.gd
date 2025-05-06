@@ -93,3 +93,7 @@ func _on_changed_connection() -> void:
 
 func _on_item_status_updated() -> void:
 	DisconnectScreen.visible = false
+	if (ChecksFinder.item_status == CF.ItemStatus.RECEIVED_ITEMS and
+			game_grid.game_state == GameGrid.GameState.EMPTY and
+			game_grid.saved_item_count != ChecksFinder.get_cur_item_count()):
+		ChecksFinder.load_game_scene()

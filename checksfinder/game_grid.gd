@@ -12,6 +12,7 @@ var has_long_tapped: bool = false
 @onready var height = ChecksFinder.get_cur_height()
 @onready var width = ChecksFinder.get_cur_width()
 @onready var bombs = ChecksFinder.get_cur_bombs()
+@onready var saved_item_count = ChecksFinder.get_cur_item_count()
 @warning_ignore("integer_division")
 @onready var mine_count = min(bombs, width*height/5)
 @onready var current_location_index = ChecksFinder.cur_location_index
@@ -130,7 +131,8 @@ func _on_game_cell_revealed(game_cell: GameCell) -> void:
 				cell.revealed = true
 				cell.react_to_cell_state_change()
 			await get_tree().create_timer(end_screen_delay_win).timeout
-			ChecksFinder.send_location(current_location_index)
+			ChecksFinder.send_location(current_location_index,
+				ChecksFinder.max_in_logic_location_index(saved_item_count))
 			if ChecksFinder.get_all_item_count() == 25:
 				game_scene.VictoryScreen.visible = true
 				ChecksFinder.music.victory()
