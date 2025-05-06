@@ -1,23 +1,23 @@
 [gd_scene load_steps=21 format=3 uid="uid://cv1akcim6mdc5"]
 
-[ext_resource type="Theme" uid="uid://bxysniydt2th7" path="res://checksfinder/ui/themes/checksfinder.tres" id="1_1rejh"]
-[ext_resource type="Script" uid="uid://cu5d1k0k8thhx" path="res://checksfinder/game_scene.gd" id="2_5n5vg"]
-[ext_resource type="Script" uid="uid://b57bmqqmfng17" path="res://checksfinder/game_grid.gd" id="3_77tm3"]
-[ext_resource type="PackedScene" uid="uid://hy1yrayxjela" path="res://checksfinder/VolumeContainer.tscn" id="4_2mk5m"]
-[ext_resource type="Texture2D" uid="uid://b10aij180tx2y" path="res://checksfinder/ui/graphics/check_icon.png" id="5_333wg"]
-[ext_resource type="Texture2D" uid="uid://c4lf2ly4ort5p" path="res://checksfinder/ui/graphics/completed_check_icon.png" id="6_frkbr"]
-[ext_resource type="Texture2D" uid="uid://cn536dxgj7ysk" path="res://checksfinder/ui/graphics/bomb_icon.png" id="7_verhn"]
-[ext_resource type="Texture2D" uid="uid://deqoj6m3mihq6" path="res://checksfinder/ui/graphics/height_icon.png" id="8_npbh7"]
-[ext_resource type="Texture2D" uid="uid://cmedmorrxk8s0" path="res://checksfinder/ui/graphics/width_icon.png" id="9_2mk5m"]
-[ext_resource type="Texture2D" uid="uid://bmh1op1r54xtx" path="res://checksfinder/ui/graphics/bomb.png" id="10_pofn2"]
-[ext_resource type="Theme" uid="uid://cc8k6b5sq7rg3" path="res://checksfinder/ui/themes/lightgreenborder_topleft.tres" id="11_npbh7"]
-[ext_resource type="PackedScene" uid="uid://byqp3jea6xq5w" path="res://checksfinder/ui/themes/button_wrapper.tscn" id="11_xwlk7"]
-[ext_resource type="Theme" uid="uid://dxdkrilr8iug8" path="res://checksfinder/ui/themes/darkgreenborder_bottomright.tres" id="12_2mk5m"]
-[ext_resource type="AudioStream" uid="uid://byxudx157vjax" path="res://checksfinder/audio/digright.wav" id="14_2mk5m"]
-[ext_resource type="Theme" uid="uid://dh7h45h5vj3xh" path="res://checksfinder/ui/themes/empty.tres" id="14_xwlk7"]
-[ext_resource type="Script" uid="uid://c84vn3k22tq32" path="res://checksfinder/victory_screen.gd" id="15_hynhs"]
-[ext_resource type="AudioStream" uid="uid://cfvfbn4ktlec7" path="res://checksfinder/audio/explosion.wav" id="15_n7jtk"]
-[ext_resource type="AudioStream" uid="uid://tqbe3svfo3lj" path="res://checksfinder/audio/win.wav" id="16_bvoa7"]
+[ext_resource type="Theme" uid="uid://bxysniydt2th7" path="res://checksfinder/ui/themes/checksfinder.tres" id="1_q2icl"]
+[ext_resource type="Script" uid="uid://cu5d1k0k8thhx" path="res://checksfinder/game_scene.gd" id="2_j23ys"]
+[ext_resource type="Script" uid="uid://b57bmqqmfng17" path="res://checksfinder/game_grid.gd" id="3_6de26"]
+[ext_resource type="PackedScene" uid="uid://hy1yrayxjela" path="res://checksfinder/VolumeContainer.tscn" id="4_rdvao"]
+[ext_resource type="Texture2D" uid="uid://b10aij180tx2y" path="res://checksfinder/ui/graphics/check_icon.png" id="5_2n4pc"]
+[ext_resource type="Texture2D" uid="uid://c4lf2ly4ort5p" path="res://checksfinder/ui/graphics/completed_check_icon.png" id="6_q0usj"]
+[ext_resource type="Texture2D" uid="uid://cn536dxgj7ysk" path="res://checksfinder/ui/graphics/bomb_icon.png" id="7_ka1v7"]
+[ext_resource type="Texture2D" uid="uid://deqoj6m3mihq6" path="res://checksfinder/ui/graphics/height_icon.png" id="8_h311t"]
+[ext_resource type="Texture2D" uid="uid://cmedmorrxk8s0" path="res://checksfinder/ui/graphics/width_icon.png" id="9_y6lww"]
+[ext_resource type="Texture2D" uid="uid://bmh1op1r54xtx" path="res://checksfinder/ui/graphics/bomb.png" id="10_wvpnu"]
+[ext_resource type="PackedScene" uid="uid://byqp3jea6xq5w" path="res://checksfinder/ui/themes/button_wrapper.tscn" id="11_bbjxf"]
+[ext_resource type="Theme" uid="uid://cc8k6b5sq7rg3" path="res://checksfinder/ui/themes/lightgreenborder_topleft.tres" id="12_peywc"]
+[ext_resource type="Theme" uid="uid://dxdkrilr8iug8" path="res://checksfinder/ui/themes/darkgreenborder_bottomright.tres" id="13_i2pmf"]
+[ext_resource type="Theme" uid="uid://dh7h45h5vj3xh" path="res://checksfinder/ui/themes/empty.tres" id="14_eclpu"]
+[ext_resource type="Script" uid="uid://c84vn3k22tq32" path="res://checksfinder/victory_screen.gd" id="15_wmmwa"]
+[ext_resource type="AudioStream" uid="uid://byxudx157vjax" path="res://checksfinder/audio/digright.wav" id="16_bf3uu"]
+[ext_resource type="AudioStream" uid="uid://cfvfbn4ktlec7" path="res://checksfinder/audio/explosion.wav" id="17_vgi86"]
+[ext_resource type="AudioStream" uid="uid://tqbe3svfo3lj" path="res://checksfinder/audio/win.wav" id="18_lpm0y"]
 
 [sub_resource type="Theme" id="Theme_2mk5m"]
 
@@ -37,8 +37,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_1rejh")
-script = ExtResource("2_5n5vg")
+theme = ExtResource("1_q2icl")
+script = ExtResource("2_j23ys")
 dig_sound = NodePath("DigSound")
 explosion_sound = NodePath("Explosion")
 generic_win_sound = NodePath("GenericWin")
@@ -70,7 +70,7 @@ theme = SubResource("Theme_2mk5m")
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 5
-script = ExtResource("3_77tm3")
+script = ExtResource("3_6de26")
 game_scene = NodePath("../..")
 timer = NodePath("Timer")
 
@@ -90,7 +90,7 @@ size_flags_horizontal = 3
 [node name="VolumeContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="VolumeContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/VolumeContainer" instance=ExtResource("4_2mk5m")]
+[node name="VolumeContainer" parent="HBoxContainer/PanelContainer/VBoxContainer/VolumeContainer" instance=ExtResource("4_rdvao")]
 layout_mode = 2
 
 [node name="LocationCountContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
@@ -108,7 +108,7 @@ Total amount of locations"
 [node name="Icon2" type="TextureRect" parent="HBoxContainer/PanelContainer/VBoxContainer/LocationCountContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-texture = ExtResource("5_333wg")
+texture = ExtResource("5_2n4pc")
 stretch_mode = 5
 
 [node name="InLogic" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/LocationCountContainer/HBoxContainer"]
@@ -118,7 +118,7 @@ text = "00"
 [node name="Icon" type="TextureRect" parent="HBoxContainer/PanelContainer/VBoxContainer/LocationCountContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-texture = ExtResource("6_frkbr")
+texture = ExtResource("6_q0usj")
 stretch_mode = 5
 
 [node name="CompletedChecks" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/LocationCountContainer/HBoxContainer"]
@@ -147,7 +147,7 @@ Total amount of Map Bomb items in multiworld"
 [node name="Icon" type="TextureRect" parent="HBoxContainer/PanelContainer/VBoxContainer/BombCountContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-texture = ExtResource("7_verhn")
+texture = ExtResource("7_ka1v7")
 stretch_mode = 5
 
 [node name="CurrentBombs" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/BombCountContainer/HBoxContainer"]
@@ -184,7 +184,7 @@ Total amount of Map Height items in multiworld"
 [node name="Icon" type="TextureRect" parent="HBoxContainer/PanelContainer/VBoxContainer/HeightCountContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-texture = ExtResource("8_npbh7")
+texture = ExtResource("8_h311t")
 stretch_mode = 5
 
 [node name="CurrentHeight" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/HeightCountContainer/HBoxContainer"]
@@ -221,7 +221,7 @@ Total amount of Map Width items in multiworld"
 [node name="Icon" type="TextureRect" parent="HBoxContainer/PanelContainer/VBoxContainer/WidthCountContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-texture = ExtResource("9_2mk5m")
+texture = ExtResource("9_y6lww")
 stretch_mode = 5
 
 [node name="CurrentWidth" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/WidthCountContainer/HBoxContainer"]
@@ -257,7 +257,7 @@ Total amount of mines on the current board"
 [node name="Icon" type="TextureRect" parent="HBoxContainer/PanelContainer/VBoxContainer/MinesOnBoardCountContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-texture = ExtResource("10_pofn2")
+texture = ExtResource("10_wvpnu")
 stretch_mode = 5
 
 [node name="MarkedMineCount" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/MinesOnBoardCountContainer/HBoxContainer"]
@@ -279,7 +279,7 @@ size_flags_vertical = 3
 [node name="ExitContainer" type="MarginContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Exit" parent="HBoxContainer/PanelContainer/VBoxContainer/ExitContainer" instance=ExtResource("11_xwlk7")]
+[node name="Exit" parent="HBoxContainer/PanelContainer/VBoxContainer/ExitContainer" instance=ExtResource("11_bbjxf")]
 layout_mode = 2
 button_text = "Exit"
 
@@ -293,11 +293,11 @@ layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="DisconnectScreen/CenterContainer"]
 layout_mode = 2
-theme = ExtResource("11_npbh7")
+theme = ExtResource("12_peywc")
 
 [node name="PanelContainer" type="PanelContainer" parent="DisconnectScreen/CenterContainer/PanelContainer"]
 layout_mode = 2
-theme = ExtResource("12_2mk5m")
+theme = ExtResource("13_i2pmf")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="DisconnectScreen/CenterContainer/PanelContainer/PanelContainer"]
 layout_mode = 2
@@ -305,7 +305,7 @@ theme_override_constants/separation = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="DisconnectScreen/CenterContainer/PanelContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("1_1rejh")
+theme = ExtResource("1_q2icl")
 
 [node name="DISCONNECTED" type="Label" parent="DisconnectScreen/CenterContainer/PanelContainer/PanelContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
@@ -314,7 +314,7 @@ horizontal_alignment = 1
 
 [node name="PanelContainer2" type="PanelContainer" parent="DisconnectScreen/CenterContainer/PanelContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("1_1rejh")
+theme = ExtResource("1_q2icl")
 
 [node name="instructions" type="Label" parent="DisconnectScreen/CenterContainer/PanelContainer/PanelContainer/VBoxContainer/PanelContainer2"]
 layout_mode = 2
@@ -328,8 +328,8 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="VictoryScreen"]
 layout_mode = 2
-theme = ExtResource("14_xwlk7")
-script = ExtResource("15_hynhs")
+theme = ExtResource("14_eclpu")
+script = ExtResource("15_wmmwa")
 
 [node name="CenterContainer" type="CenterContainer" parent="VictoryScreen"]
 layout_mode = 2
@@ -338,32 +338,32 @@ mouse_filter = 2
 [node name="PanelContainer" type="PanelContainer" parent="VictoryScreen/CenterContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme = ExtResource("11_npbh7")
+theme = ExtResource("12_peywc")
 
 [node name="PanelContainer" type="PanelContainer" parent="VictoryScreen/CenterContainer/PanelContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme = ExtResource("12_2mk5m")
+theme = ExtResource("13_i2pmf")
 
 [node name="PanelContainer" type="PanelContainer" parent="VictoryScreen/CenterContainer/PanelContainer/PanelContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme = ExtResource("1_1rejh")
+theme = ExtResource("1_q2icl")
 
 [node name="Label" type="Label" parent="VictoryScreen/CenterContainer/PanelContainer/PanelContainer/PanelContainer"]
 layout_mode = 2
 text = "YOU WIN"
 
 [node name="DigSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_2mk5m")
+stream = ExtResource("16_bf3uu")
 bus = &"Sound Effects"
 
 [node name="Explosion" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_n7jtk")
+stream = ExtResource("17_vgi86")
 bus = &"Sound Effects"
 
 [node name="GenericWin" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("16_bvoa7")
+stream = ExtResource("18_lpm0y")
 bus = &"Sound Effects"
 
 [connection signal="game_grid_sound" from="HBoxContainer/GameGrid" to="." method="_on_game_grid_sound"]

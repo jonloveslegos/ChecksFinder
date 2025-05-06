@@ -123,7 +123,6 @@ func _on_game_cell_revealed(game_cell: GameCell) -> void:
 		if children.all(func(cell: GameCell):
 				return cell.contents == GameCell.CellContents.BOMB or cell.revealed):
 			game_state = GameState.VICTORY
-			var scene = load("res://checksfinder/Game Scene.tscn").instantiate()
 			await get_tree().create_timer(recursive_delay).timeout
 			game_grid_sound.emit(SoundType.GENERIC_WIN)
 			for cell in children:
@@ -141,7 +140,7 @@ func _on_game_cell_revealed(game_cell: GameCell) -> void:
 			if game_scene.generic_win_sound.playing:
 				await game_scene.generic_win_sound.finished
 			if not game_scene.VictoryScreen.visible:
-				ChecksFinder.replace_scene(scene)
+				ChecksFinder.load_game_scene()
 	elif game_state == GameState.LOST:
 		await get_tree().process_frame
 		loss(game_cell)
@@ -155,9 +154,8 @@ func loss(game_cell: GameCell) -> void:
 		return false)
 	if not has_loss_animation_finished and children.all(func(cell: GameCell): return cell.revealed):
 		has_loss_animation_finished = true
-		var scene = load("res://checksfinder/Game Scene.tscn").instantiate()
 		await get_tree().create_timer(end_screen_delay_loss).timeout
 		AP.log("ended delay")
 		if game_scene.explosion_sound.playing:
 			await game_scene.explosion_sound.finished
-		ChecksFinder.replace_scene(scene)
+		ChecksFinder.load_game_scene()

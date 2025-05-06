@@ -234,3 +234,7 @@ func replace_scene(scene: Node):
 		var arr = location.get_children()
 		for i in range(arr.size() - 1):
 			arr[i].free.call_deferred()
+
+func load_game_scene():
+	var scene = load("res://checksfinder/Game Scene H.tscn").instantiate()
+	ChecksFinder.replace_scene(scene)

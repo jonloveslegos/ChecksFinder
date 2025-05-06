@@ -30,7 +30,6 @@ func go_to_game():
 	if ChecksFinder.item_status == ChecksFinder.ItemStatus.RECEIVED_ITEMS:
 		Archipelago.set_client_status(Archipelago.ClientStatus.CLIENT_PLAYING)
 		ChecksFinder.music.start()
-		var scene = load("res://checksfinder/Game Scene.tscn").instantiate()
-		ChecksFinder.replace_scene(scene)
+		ChecksFinder.load_game_scene()
 	else:
 		ChecksFinder.item_status_updated.connect(go_to_game, CONNECT_ONE_SHOT)

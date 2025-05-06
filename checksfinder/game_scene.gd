@@ -89,7 +89,7 @@ func _on_disconnect() -> void:
 	DisconnectScreen.visible = true
 
 func _on_changed_connection() -> void:
-	ChecksFinder.replace_scene(load("res://checksfinder/Game Scene.tscn").instantiate())
+	ChecksFinder.load_game_scene()
 
 func _on_item_status_updated() -> void:
 	DisconnectScreen.visible = false
