@@ -36,7 +36,7 @@ var current_items_dict_backup: Dictionary[String, int] = current_items_dict
 var location_list: Array[int]
 var cur_location_index: int:
 	get:
-		return min(theoretical_loc_index, max_in_logic_location_index())
+		return min(theoretical_loc_index, max_in_logic_location_index(get_all_item_count()))
 var theoretical_loc_index: int = -1:
 	set(val):
 		theoretical_loc_index = min(val, location_list.size())
@@ -79,10 +79,11 @@ func _on_connected(conn: ConnectionInfo, _json: Dictionary):
 func send_location(min_index, max_index):
 	if min_index >= 0 and min_index <= location_list.size():
 		var index = min_index
-		if max_index >= min_index and max_index <= location_list.size():
+		if max_index > min_index and max_index <= location_list.size():
 			for i in range(min_index, max_index + 1):
 				if i == location_list.size() or not Archipelago.conn.slot_locations[location_list[index]]:
 					index = i
+					break
 		if index == location_list.size():
 			return
 		Archipelago.conn.scout(location_list[index], 0, func(item: NetworkItem):
@@ -137,8 +138,10 @@ func get_count_in_logic() -> int:
 func get_completed_count() -> int:
 	return Archipelago.conn.slot_locations.values().count(true)
 
-func max_in_logic_location_index(cur_item_count = get_all_item_count()) -> int:
-	return max(cur_item_count + 5 - 1, location_list.size())
+func max_in_logic_location_index(cur_item_count) -> int:
+	if cur_item_count < 0:
+		return 0
+	return min(cur_item_count + 5 - 1, location_list.size())
 
 func get_all_height() -> int:
 	return min(all_items_dict["Map Height"] + 5, 10)
