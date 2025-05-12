@@ -22,7 +22,6 @@ AP_GAME_NAME = "ChecksFinder"
 AP_CLIENT_VERSION = SubResource("Resource_pmgvy")
 AP_VERSION = SubResource("Resource_m1v20")
 AP_HIDE_NONLOCAL_ITEMSENDS = false
-AP_ALLOW_TRACKERPACKS = false
 
 [node name="ChecksFinderConfigManager" type="Node" parent="."]
 script = ExtResource("3_rcf7h")
